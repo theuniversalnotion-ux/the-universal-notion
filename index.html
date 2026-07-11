@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Universal Notion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+
+    .logo img {
+      height: 32px;
+      width: 32px;
+      object-fit: contain;
+    }
+
+    nav a.nav-cta {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 110px 20px 90px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #555;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #aaa;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #1a1a1a;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ── Templates ── */
+    .templates {
+      padding: 90px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: #888;
+      font-size: 16px;
+      margin-bottom: 52px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+      transform: translateY(-3px);
+    }
+
+    .card-preview {
+      background: #f7f6f3;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #aaa;
+      margin-bottom: 8px;
+    }
+
+    .bestseller-tag {
+      color: #c47f00;
+      background: #fff8e6;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .card-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .buy-btn {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .buy-btn:hover {
+      background: #333;
+    }
+
+    /* ── Why section ── */
+    .why {
+      background: #f7f6f3;
+      padding: 90px 60px;
+    }
+
+    .why-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 52px;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .feature h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 44px 20px;
+      border-top: 1px solid #eee;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #888;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero { padding: 70px 24px 60px; }
+      .hero h1 { font-size: 36px; letter-spacing: -1px; }
+      .hero p { font-size: 16px; }
+      .templates { padding: 60px 24px; }
+      .why { padding: 60px 24px; }
+      .features { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a class="logo" href="#">
+      <img src="logo.png" alt="The Universal Notion">
+      The Universal Notion
+    </a>
+    <a href="#templates" class="nav-cta">Browse Blocks</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="badge">Modular Notion Templates</span>
+    <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
+    <p>Mix and match building blocks to create the exact Notion workspace you need — no fluff, no compromises.</p>
+    <div class="hero-btns">
+      <a href="#templates" class="btn-primary">Browse Blocks</a>
+      <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
+    </div>
+  </section>
+
+  <!-- Templates Grid -->
+  <section class="templates" id="templates">
+    <div class="section-label">Building Blocks</div>
+    <h2 class="section-title">Choose your blocks.</h2>
+    <p class="section-sub">Each block is $4.99 — grab what you need and snap it into your Notion workspace.</p>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-preview">💰</div>
+        <div class="card-body">
+          <div class="card-tag">Finance · <span class="bestseller-tag">Best Seller</span></div>
+          <h3>Budget + Finance Hub</h3>
+          <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">🧠</div>
+        <div class="card-body">
+          <div class="card-tag">Productivity</div>
+          <h3>Second Brain</h3>
+          <p>Capture ideas, notes, projects, and resources in one organized knowledge hub.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/ijqbc" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">🌸</div>
+        <div class="card-body">
+          <div class="card-tag">Lifestyle</div>
+          <h3>Romanticize Your Life Journal</h3>
+          <p>A beautiful daily journal to help you slow down, reflect, and find joy in the everyday.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/phlsor" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">❤️</div>
+        <div class="card-body">
+          <div class="card-tag">Health & Wellness</div>
+          <h3>Health + Medical Tracker</h3>
+          <p>Log appointments, medications, symptoms, and health goals in one clear dashboard.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/sagwrd" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">🎬</div>
+        <div class="card-body">
+          <div class="card-tag">Creator</div>
+          <h3>Content Creation Hub</h3>
+          <p>Plan, draft, and schedule content across all your platforms from one aesthetic command center.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/ofnhi" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">💼</div>
+        <div class="card-body">
+          <div class="card-tag">Business & Freelance</div>
+          <h3>Client + Admin Hub</h3>
+          <p>Manage clients, projects, invoices, and admin tasks without the chaos.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/nmvuey" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">📚</div>
+        <div class="card-body">
+          <div class="card-tag">Reading & Learning</div>
+          <h3>Universal Reading Log</h3>
+          <p>Track every book you've read, want to read, and are reading — with ratings and notes.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/READING-LOG-LINK" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">🍞</div>
+        <div class="card-body">
+          <div class="card-tag">Food & Home</div>
+          <h3>The Bread Board</h3>
+          <p>Your aesthetic recipe board — save, organize, and plan meals all in one place.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/cphel" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">🏠</div>
+        <div class="card-body">
+          <div class="card-tag">Home</div>
+          <h3>Appliance Tracker</h3>
+          <p>Log your home appliances, warranties, maintenance schedules, and purchase info in one spot.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <a href="https://universalnotion.gumroad.com/l/uszrz" class="buy-btn">Get Block</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="section-label">Why us</div>
+      <h2 class="section-title">Why The Universal Notion?</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🧩</div>
+          <h3>Modular by design</h3>
+          <p>Every block is built to work on its own or alongside others. Stack them, mix them, make them yours.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Ready in seconds</h3>
+          <p>Duplicate any block to your Notion workspace instantly. No setup required — just click and start using it.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💡</div>
+          <h3>No unnecessary extras</h3>
+          <p>Only buy what you need. Each block is focused and purposeful — no bloated all-in-one systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
+  </footer>
+
+</body>
+</html>
