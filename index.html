@@ -10,15 +10,28 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #FAF8F5;
-      --bg-card:      #F2EDE8;
-      --text:         #2C2C2C;
-      --text-muted:   #8C7B75;
-      --accent:       #C8A4A5;
-      --accent-dark:  #A07878;
-      --border:       #E4D9D0;
-      --gold:         #B07D4A;
-      --gold-light:   #F5E9D8;
+      --bg:         #FAF8F5;
+      --text:       #2C2C2C;
+      --muted:      #8C7B75;
+      --border:     #E4D9D0;
+      --rose:       #E8A0A8;
+      --rose-soft:  #F5D8DC;
+      --gold:       #D4A830;
+      --gold-soft:  #F5E4A8;
+      --lavender:   #9B7FD4;
+      --lav-soft:   #DDD0F5;
+      --sage:       #6BA878;
+      --sage-soft:  #C0E0C8;
+      --blue:       #6090B8;
+      --blue-soft:  #C0D8F0;
+      --peach:      #D4886A;
+      --peach-soft: #F5D0B8;
+      --amber:      #C09040;
+      --amber-soft: #F0DCA0;
+      --terra:      #C07858;
+      --terra-soft: #F0C4A8;
+      --green:      #70A868;
+      --green-soft: #C0D8B8;
     }
 
     body {
@@ -33,11 +46,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 64px;
+      padding: 20px 64px;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(250, 248, 245, 0.92);
+      background: rgba(250, 248, 245, 0.94);
       backdrop-filter: blur(12px);
       z-index: 100;
     }
@@ -61,55 +74,42 @@
     }
 
     .nav-cta {
-      background: var(--accent);
+      background: var(--rose);
       color: #fff;
       padding: 10px 24px;
       border-radius: 100px;
       text-decoration: none;
       font-size: 13px;
       font-weight: 500;
-      transition: background 0.2s;
+      transition: opacity 0.2s;
     }
 
-    .nav-cta:hover { background: var(--accent-dark); }
+    .nav-cta:hover { opacity: 0.85; }
 
     /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 120px 24px 100px;
+      padding: 110px 24px 90px;
       max-width: 820px;
       margin: 0 auto;
-      position: relative;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(200, 164, 165, 0.18) 0%, transparent 70%);
-      pointer-events: none;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--gold-light);
+      background: var(--gold-soft);
       color: var(--gold);
-      padding: 7px 18px;
+      padding: 8px 20px;
       border-radius: 100px;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 36px;
-      border: 1px solid rgba(176, 125, 74, 0.2);
     }
 
-    .badge i { font-size: 14px; }
+    .badge i { font-size: 15px; }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
@@ -122,12 +122,15 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--accent);
+      background: var(--rose-soft);
+      padding: 0 10px 4px;
+      border-radius: 8px;
+      color: var(--text);
     }
 
     .hero p {
       font-size: 17px;
-      color: var(--text-muted);
+      color: var(--muted);
       max-width: 460px;
       margin: 0 auto 48px;
       line-height: 1.75;
@@ -143,7 +146,7 @@
 
     .btn-primary {
       background: var(--text);
-      color: var(--bg);
+      color: #fff;
       padding: 14px 34px;
       border-radius: 100px;
       text-decoration: none;
@@ -152,7 +155,7 @@
       transition: background 0.2s;
     }
 
-    .btn-primary:hover { background: var(--accent); }
+    .btn-primary:hover { background: var(--rose); }
 
     .btn-secondary {
       background: transparent;
@@ -166,7 +169,7 @@
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-secondary:hover { border-color: var(--rose); color: var(--rose); }
 
     /* ── Divider ── */
     .divider {
@@ -174,7 +177,6 @@
       align-items: center;
       gap: 16px;
       padding: 0 64px;
-      margin: 8px 0;
     }
 
     .divider::before, .divider::after {
@@ -184,30 +186,26 @@
       background: var(--border);
     }
 
-    .divider i {
-      color: var(--accent);
-      font-size: 20px;
-      opacity: 0.7;
-    }
+    .divider i { color: var(--rose); font-size: 22px; }
 
     /* ── Templates ── */
     .templates {
       padding: 96px 64px;
-      max-width: 1160px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
     .section-label {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
-      color: var(--accent-dark);
-      background: rgba(200, 164, 165, 0.12);
-      padding: 5px 14px;
+      letter-spacing: 2px;
+      color: #fff;
+      background: var(--rose);
+      padding: 6px 16px;
       border-radius: 100px;
       margin-bottom: 18px;
     }
@@ -218,11 +216,10 @@
       font-weight: 500;
       letter-spacing: -0.5px;
       margin-bottom: 10px;
-      line-height: 1.15;
     }
 
     .section-sub {
-      color: var(--text-muted);
+      color: var(--muted);
       font-size: 15px;
       margin-bottom: 56px;
       font-weight: 300;
@@ -234,16 +231,17 @@
       gap: 20px;
     }
 
+    /* ── Cards ── */
     .card {
       background: #fff;
-      border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s;
     }
 
     .card:hover {
-      box-shadow: 0 16px 48px rgba(160, 120, 120, 0.12);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
       transform: translateY(-4px);
     }
 
@@ -252,11 +250,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .card-preview i {
-      font-size: 56px;
-      opacity: 0.75;
+      font-size: 58px;
+      color: rgba(255,255,255,0.9);
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
     }
 
     .card-body { padding: 22px 24px 26px; }
@@ -266,17 +268,17 @@
       align-items: center;
       gap: 6px;
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 100px;
       margin-bottom: 12px;
     }
 
     .bestseller-tag {
+      background: var(--gold-soft);
       color: var(--gold);
-      background: var(--gold-light);
       padding: 2px 9px;
       border-radius: 100px;
       font-size: 9px;
@@ -294,7 +296,7 @@
 
     .card-body p {
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.65;
       margin-bottom: 22px;
       font-weight: 300;
@@ -313,33 +315,43 @@
     }
 
     .buy-btn {
-      background: var(--text);
       color: #fff;
       padding: 9px 22px;
       border-radius: 100px;
       text-decoration: none;
       font-size: 12px;
       font-weight: 500;
-      transition: background 0.2s;
+      transition: opacity 0.2s;
     }
 
-    .buy-btn:hover { background: var(--accent); }
+    .buy-btn:hover { opacity: 0.85; }
 
     /* ── Why section ── */
     .why {
-      background: linear-gradient(135deg, #F5ECEC 0%, #F2EDE8 50%, #EEE8F5 100%);
+      background: var(--lav-soft);
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
-    .why-inner { max-width: 1160px; margin: 0 auto; }
+    .why-inner { max-width: 1180px; margin: 0 auto; }
+
+    .why .section-label {
+      background: var(--lavender);
+    }
 
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 48px;
+      gap: 24px;
       margin-top: 52px;
+    }
+
+    .feature {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 30px;
+      border: 1px solid rgba(155, 127, 212, 0.2);
     }
 
     .feature-icon-wrap {
@@ -363,7 +375,7 @@
 
     .feature p {
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.75;
       font-weight: 300;
     }
@@ -372,53 +384,52 @@
     footer {
       text-align: center;
       padding: 48px 20px;
-      color: var(--text-muted);
+      color: var(--muted);
       font-size: 13px;
       font-weight: 300;
-      background: var(--bg);
     }
 
-    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--accent); }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--rose); }
 
     /* ── Mobile ── */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .hero { padding: 72px 24px 64px; }
-      .hero h1 { font-size: 40px; }
+      .hero h1 { font-size: 38px; }
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
       .why { padding: 64px 24px; }
-      .features { grid-template-columns: 1fr; gap: 36px; }
+      .features { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <!-- ============================================
-       EDIT: Site name + logo (top left of page)
+       EDIT: Site name + logo
        ============================================ -->
   <nav>
     <a class="logo" href="#">
       <img src="logonotion.jpeg" alt="The Universal Notion">
-      The Universal Notion <!-- EDIT: brand name -->
+      The Universal Notion
     </a>
-    <a href="#templates" class="nav-cta">Browse Blocks</a> <!-- EDIT: button text -->
+    <a href="#templates" class="nav-cta">Browse Blocks</a>
   </nav>
 
   <!-- ============================================
-       EDIT: Hero — the big text at the top of the page
+       EDIT: Hero text
        ============================================ -->
   <section class="hero">
     <span class="badge">
       <i class="ph-fill ph-sparkle"></i>
-      Notion Templates <!-- EDIT: badge text -->
+      Notion Templates
     </span>
-    <h1>Pick your blocks.<br><em>Build your notion.</em></h1> <!-- EDIT: headline -->
-    <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p> <!-- EDIT: subtitle -->
+    <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
+    <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p>
     <div class="hero-btns">
       <a href="#templates" class="btn-primary">Browse Blocks</a>
-      <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a> <!-- EDIT: gumroad store link -->
+      <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
     </div>
   </section>
 
@@ -427,170 +438,167 @@
   </div>
 
   <!-- ============================================
-       EDIT: Section heading above the template cards
+       EDIT: Section heading + template cards
+       To add a card: copy a card block and paste after the last END CARD
+       Browse icons: phosphoricons.com
        ============================================ -->
   <section class="templates" id="templates">
-    <div class="section-label">Building Blocks</div>
+    <div class="section-label"><i class="ph-fill ph-squares-four"></i> Building Blocks</div>
     <h2 class="section-title">Choose your blocks.</h2>
     <p class="section-sub">Each block is $4.99 — grab what you need and snap it into your Notion workspace.</p>
 
     <div class="grid">
 
-      <!-- ==========================================
-           TEMPLATE CARD
-           EDIT: icon color, category color, title, description, price, gumroad link
-           To add a new card: copy from here to END CARD and paste below the last card
-           Browse icons at phosphoricons.com — use class="ph-light ph-ICONNAME"
-           ========================================== -->
+      <!-- TEMPLATE CARD — Finance -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #FBF3E8, #F0E0C4);">
-          <i class="ph-light ph-wallet" style="color: #B07D4A;"></i>
+        <div class="card-preview" style="background: #D4A830;">
+          <i class="ph-light ph-wallet"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #FBF3E8; color: #B07D4A;">
+          <div class="card-tag" style="background: var(--gold-soft); color: var(--gold);">
             Finance <span class="bestseller-tag">Best Seller</span>
           </div>
           <h3>Budget + Finance Hub</h3>
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn" style="background: #D4A830;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Productivity -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #EEE8F5, #E2D5F0);">
-          <i class="ph-light ph-brain" style="color: #8B72BE;"></i>
+        <div class="card-preview" style="background: #9B7FD4;">
+          <i class="ph-light ph-brain"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #EEE8F5; color: #8B72BE;">Productivity</div>
+          <div class="card-tag" style="background: var(--lav-soft); color: var(--lavender);">Productivity</div>
           <h3>Second Brain</h3>
           <p>Capture ideas, notes, projects, and resources in one organized knowledge hub.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/ijqbc" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/ijqbc" class="buy-btn" style="background: #9B7FD4;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Lifestyle -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #F5ECEC, #EEDAD8);">
-          <i class="ph-light ph-notebook" style="color: #C8A4A5;"></i>
+        <div class="card-preview" style="background: #E8A0A8;">
+          <i class="ph-light ph-notebook"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #F5ECEC; color: #A07878;">Lifestyle</div>
+          <div class="card-tag" style="background: var(--rose-soft); color: #C07080;">Lifestyle</div>
           <h3>Romanticize Your Life Journal</h3>
           <p>A beautiful daily journal to help you slow down, reflect, and find joy in the everyday.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/phlsor" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/phlsor" class="buy-btn" style="background: #E8A0A8;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Health -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #EAF5EE, #D5EADC);">
-          <i class="ph-light ph-heart" style="color: #6B9E78;"></i>
+        <div class="card-preview" style="background: #6BA878;">
+          <i class="ph-light ph-heart"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #EAF5EE; color: #6B9E78;">Health & Wellness</div>
+          <div class="card-tag" style="background: var(--sage-soft); color: var(--sage);">Health & Wellness</div>
           <h3>Health + Medical Tracker</h3>
           <p>Log appointments, medications, symptoms, and health goals in one clear dashboard.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/sagwrd" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/sagwrd" class="buy-btn" style="background: #6BA878;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Creator -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #E8EEF5, #D5E2EC);">
-          <i class="ph-light ph-pencil-simple" style="color: #6B8FA3;"></i>
+        <div class="card-preview" style="background: #6090B8;">
+          <i class="ph-light ph-pencil-simple"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #E8EEF5; color: #6B8FA3;">Creator</div>
+          <div class="card-tag" style="background: var(--blue-soft); color: var(--blue);">Creator</div>
           <h3>Content Creation Hub</h3>
           <p>Plan, draft, and schedule content across all your platforms from one aesthetic command center.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/ofnhi" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/ofnhi" class="buy-btn" style="background: #6090B8;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Business -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #F2EDE8, #E4D8D0);">
-          <i class="ph-light ph-briefcase" style="color: #8C7B75;"></i>
+        <div class="card-preview" style="background: #D4886A;">
+          <i class="ph-light ph-briefcase"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #F2EDE8; color: #8C7B75;">Business & Freelance</div>
+          <div class="card-tag" style="background: var(--peach-soft); color: var(--peach);">Business & Freelance</div>
           <h3>Client + Admin Hub</h3>
           <p>Manage clients, projects, invoices, and admin tasks without the chaos.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/nmvuey" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/nmvuey" class="buy-btn" style="background: #D4886A;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Reading -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #F5F0E8, #EDE5D5);">
-          <i class="ph-light ph-books" style="color: #A08060;"></i>
+        <div class="card-preview" style="background: #C09040;">
+          <i class="ph-light ph-books"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #F5F0E8; color: #A08060;">Reading & Learning</div>
+          <div class="card-tag" style="background: var(--amber-soft); color: var(--amber);">Reading & Learning</div>
           <h3>Universal Reading Log</h3>
           <p>Track every book you've read, want to read, and are reading — with ratings and notes.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/erzgsu" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/erzgsu" class="buy-btn" style="background: #C09040;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Food -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #F5EDE8, #EDDED5);">
-          <i class="ph-light ph-fork-knife" style="color: #A07060;"></i>
+        <div class="card-preview" style="background: #C07858;">
+          <i class="ph-light ph-fork-knife"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #F5EDE8; color: #A07060;">Food & Home</div>
+          <div class="card-tag" style="background: var(--terra-soft); color: var(--terra);">Food & Home</div>
           <h3>The Bread Board</h3>
           <p>Your aesthetic recipe board — save, organize, and plan meals all in one place.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/cphel" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/cphel" class="buy-btn" style="background: #C07858;">Get Block</a>
           </div>
         </div>
       </div>
       <!-- END CARD -->
 
-      <!-- TEMPLATE CARD -->
+      <!-- TEMPLATE CARD — Home -->
       <div class="card">
-        <div class="card-preview" style="background: linear-gradient(135deg, #EBF0E8, #DDE8D5);">
-          <i class="ph-light ph-house" style="color: #6B8B6B;"></i>
+        <div class="card-preview" style="background: #70A868;">
+          <i class="ph-light ph-house"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #EBF0E8; color: #6B8B6B;">Home</div>
+          <div class="card-tag" style="background: var(--green-soft); color: var(--green);">Home</div>
           <h3>Appliance Tracker</h3>
           <p>Log your home appliances, warranties, maintenance schedules, and purchase info in one spot.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/uszrz" class="buy-btn">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/uszrz" class="buy-btn" style="background: #70A868;">Get Block</a>
           </div>
         </div>
       </div>
@@ -600,33 +608,33 @@
   </section>
 
   <!-- ============================================
-       EDIT: "Why us" section — the 3 feature boxes
+       EDIT: "Why us" section — 3 feature boxes
        ============================================ -->
   <section class="why">
     <div class="why-inner">
-      <div class="section-label">Why us</div>
+      <div class="section-label"><i class="ph-fill ph-star"></i> Why us</div>
       <h2 class="section-title">Why The Universal Notion?</h2>
       <div class="features">
 
         <div class="feature">
-          <div class="feature-icon-wrap" style="background: #F5ECEC;">
-            <i class="ph-light ph-puzzle-piece" style="color: #C8A4A5;"></i>
+          <div class="feature-icon-wrap" style="background: var(--rose-soft);">
+            <i class="ph-light ph-puzzle-piece" style="color: var(--rose);"></i>
           </div>
           <h3>Modular by design</h3>
           <p>Every block works on its own or alongside others. Stack them, mix them, make them completely yours.</p>
         </div>
 
         <div class="feature">
-          <div class="feature-icon-wrap" style="background: #FBF3E8;">
-            <i class="ph-light ph-lightning" style="color: #B07D4A;"></i>
+          <div class="feature-icon-wrap" style="background: var(--gold-soft);">
+            <i class="ph-light ph-lightning" style="color: var(--gold);"></i>
           </div>
           <h3>Ready in seconds</h3>
           <p>Duplicate any block to your Notion workspace instantly. No setup required — just click and start.</p>
         </div>
 
         <div class="feature">
-          <div class="feature-icon-wrap" style="background: #EEE8F5;">
-            <i class="ph-light ph-sparkle" style="color: #8B72BE;"></i>
+          <div class="feature-icon-wrap" style="background: var(--lav-soft);">
+            <i class="ph-light ph-sparkle" style="color: var(--lavender);"></i>
           </div>
           <h3>Beautifully aesthetic</h3>
           <p>Every template is designed to feel as good as it looks — because your workspace should inspire you.</p>
@@ -637,7 +645,7 @@
   </section>
 
   <!-- ============================================
-       EDIT: Footer text + Gumroad store link
+       EDIT: Footer
        ============================================ -->
   <footer>
     <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
