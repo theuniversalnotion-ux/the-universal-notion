@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Universal Notion</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -217,12 +218,16 @@
     }
 
     .card-preview {
-      background: linear-gradient(135deg, #EDE7E0 0%, #E4D9D0 100%);
       height: 155px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 44px;
+    }
+
+    .card-preview i {
+      font-size: 52px;
+      color: #A8897A;
+      opacity: 0.85;
     }
 
     .card-body {
@@ -400,13 +405,16 @@
 
       <!-- ==========================================
            TEMPLATE CARD
-           EDIT: emoji, category, title, description, price, gumroad link
+           EDIT: icon, gradient colors, category, title, description, price, gumroad link
            To add a new card: copy from here to "END CARD" and paste after the last card
+           Icons: browse at phosphoricons.com — use class="ph-light ph-ICONNAME"
            ========================================== -->
       <div class="card">
-        <div class="card-preview">💰</div> <!-- EDIT: emoji -->
+        <div class="card-preview" style="background: linear-gradient(135deg, #FBF3E8, #F0E0C4);">
+          <i class="ph-light ph-wallet"></i> <!-- EDIT: icon -->
+        </div>
         <div class="card-body">
-          <div class="card-tag">Finance · <span class="bestseller-tag">Best Seller</span></div> <!-- EDIT: category (remove the bestseller span if not needed) -->
+          <div class="card-tag">Finance · <span class="bestseller-tag">Best Seller</span></div> <!-- EDIT: category -->
           <h3>Budget + Finance Hub</h3> <!-- EDIT: template name -->
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p> <!-- EDIT: description -->
           <div class="card-footer">
@@ -419,7 +427,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">🧠</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #EEE8F5, #E2D5F0);">
+          <i class="ph-light ph-brain"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Productivity</div>
           <h3>Second Brain</h3>
@@ -434,7 +444,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">🌸</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #F5ECEC, #EEDAD8);">
+          <i class="ph-light ph-notebook"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Lifestyle</div>
           <h3>Romanticize Your Life Journal</h3>
@@ -449,7 +461,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">❤️</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #EAF5EE, #D5EADC);">
+          <i class="ph-light ph-heart"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Health & Wellness</div>
           <h3>Health + Medical Tracker</h3>
@@ -464,7 +478,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">🎬</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #E8EEF5, #D5E2EC);">
+          <i class="ph-light ph-pencil-simple"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Creator</div>
           <h3>Content Creation Hub</h3>
@@ -479,7 +495,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">💼</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #F2EDE8, #E4D8D0);">
+          <i class="ph-light ph-briefcase"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Business & Freelance</div>
           <h3>Client + Admin Hub</h3>
@@ -494,7 +512,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">📚</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #F5F0E8, #EDE5D5);">
+          <i class="ph-light ph-books"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Reading & Learning</div>
           <h3>Universal Reading Log</h3>
@@ -509,7 +529,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">🍞</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #F5EDE8, #EDDED5);">
+          <i class="ph-light ph-fork-knife"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Food & Home</div>
           <h3>The Bread Board</h3>
@@ -524,7 +546,9 @@
 
       <!-- TEMPLATE CARD -->
       <div class="card">
-        <div class="card-preview">🏠</div>
+        <div class="card-preview" style="background: linear-gradient(135deg, #EBF0E8, #DDE8D5);">
+          <i class="ph-light ph-house"></i>
+        </div>
         <div class="card-body">
           <div class="card-tag">Home</div>
           <h3>Appliance Tracker</h3>
