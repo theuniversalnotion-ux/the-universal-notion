@@ -87,11 +87,48 @@
     .nav-cta:hover { opacity: 0.85; }
 
     /* ── Hero ── */
+    .hero-wrap { background: #FDF0F2; }
+
     .hero {
       text-align: center;
-      padding: 110px 24px 90px;
+      padding: 110px 24px 56px;
       max-width: 820px;
       margin: 0 auto;
+    }
+
+    /* ── Scrolling block strip ── */
+    .marquee-wrap {
+      overflow: hidden;
+      padding-bottom: 56px;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: marquee-scroll 30s linear infinite;
+    }
+
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+    .mini-block {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .mini-block:hover { transform: scale(1.07); }
+    .mini-block i { font-size: 50px; color: rgba(255,255,255,0.9); }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-1224px); }
     }
 
     .badge {
@@ -397,7 +434,8 @@
     /* ── Mobile ── */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
-      .hero { padding: 72px 24px 64px; }
+      .hero { padding: 72px 24px 48px; }
+      .mini-block { width: 90px; height: 90px; }
       .hero h1 { font-size: 38px; }
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
@@ -422,18 +460,44 @@
   <!-- ============================================
        EDIT: Hero text
        ============================================ -->
-  <section class="hero">
-    <span class="badge">
-      <i class="ph-fill ph-sparkle"></i>
-      Notion Templates
-    </span>
-    <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
-    <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p>
-    <div class="hero-btns">
-      <a href="#templates" class="btn-primary">Browse Blocks</a>
-      <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
+  <div class="hero-wrap">
+    <section class="hero">
+      <span class="badge">
+        <i class="ph-fill ph-sparkle"></i>
+        Notion Templates
+      </span>
+      <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
+      <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p>
+      <div class="hero-btns">
+        <a href="#templates" class="btn-primary">Browse Blocks</a>
+        <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
+      </div>
+    </section>
+
+    <!-- Scrolling preview of all 9 blocks — duplicated for seamless loop -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
+      </div>
     </div>
-  </section>
+  </div><!-- /hero-wrap -->
 
   <div class="divider">
     <i class="ph-fill ph-flower-lotus"></i>
@@ -457,14 +521,14 @@
           <i class="ph-light ph-wallet"></i>
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: var(--gold-soft); color: var(--gold);">
+          <div class="card-tag" style="background: #D8EDD8; color: #5A855A;">
             Finance <span class="bestseller-tag">Best Seller</span>
           </div>
           <h3>Budget + Finance Hub</h3>
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn" style="background: #4A9E6A;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn" style="background: #8AAF8A;">Get Block</a>
           </div>
         </div>
       </div>
@@ -575,7 +639,7 @@
       <!-- TEMPLATE CARD — Food -->
       <div class="card">
         <div class="card-preview" style="background: #C07858;">
-          <i class="ph-light ph-fork-knife"></i>
+          <i class="ph-light ph-bread"></i>
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--terra-soft); color: var(--terra);">Food & Home</div>
