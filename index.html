@@ -549,7 +549,7 @@
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/coxpw" class="buy-btn" style="background: #8AAF8A;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/coxpw" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #8AAF8A;">Get Block</a>
           </div>
         </div>
       </div>
@@ -566,7 +566,7 @@
           <p>Capture ideas, notes, projects, and resources in one organized knowledge hub.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/ijqbc" class="buy-btn" style="background: #9B7FD4;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/ijqbc" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #9B7FD4;">Get Block</a>
           </div>
         </div>
       </div>
@@ -583,7 +583,7 @@
           <p>A beautiful daily journal to help you slow down, reflect, and find joy in the everyday.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/phlsor" class="buy-btn" style="background: #E8A0A8;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/phlsor" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #E8A0A8;">Get Block</a>
           </div>
         </div>
       </div>
@@ -600,7 +600,7 @@
           <p>Log appointments, medications, symptoms, and health goals in one clear dashboard.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/sagwrd" class="buy-btn" style="background: #6BA878;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/sagwrd" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #6BA878;">Get Block</a>
           </div>
         </div>
       </div>
@@ -617,7 +617,7 @@
           <p>Plan, draft, and schedule content across all your platforms from one aesthetic command center.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/ofnhi" class="buy-btn" style="background: #6090B8;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/ofnhi" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #6090B8;">Get Block</a>
           </div>
         </div>
       </div>
@@ -634,7 +634,7 @@
           <p>Manage clients, projects, invoices, and admin tasks without the chaos.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/nmvuey" class="buy-btn" style="background: #D4886A;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/nmvuey" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #D4886A;">Get Block</a>
           </div>
         </div>
       </div>
@@ -651,7 +651,7 @@
           <p>Track every book you've read, want to read, and are reading — with ratings and notes.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/erzgsu" class="buy-btn" style="background: #C09040;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/erzgsu" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #C09040;">Get Block</a>
           </div>
         </div>
       </div>
@@ -668,7 +668,7 @@
           <p>Your aesthetic recipe board — save, organize, and plan meals all in one place.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/cphel" class="buy-btn" style="background: #C07858;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/cphel" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #C07858;">Get Block</a>
           </div>
         </div>
       </div>
@@ -685,7 +685,7 @@
           <p>Log your home appliances, warranties, maintenance schedules, and purchase info in one spot.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
-            <a href="https://universalnotion.gumroad.com/l/uszrz" class="buy-btn" style="background: #70A868;">Get Block</a>
+            <a href="https://universalnotion.gumroad.com/l/uszrz" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #70A868;">Get Block</a>
           </div>
         </div>
       </div>
@@ -738,5 +738,15 @@
     <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
   </footer>
 
+  <script>
+    const templatesSection = document.getElementById('templates');
+    const observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        fbq('track', 'ViewContent');
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+    observer.observe(templatesSection);
+  </script>
 </body>
 </html>
