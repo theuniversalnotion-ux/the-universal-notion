@@ -750,47 +750,90 @@
       pointer-events: none;
     }
 
-    /* ── Why section ── */
+    /* ── How it works ── */
     .why {
-      background: #F3EBE6;
+      /* Subtle horizontal notebook lines on warm linen */
+      background-color: #F0E9E2;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(201,75,106,0.07) 27px,
+        rgba(201,75,106,0.07) 28px
+      );
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
-    .why-inner { max-width: 1180px; margin: 0 auto; }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
 
     .why .section-label { background: var(--rose); }
 
+    /* Flex row: feature — arrow — feature — arrow — feature */
     .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
       margin-top: 52px;
     }
 
-    .feature {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 36px 30px;
-      border: 1px solid var(--border);
-    }
-
-    .feature-icon-wrap {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+    /* Dashed arrow between steps */
+    .step-connector {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      flex-shrink: 0;
+      width: 52px;
+      padding-top: 20px; /* visual center alignment */
     }
 
-    .feature-icon-wrap i { font-size: 28px; }
+    .step-connector svg { width: 48px; height: 20px; }
+
+    /* Feature card — cream paper with step number */
+    .feature {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 5px;
+      padding: 32px 28px 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    /* Handwritten step number in top-left */
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      box-shadow: 1px 2px 0 rgba(0,0,0,0.12);
+      transform: rotate(-3deg);
+    }
+
+    .feature-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .feature-icon-wrap i { font-size: 26px; }
 
     .feature h3 {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
       margin-bottom: 10px;
     }
@@ -801,6 +844,108 @@
       line-height: 1.75;
       font-weight: 300;
     }
+
+    /* ── Made by ── */
+    .made-by {
+      background: var(--bg);
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Pinned note card */
+    .made-by-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 5px;
+      padding: 44px 52px 48px;
+      position: relative;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.06),
+        0 10px 32px rgba(0,0,0,0.09),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(0.4deg);
+    }
+
+    /* Tape strip pinning the card */
+    .made-by-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 72px;
+      height: 20px;
+      background: linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 13px),
+        linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      border-top: 1px solid rgba(180,150,90,0.18);
+      border-bottom: 1px solid rgba(180,150,90,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    }
+
+    .made-by-eyebrow {
+      font-family: var(--font-accent);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* EDIT: replace [MY NAME] with your name */
+    .made-by-name {
+      font-family: var(--font-accent);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    /* EDIT: replace [ONE-LINE BIO] */
+    .made-by-bio {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    /* Role tags — what you did */
+    .made-by-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .made-by-roles span {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--gold-soft);
+      color: #7A5800;
+      padding: 3px 11px;
+      border-radius: 4px;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .made-by-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--rose);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1.5px dashed var(--rose);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .made-by-cta:hover { opacity: 0.75; }
+    .made-by-cta:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     /* ── Footer ── */
     footer {
@@ -842,7 +987,10 @@
       .bundle-polaroid { transform: none; }
       .bundle-preview { width: 100%; height: auto; aspect-ratio: 1; }
       .why { padding: 64px 24px; }
-      .features { grid-template-columns: 1fr; }
+      /* Stack features vertically on mobile */
+      .features { flex-direction: column; gap: 20px; }
+      .step-connector { display: none; }
+      .made-by-card { padding: 40px 28px; transform: none; }
     }
 
     /* ── Reduced motion ── */
@@ -1184,15 +1332,17 @@
   </section>
 
   <!-- ============================================
-       EDIT: "Why us" section — 3 feature boxes
+       How it works — 3 steps using existing copy
        ============================================ -->
   <section class="why">
     <div class="why-inner">
-      <div class="section-label"><i class="ph-fill ph-star"></i> Why us</div>
-      <h2 class="section-title">Why The Universal Notion?</h2>
+      <div class="section-label"><i class="ph-fill ph-list-numbers"></i> How it works</div>
+      <h2 class="section-title">It's this simple.</h2>
       <div class="features">
 
+        <!-- Step 1 -->
         <div class="feature">
+          <span class="step-num" aria-hidden="true">1</span>
           <div class="feature-icon-wrap" style="background: var(--rose-soft);">
             <i class="ph-light ph-puzzle-piece" style="color: var(--rose);"></i>
           </div>
@@ -1200,7 +1350,17 @@
           <p>Every block works on its own or alongside others. Stack them, mix them, make them completely yours.</p>
         </div>
 
+        <!-- Dashed arrow connector (desktop only) -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 48 20" fill="none">
+            <path d="M2,10 C16,10 28,10 40,10" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 5" opacity="0.4"/>
+            <path d="M36,5 L42,10 L36,15" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
         <div class="feature">
+          <span class="step-num" aria-hidden="true">2</span>
           <div class="feature-icon-wrap" style="background: var(--gold-soft);">
             <i class="ph-light ph-lightning" style="color: var(--gold);"></i>
           </div>
@@ -1208,7 +1368,17 @@
           <p>Duplicate any block to your Notion workspace instantly. No setup required — just click and start.</p>
         </div>
 
+        <!-- Dashed arrow connector (desktop only) -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 48 20" fill="none">
+            <path d="M2,10 C16,10 28,10 40,10" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 5" opacity="0.4"/>
+            <path d="M36,5 L42,10 L36,15" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
         <div class="feature">
+          <span class="step-num" aria-hidden="true">3</span>
           <div class="feature-icon-wrap" style="background: var(--rose-soft);">
             <i class="ph-light ph-sparkle" style="color: var(--rose);"></i>
           </div>
@@ -1219,6 +1389,33 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================
+       EDIT: "Made by" section
+       → Replace [MY NAME] with your name
+       → Replace [ONE-LINE BIO] with a one-sentence description of yourself
+       → The role tags below reflect what you built — edit or remove any
+       → To remove this section entirely: delete from here to END MADE BY
+       ============================================ -->
+  <section class="made-by">
+    <div class="made-by-card">
+      <div class="made-by-tape" aria-hidden="true"></div>
+      <span class="made-by-eyebrow">✦ Made by</span>
+      <h2 class="made-by-name">[MY NAME]</h2>
+      <p class="made-by-bio">[ONE-LINE BIO]</p>
+      <div class="made-by-roles">
+        <span>Brand identity</span>
+        <span>Copywriting</span>
+        <span>Pricing strategy</span>
+        <span>Visual design</span>
+        <span>Store launch</span>
+      </div>
+      <a href="mailto:theuniversalnotion@gmail.com" class="made-by-cta">
+        <i class="ph-light ph-envelope"></i> Get in touch
+      </a>
+    </div>
+  </section>
+  <!-- END MADE BY -->
 
   <!-- ============================================
        EDIT: Footer — DO NOT change policy links or email
