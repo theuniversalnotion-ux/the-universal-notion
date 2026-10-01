@@ -1104,6 +1104,225 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
+       QUIZ — "Which block are you?" (quiz.js)
+       To remove: delete this block + <script src="quiz.js">
+    ═══════════════════════════════════════════════════════════════ */
+    .quiz-section {
+      padding: 80px 24px 64px;
+      background: #fff;
+    }
+    .quiz-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .quiz-section .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-accent);
+      font-size: 0.85rem;
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 12px;
+    }
+    .quiz-section .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--espresso);
+      margin: 0 0 8px;
+    }
+    .quiz-section .section-sub {
+      font-family: var(--font-body);
+      color: #6b5c54;
+      font-size: 1rem;
+      margin: 0 0 40px;
+    }
+
+    /* Quiz card (the question area) */
+    .quiz-card {
+      background: #fdf7f2;
+      border: 1.5px solid #e8ddd7;
+      border-radius: 20px;
+      padding: 32px 36px 36px;
+      max-width: 600px;
+    }
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .quiz-dots { display: flex; gap: 8px; }
+    .quiz-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e8ddd7;
+      transition: background 0.24s, transform 0.24s;
+    }
+    .quiz-dot--active {
+      background: var(--rose);
+      transform: scale(1.25);
+    }
+    .quiz-dot--done { background: var(--espresso); }
+    .quiz-step {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: #a89890;
+    }
+    .quiz-question {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--espresso);
+      margin: 0 0 24px;
+      line-height: 1.3;
+    }
+
+    /* Options grid */
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .quiz-option {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--espresso);
+      background: #fff;
+      border: 1.5px solid #e8ddd7;
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.4;
+      transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, opacity 0.18s;
+    }
+    .quiz-option:hover:not(:disabled) {
+      border-color: var(--rose);
+      box-shadow: 0 4px 14px rgba(201,75,106,0.12);
+    }
+    .quiz-option:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+    .quiz-option--selected {
+      background: #fff5f7;
+      border-color: var(--rose);
+      box-shadow: 0 4px 16px rgba(201,75,106,0.18);
+    }
+    .quiz-option--faded { opacity: 0.38; }
+    .quiz-option:disabled { cursor: default; }
+
+    /* Result */
+    .quiz-result { max-width: 600px; }
+    .quiz-result[hidden] { display: none; }
+    .quiz-result-eyebrow {
+      font-family: var(--font-accent);
+      font-size: 1rem;
+      color: var(--rose);
+      margin: 0 0 16px;
+    }
+    .quiz-result-card {
+      background: #fff;
+      border: 1.5px solid #e8ddd7;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(60,30,20,0.10);
+      display: flex;
+    }
+    .quiz-result-tape {
+      position: absolute;
+      top: -7px;
+      left: 28px;
+      width: 50px;
+      height: 16px;
+      background: rgba(251,218,176,0.80);
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .quiz-result-cover {
+      width: 180px;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+    }
+    .quiz-result-body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quiz-result-tag {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+    .quiz-result-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--espresso);
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+    .quiz-result-desc {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #6b5c54;
+      line-height: 1.55;
+      margin: 0 0 16px;
+    }
+    .quiz-result-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .quiz-result-price {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--espresso);
+    }
+    .quiz-result-buy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: filter 0.18s, transform 0.14s;
+    }
+    .quiz-result-buy:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .quiz-retake {
+      margin-top: 16px;
+      background: none;
+      border: none;
+      font-family: var(--font-accent);
+      font-size: 0.9rem;
+      color: #a89890;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.16s;
+    }
+    .quiz-retake:hover { color: var(--rose); }
+
+    /* Mobile */
+    @media (max-width: 540px) {
+      .quiz-section { padding: 60px 16px 48px; }
+      .quiz-card    { padding: 24px 20px 28px; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .quiz-result-card  { flex-direction: column; }
+      .quiz-result-cover { width: 100%; height: 180px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
        QUICKLOOK — Quick-Look Panel (quicklook.js)
        To remove: delete this block + <script src="quicklook.js">
     ═══════════════════════════════════════════════════════════════ */
@@ -2142,5 +2361,6 @@
   <script src="filters.js"></script>
   <script src="quicklook.js"></script>
   <script src="builder.js"></script>
+  <script src="quiz.js"></script>
 </body>
 </html>
