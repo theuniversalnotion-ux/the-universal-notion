@@ -411,43 +411,75 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 36px;
+      padding: 20px 8px; /* breathing room for tilted cards */
     }
 
-    /* ── Cards ── */
+    /* ── Cards — Polaroid style ── */
     .card {
       background: var(--card-bg);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.25s, transform 0.25s;
+      border-radius: 4px;
+      overflow: visible;            /* sticker can hang outside the frame */
+      border: none;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 6px 24px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s ease;
+      position: relative;
     }
 
+    /* Hover: straighten and lift — like picking up a photo */
     .card:hover {
-      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-      transform: translateY(-4px);
+      transform: rotate(0deg) translateY(-8px);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.08),
+        0 20px 60px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(0,0,0,0.05);
+      z-index: 10;
     }
 
-    .card-preview {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    /* Photo area (replaces the old icon+color preview) */
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 3px 3px 0 0;
+      background: var(--border); /* fallback while image loads */
     }
 
-    .card-preview i {
-      font-size: 58px;
-      color: rgba(255,255,255,0.9);
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .card-body { padding: 22px 24px 26px; }
+    /* "Best Seller" / "New" sticker pinned to the card corner */
+    .card-sticker {
+      position: absolute;
+      top: 10px;
+      right: -6px;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 4px;
+      box-shadow: 1px 2px 0 rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.09);
+      z-index: 5;
+      white-space: nowrap;
+    }
 
-    /* Card category tag — accent font for sticker feel */
+    .card-sticker--gold { background: var(--gold); color: #fff; transform: rotate(2deg); }
+    .card-sticker--new  { background: var(--rose); color: #fff; transform: rotate(2deg); }
+
+    /* Polaroid text area — generous bottom = classic polaroid proportion */
+    .card-body { padding: 18px 20px 34px; }
+
+    /* Category label — sticker label shape (not a pill) */
     .card-tag {
       display: inline-flex;
       align-items: center;
@@ -455,23 +487,11 @@
       font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 12px;
-    }
-
-    /* "Best Seller" / "New" inline badges */
-    .bestseller-tag {
-      font-family: var(--font-accent);
-      font-size: 10px;
-      font-weight: 700;
-      background: var(--gold-soft);
-      color: #9A6B00;
-      padding: 2px 9px;
-      border-radius: 100px;
       letter-spacing: 0.2px;
-      margin-left: 4px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transform: rotate(-1deg);
     }
 
     .card-body h3 {
@@ -486,7 +506,7 @@
       font-size: 13px;
       color: var(--muted);
       line-height: 1.65;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       font-weight: 300;
     }
 
@@ -733,6 +753,9 @@
       /* Hide hero decorations on small screens */
       .hero-tape, .hero-doodle { display: none; }
       .hero-squiggle { width: 180px; }
+      /* Flatten card tilts on mobile — no room to tilt in a 1-col grid */
+      .card { transform: none !important; }
+      .grid { gap: 24px; padding: 8px 0; }
       .mini-block { width: 90px; height: 90px; }
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
@@ -849,12 +872,13 @@
     <div class="grid">
 
       <!-- TEMPLATE CARD — Social -->
-      <div class="card">
-        <div class="card-preview" style="background: #A07BC8;">
-          <i class="ph-light ph-users-three"></i>
+      <div class="card" style="--tilt: 1.5deg">
+        <span class="card-sticker card-sticker--new">✦ New</span>
+        <div class="card-photo">
+          <img src="covers/10-group-hug.png" alt="Group Hug — Notion template for tracking plans and memories with friends" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #E8D8F5; color: #8060B0;">Social <span class="bestseller-tag" style="background: #A07BC8; color: #fff;">New</span></div>
+          <div class="card-tag" style="background: #E8D8F5; color: #8060B0;">Social</div>
           <h3>Group Hug</h3>
           <p>Track plans, memories, and everything in between with your favourite people — all in one shared space.</p>
           <div class="card-footer">
@@ -866,14 +890,13 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Finance -->
-      <div class="card">
-        <div class="card-preview" style="background: #8AAF8A;">
-          <i class="ph-light ph-wallet"></i>
+      <div class="card" style="--tilt: -2deg">
+        <span class="card-sticker card-sticker--gold">★ Best Seller</span>
+        <div class="card-photo">
+          <img src="covers/01-budget-finance-hub.png" alt="Budget + Finance Hub — Notion template for tracking income, expenses and savings" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #D8EDD8; color: #5A855A;">
-            Finance <span class="bestseller-tag">Best Seller</span>
-          </div>
+          <div class="card-tag" style="background: #D8EDD8; color: #5A855A;">Finance</div>
           <h3>Budget + Finance Hub</h3>
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
           <div class="card-footer">
@@ -885,9 +908,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Productivity -->
-      <div class="card">
-        <div class="card-preview" style="background: #9B7FD4;">
-          <i class="ph-light ph-brain"></i>
+      <div class="card" style="--tilt: 1deg">
+        <div class="card-photo">
+          <img src="covers/02-second-brain.png" alt="Second Brain — Notion template for capturing ideas, notes and projects" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--lav-soft); color: var(--lavender);">Productivity</div>
@@ -902,9 +925,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Lifestyle -->
-      <div class="card">
-        <div class="card-preview" style="background: #E8A0A8;">
-          <i class="ph-light ph-notebook"></i>
+      <div class="card" style="--tilt: -1.5deg">
+        <div class="card-photo">
+          <img src="covers/03-romanticize-journal.png" alt="Romanticize Your Life Journal — Notion daily journal template" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--rose-soft); color: #C07080;">Lifestyle</div>
@@ -919,9 +942,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Health -->
-      <div class="card">
-        <div class="card-preview" style="background: #6BA878;">
-          <i class="ph-light ph-heart"></i>
+      <div class="card" style="--tilt: 2deg">
+        <div class="card-photo">
+          <img src="covers/04-health-medical-tracker.png" alt="Health + Medical Tracker — Notion template for appointments and health goals" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--sage-soft); color: var(--sage);">Health & Wellness</div>
@@ -936,9 +959,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Creator -->
-      <div class="card">
-        <div class="card-preview" style="background: #6090B8;">
-          <i class="ph-light ph-pencil-simple"></i>
+      <div class="card" style="--tilt: -1deg">
+        <div class="card-photo">
+          <img src="covers/05-content-creation-hub.png" alt="Content Creation Hub — Notion template for planning and scheduling content" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--blue-soft); color: var(--blue);">Creator</div>
@@ -953,9 +976,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Business -->
-      <div class="card">
-        <div class="card-preview" style="background: #D4886A;">
-          <i class="ph-light ph-briefcase"></i>
+      <div class="card" style="--tilt: 2.5deg">
+        <div class="card-photo">
+          <img src="covers/06-client-admin-hub.png" alt="Client + Admin Hub — Notion template for managing clients and freelance projects" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--peach-soft); color: var(--peach);">Business & Freelance</div>
@@ -970,9 +993,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Reading -->
-      <div class="card">
-        <div class="card-preview" style="background: #C09040;">
-          <i class="ph-light ph-books"></i>
+      <div class="card" style="--tilt: -2.5deg">
+        <div class="card-photo">
+          <img src="covers/07-universal-reading-log.png" alt="Universal Reading Log — Notion template for tracking books with ratings and notes" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--amber-soft); color: var(--amber);">Reading & Learning</div>
@@ -987,9 +1010,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Food -->
-      <div class="card">
-        <div class="card-preview" style="background: #C07858;">
-          <i class="ph-light ph-bread"></i>
+      <div class="card" style="--tilt: 1.5deg">
+        <div class="card-photo">
+          <img src="covers/08-bread-board.png" alt="The Bread Board — Notion recipe board template for meal planning" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--terra-soft); color: var(--terra);">Food & Home</div>
@@ -1004,9 +1027,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Home -->
-      <div class="card">
-        <div class="card-preview" style="background: #70A868;">
-          <i class="ph-light ph-house"></i>
+      <div class="card" style="--tilt: -1deg">
+        <div class="card-photo">
+          <img src="covers/09-appliance-tracker.png" alt="Appliance Tracker — Notion template for home appliances and warranties" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--green-soft); color: var(--green);">Home</div>
