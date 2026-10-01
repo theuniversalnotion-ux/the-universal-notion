@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Universal Notion</title>
+  <title>The Universal Notion – Aesthetic Notion Templates</title>
+  <meta name="description" content="Beautiful, modular Notion templates — pick the blocks you need, build the workspace you want. Starting at $4.99.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Universal Notion">
+  <meta property="og:description" content="Beautiful, modular Notion templates. Pick your blocks, build your notion.">
+  <meta property="og:image" content="https://theuniversalnotion.com/covers/00-complete-system-bundle.png">
+  <meta property="og:url" content="https://theuniversalnotion.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Universal Notion">
+
+  <!-- DO NOT REMOVE: Pinterest domain verification + tracking -->
   <meta name="p:domain_verify" content="89be76dc90300fe7c7200bf9b4214d1c"/>
   <!-- Meta Pixel Code -->
   <script>
@@ -36,40 +47,70 @@
   <noscript><img height="1" width="1" style="display:none;" alt=""
   src="https://ct.pinterest.com/v3/?event=init&tid=2613808521200&noscript=1"/></noscript>
   <!-- End Pinterest Tag -->
+
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Fonts: Kalam (accent/stickers) + Playfair Display (headings) + Inter (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ════════════════════════════════════════
+       PALETTE C — Rose & Espresso
+       To change a color: edit the value here;
+       it updates everywhere automatically.
+       ════════════════════════════════════════ */
     :root {
-      --bg:         #FAF8F5;
-      --text:       #2C2C2C;
-      --muted:      #8C7B75;
-      --border:     #E4D9D0;
-      --rose:       #E8A0A8;
-      --rose-soft:  #F5D8DC;
-      --gold:       #D4A830;
-      --gold-soft:  #F5E4A8;
+      /* Backgrounds */
+      --bg:         #FAF5EF;  /* warm cream page */
+      --card-bg:    #FFFDF8;  /* pure cream card */
+
+      /* Text */
+      --text:       #261A18;  /* espresso */
+      --muted:      #7A6560;  /* warm muted */
+
+      /* Structure */
+      --border:     #E8D8C8;  /* warm border */
+      --tape:       #F0E4C0;  /* parchment tape strip */
+
+      /* Primary accent — deep rose */
+      --rose:       #C94B6A;
+      --rose-soft:  #F5D0DC;
+
+      /* Secondary accent — honey gold */
+      --gold:       #E8B86D;
+      --gold-soft:  #FBF0DC;
+
+      /* Fonts
+         --font-accent  → Kalam: sticker labels, badges, doodle text
+         --font-heading → Playfair Display: h1, h2, section titles
+         --font-body    → Inter: body copy, prices, nav                */
+      --font-accent:  'Kalam', cursive;
+      --font-heading: 'Playfair Display', serif;
+      --font-body:    'Inter', sans-serif;
+
+      /* Per-template card tag colors (unchanged) */
       --lavender:   #9B7FD4;
-      --lav-soft:   #DDD0F5;
+      --lav-soft:   #EDE5FF;
       --sage:       #6BA878;
-      --sage-soft:  #C0E0C8;
+      --sage-soft:  #D0EDD8;
       --blue:       #6090B8;
-      --blue-soft:  #C0D8F0;
+      --blue-soft:  #D0E5F5;
       --peach:      #D4886A;
-      --peach-soft: #F5D0B8;
+      --peach-soft: #FAE0D0;
       --amber:      #C09040;
-      --amber-soft: #F0DCA0;
+      --amber-soft: #F5E5C0;
       --terra:      #C07858;
-      --terra-soft: #F0C4A8;
+      --terra-soft: #F5D8C0;
       --green:      #70A868;
-      --green-soft: #C0D8B8;
+      --green-soft: #C8E8C0;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -81,20 +122,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 64px;
-      border-bottom: 1px solid #F5C5CC;
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(253, 235, 238, 0.97);
+      background: rgba(250, 245, 239, 0.97);
       backdrop-filter: blur(12px);
       z-index: 100;
-      box-shadow: 0 2px 16px rgba(232, 160, 168, 0.14);
+      box-shadow: 0 2px 16px rgba(201, 75, 106, 0.08);
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 17px;
       font-weight: 500;
       font-style: italic;
@@ -118,19 +159,80 @@
       font-size: 13px;
       font-weight: 500;
       transition: opacity 0.2s;
-      box-shadow: 0 2px 10px rgba(232, 160, 168, 0.4);
+      box-shadow: 0 2px 10px rgba(201, 75, 106, 0.30);
     }
 
     .nav-cta:hover { opacity: 0.85; }
+    .nav-cta:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     /* ── Hero ── */
-    .hero-wrap { background: #FDF0F2; }
+    .hero-wrap {
+      background: var(--bg);
+      /* Subtle ink-bleed blobs give the paper depth */
+      background-image:
+        radial-gradient(ellipse at 12% 55%, rgba(201,75,106,0.06) 0%, transparent 45%),
+        radial-gradient(ellipse at 88% 25%, rgba(232,184,109,0.08) 0%, transparent 40%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Tape strips — two pieces "pinning" the hero to the page */
+    .hero-tape {
+      position: absolute;
+      top: 36px;
+      width: 96px;
+      height: 22px;
+      background: linear-gradient(180deg, rgba(240,228,192,0.92) 0%, rgba(240,228,192,0.72) 100%);
+      border-top: 1px solid rgba(180,150,90,0.18);
+      border-bottom: 1px solid rgba(180,150,90,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      /* Subtle vertical grain lines to look like tape adhesive */
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 14px, rgba(255,255,255,0.22) 14px, rgba(255,255,255,0.22) 15px),
+        linear-gradient(180deg, rgba(240,228,192,0.92) 0%, rgba(240,228,192,0.72) 100%);
+    }
+
+    .hero-tape--left  { left: 9%;  transform: rotate(-4deg); }
+    .hero-tape--right { right: 9%; transform: rotate(3.5deg); }
+
+    /* Small floating star/cross doodles */
+    .hero-doodle {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .hero-doodle--star1 {
+      width: 30px; height: 30px;
+      top: 108px;
+      left: calc(50% - 270px);
+      color: var(--rose);
+      opacity: 0.35;
+      transform: rotate(12deg);
+    }
+
+    .hero-doodle--star2 {
+      width: 22px; height: 22px;
+      top: 200px;
+      right: calc(50% - 320px);
+      color: var(--gold);
+      opacity: 0.45;
+      transform: rotate(-8deg);
+    }
 
     .hero {
       text-align: center;
-      padding: 110px 24px 56px;
+      padding: 110px 24px 48px;
       max-width: 820px;
       margin: 0 auto;
+      position: relative; /* so doodles are positioned relative to hero-wrap */
+    }
+
+    /* Wavy squiggle under the h1 */
+    .hero-squiggle {
+      display: block;
+      width: 260px;
+      height: 14px;
+      margin: -2px auto 32px;
     }
 
     /* ── Scrolling block strip ── */
@@ -168,40 +270,43 @@
       to { transform: translateX(-1360px); }
     }
 
+    /* ── Badge — sticker style ── */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--gold-soft);
-      color: var(--gold);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 36px;
+      color: #7A5800;
+      border: 2px solid rgba(232,184,109,0.55);
+      padding: 7px 20px;
+      border-radius: 6px;           /* rectangular sticker, not pill */
+      font-family: var(--font-accent);
+      font-size: 14px;
+      font-weight: 700;
+      transform: rotate(-1.5deg);   /* slight tilt */
+      box-shadow: 2px 3px 0 rgba(0,0,0,0.10), 0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      cursor: default;
     }
 
     .badge i { font-size: 15px; }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 66px;
       font-weight: 500;
       line-height: 1.1;
       letter-spacing: -1px;
-      margin-bottom: 26px;
+      margin-bottom: 12px;   /* reduced — squiggle takes the gap */
     }
 
+    /* "Build your notion." — rose italic, squiggle goes below the whole h1 */
     .hero h1 em {
       font-style: italic;
-      background: var(--rose-soft);
-      padding: 4px 10px;
-      border-radius: 8px;
-      color: var(--text);
-      display: inline-block;
-      margin-top: 10px;
+      color: var(--rose);
+      background: none;
+      padding: 0;
+      border-radius: 0;
     }
 
     .hero p {
@@ -232,6 +337,7 @@
     }
 
     .btn-primary:hover { background: var(--rose); }
+    .btn-primary:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     .btn-secondary {
       background: transparent;
@@ -246,6 +352,7 @@
     }
 
     .btn-secondary:hover { border-color: var(--rose); color: var(--rose); }
+    .btn-secondary:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     /* ── Divider ── */
     .divider {
@@ -264,30 +371,31 @@
 
     .divider i { color: var(--rose); font-size: 22px; }
 
-    /* ── Templates ── */
+    /* ── Templates grid ── */
     .templates {
       padding: 96px 64px;
       max-width: 1180px;
       margin: 0 auto;
     }
 
+    /* ── Section labels (sticker-style font) ── */
     .section-label {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.3px;
       color: #fff;
       background: var(--rose);
-      padding: 6px 16px;
+      padding: 5px 16px;
       border-radius: 100px;
       margin-bottom: 18px;
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 44px;
       font-weight: 500;
       letter-spacing: -0.5px;
@@ -303,67 +411,90 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 36px;
+      padding: 20px 8px; /* breathing room for tilted cards */
     }
 
-    /* ── Cards ── */
+    /* ── Cards — Polaroid style ── */
     .card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.25s, transform 0.25s;
+      background: var(--card-bg);
+      border-radius: 4px;
+      overflow: visible;            /* sticker can hang outside the frame */
+      border: none;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 6px 24px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s ease;
+      position: relative;
     }
 
+    /* Hover box-shadow + z-index — transform is handled by GSAP */
     .card:hover {
-      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
-      transform: translateY(-4px);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.08),
+        0 20px 60px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(0,0,0,0.05);
+      z-index: 10;
     }
 
-    .card-preview {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    /* Photo area (replaces the old icon+color preview) */
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 3px 3px 0 0;
+      background: var(--border); /* fallback while image loads */
     }
 
-    .card-preview i {
-      font-size: 58px;
-      color: rgba(255,255,255,0.9);
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .card-body { padding: 22px 24px 26px; }
+    /* "Best Seller" / "New" sticker pinned to the card corner */
+    .card-sticker {
+      position: absolute;
+      top: 10px;
+      right: -6px;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 4px;
+      box-shadow: 1px 2px 0 rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.09);
+      z-index: 5;
+      white-space: nowrap;
+    }
 
+    .card-sticker--gold { background: var(--gold); color: #fff; transform: rotate(2deg); }
+    .card-sticker--new  { background: var(--rose); color: #fff; transform: rotate(2deg); }
+
+    /* Polaroid text area — generous bottom = classic polaroid proportion */
+    .card-body { padding: 18px 20px 34px; }
+
+    /* Category label — sticker label shape (not a pill) */
     .card-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 5px 12px;
-      border-radius: 100px;
-      margin-bottom: 12px;
-    }
-
-    .bestseller-tag {
-      background: var(--gold-soft);
-      color: var(--gold);
-      padding: 2px 9px;
-      border-radius: 100px;
-      font-size: 9px;
-      letter-spacing: 0.8px;
-      margin-left: 4px;
+      letter-spacing: 0.2px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transform: rotate(-1deg);
     }
 
     .card-body h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 19px;
       font-weight: 500;
       margin-bottom: 8px;
@@ -374,7 +505,7 @@
       font-size: 13px;
       color: var(--muted);
       line-height: 1.65;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       font-weight: 300;
     }
 
@@ -385,7 +516,7 @@
     }
 
     .price {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 500;
     }
@@ -401,67 +532,115 @@
     }
 
     .buy-btn:hover { opacity: 0.85; }
+    .buy-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-    /* ── Bundles ── */
+    /* ── Bundles — visual centerpiece ── */
     .bundles {
-      background: #FEF6F0;
+      /* Dot-grid: classic scrapbook backing paper */
+      background-color: #F5EDE7;
+      background-image: radial-gradient(circle, rgba(201,75,106,0.12) 1.3px, transparent 1.3px);
+      background-size: 22px 22px;
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* lets tape + sticker poke outside */
     }
 
     .bundles-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
 
     .bundles .section-label { background: var(--rose); }
 
+    /* Doodled down-arrow between heading and card */
+    .bundles-arrow {
+      display: block;
+      width: 28px;
+      height: 44px;
+      margin: 6px auto 0;
+      opacity: 0.45;
+    }
+
+    /* The bundle card — a large "pinned note" on the board */
     .bundle-card {
-      background: #fff;
-      border-radius: 28px;
-      border: 1.5px solid #F5C5CC;
+      background: var(--card-bg);
+      border-radius: 5px;
+      border: 1.5px solid rgba(0,0,0,0.07);
       padding: 52px 56px;
       display: flex;
       gap: 56px;
       align-items: center;
       position: relative;
-      overflow: hidden;
+      overflow: visible;    /* tape + sticker can poke out */
       margin-top: 52px;
-      box-shadow: 0 8px 48px rgba(232, 160, 168, 0.15);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.08),
+        0 20px 60px rgba(201,75,106,0.13),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(-0.4deg); /* subtle lean — big note pinned to board */
     }
 
+    /* Tape strips pinning the bundle card */
+    .bundle-tape {
+      position: absolute;
+      width: 88px;
+      height: 22px;
+      background: linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 13px),
+        linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      border-top: 1px solid rgba(180,150,90,0.18);
+      border-bottom: 1px solid rgba(180,150,90,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      z-index: 5;
+    }
+
+    .bundle-tape--tl { top: -10px; left: 52px;  transform: rotate(-3.5deg); }
+    .bundle-tape--tr { top: -10px; right: 140px; transform: rotate(2.5deg);  }
+
+    /* "Save 70%" — circular sale sticker, pops out of the card corner */
     .bundle-save {
       position: absolute;
-      top: 28px;
-      right: 28px;
+      top: -22px;
+      right: 36px;
+      width: 92px;
+      height: 92px;
       background: var(--rose);
       color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      border-radius: 100px;
-      box-shadow: 0 4px 12px rgba(232, 160, 168, 0.4);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-accent);
+      line-height: 1.1;
+      text-align: center;
+      transform: rotate(13deg);
+      box-shadow: 2px 3px 0 rgba(0,0,0,0.15), 0 6px 22px rgba(201,75,106,0.42);
+      z-index: 10;
+      user-select: none;
     }
+
+    .bundle-save-label { font-size: 11px; font-weight: 400; opacity: 0.9; }
+    .bundle-save-pct   { font-size: 24px; font-weight: 700; }
 
     .bundle-title-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.3px;
       background: var(--rose-soft);
       color: var(--rose);
-      padding: 6px 16px;
-      border-radius: 100px;
+      padding: 4px 14px;
+      border-radius: 4px;
       margin-bottom: 18px;
+      transform: rotate(-1deg);
     }
 
     .bundle-card h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 34px;
       font-weight: 500;
       line-height: 1.2;
@@ -510,7 +689,7 @@
     }
 
     .bundle-price {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 44px;
       font-weight: 500;
     }
@@ -524,77 +703,136 @@
       font-size: 13px;
       font-weight: 500;
       transition: opacity 0.2s;
-      box-shadow: 0 4px 16px rgba(232, 160, 168, 0.4);
+      box-shadow: 0 4px 16px rgba(201, 75, 106, 0.35);
     }
 
     .bundle-btn:hover { opacity: 0.85; }
+    .bundle-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-    .bundle-preview {
-      width: 320px;
-      height: 320px;
-      border-radius: 20px;
-      object-fit: cover;
+    /* Bundle image in a polaroid frame — opposite tilt to the card */
+    .bundle-polaroid {
       flex-shrink: 0;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      background: #fff;
+      padding: 10px 10px 40px;
+      border-radius: 3px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 10px 32px rgba(0,0,0,0.14);
+      transform: rotate(2.8deg);
+      position: relative;
     }
 
+    .bundle-preview {
+      width: 276px;
+      height: 276px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* Handwritten caption on the polaroid bottom */
+    .bundle-polaroid-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Decorative sparkle icons (background flair) */
     .bundles-deco {
       position: absolute;
-      color: var(--rose-soft);
-      font-size: 180px;
-      opacity: 0.5;
+      color: rgba(201,75,106,0.12);
       pointer-events: none;
     }
 
-    @media (max-width: 768px) {
-      .bundles { padding: 64px 24px; }
-      .bundle-card { flex-direction: column; padding: 36px 28px; gap: 32px; }
-      .bundle-preview { width: 100%; height: 240px; }
-    }
-
-    /* ── Why section ── */
+    /* ── How it works ── */
     .why {
-      background: var(--lav-soft);
+      /* Subtle horizontal notebook lines on warm linen */
+      background-color: #F0E9E2;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(201,75,106,0.07) 27px,
+        rgba(201,75,106,0.07) 28px
+      );
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
-    .why-inner { max-width: 1180px; margin: 0 auto; }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
 
-    .why .section-label {
-      background: var(--lavender);
-    }
+    .why .section-label { background: var(--rose); }
 
+    /* Flex row: feature — arrow — feature — arrow — feature */
     .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
       margin-top: 52px;
     }
 
-    .feature {
-      background: #fff;
-      border-radius: 20px;
-      padding: 36px 30px;
-      border: 1px solid rgba(155, 127, 212, 0.2);
-    }
-
-    .feature-icon-wrap {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+    /* Dashed arrow between steps */
+    .step-connector {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      flex-shrink: 0;
+      width: 52px;
+      padding-top: 20px; /* visual center alignment */
     }
 
-    .feature-icon-wrap i { font-size: 28px; }
+    .step-connector svg { width: 48px; height: 20px; }
+
+    /* Feature card — cream paper with step number */
+    .feature {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 5px;
+      padding: 32px 28px 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    /* Handwritten step number in top-left */
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      box-shadow: 1px 2px 0 rgba(0,0,0,0.12);
+      transform: rotate(-3deg);
+    }
+
+    .feature-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .feature-icon-wrap i { font-size: 26px; }
 
     .feature h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-family: var(--font-heading);
+      font-size: 19px;
       font-weight: 500;
       margin-bottom: 10px;
     }
@@ -606,28 +844,199 @@
       font-weight: 300;
     }
 
-    /* ── Footer ── */
-    footer {
+    /* ── Made by ── */
+    .made-by {
+      background: var(--bg);
+      padding: 80px 24px;
       text-align: center;
-      padding: 48px 20px;
-      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Pinned note card */
+    .made-by-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 5px;
+      padding: 44px 52px 48px;
+      position: relative;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.06),
+        0 10px 32px rgba(0,0,0,0.09),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(0.4deg);
+    }
+
+    /* Tape strip pinning the card */
+    .made-by-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 72px;
+      height: 20px;
+      background: linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 13px),
+        linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      border-top: 1px solid rgba(180,150,90,0.18);
+      border-bottom: 1px solid rgba(180,150,90,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    }
+
+    .made-by-eyebrow {
+      font-family: var(--font-accent);
       font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* EDIT: replace [MY NAME] with your name */
+    .made-by-name {
+      font-family: var(--font-accent);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    /* EDIT: replace [ONE-LINE BIO] */
+    .made-by-bio {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 28px;
       font-weight: 300;
     }
 
-    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--rose); }
+    /* Role tags — what you did */
+    .made-by-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
 
-    /* ── Mobile ── */
+    .made-by-roles span {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--gold-soft);
+      color: #7A5800;
+      padding: 3px 11px;
+      border-radius: 4px;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .made-by-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--rose);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1.5px dashed var(--rose);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .made-by-cta:hover { opacity: 0.75; }
+    .made-by-cta:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1E1209; /* dark espresso — back of the scrapbook */
+      color: rgba(250,245,239,0.45);
+      text-align: center;
+      padding: 52px 24px 36px;
+      font-size: 13px;
+      font-weight: 300;
+      position: relative;
+    }
+
+    /* Tape strip across top of footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) rotate(-0.6deg);
+      width: 110px;
+      height: 18px;
+      background: rgba(240,228,192,0.22);
+      background-image: repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.12) 12px, rgba(255,255,255,0.12) 13px);
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 18px;
+      color: rgba(250,245,239,0.75);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 20px;
+      transition: opacity 0.2s;
+    }
+
+    .footer-logo:hover { opacity: 0.55; }
+    .footer-logo:focus-visible { outline: 1px solid rgba(250,245,239,0.5); outline-offset: 4px; border-radius: 2px; }
+
+    footer a { color: rgba(250,245,239,0.42); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: rgba(250,245,239,0.85); }
+    footer a:focus-visible { outline: 1px solid rgba(250,245,239,0.5); outline-offset: 2px; border-radius: 2px; }
+
+    /* ── Responsive ── */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .hero { padding: 72px 24px 48px; }
-      .mini-block { width: 90px; height: 90px; }
       .hero h1 { font-size: 38px; }
+      /* Hide hero decorations on small screens */
+      .hero-tape, .hero-doodle { display: none; }
+      .hero-squiggle { width: 180px; }
+      /* Flatten card tilts on mobile — no room to tilt in a 1-col grid */
+      .card { transform: none !important; }
+      .grid { gap: 24px; padding: 8px 0; }
+      .mini-block { width: 90px; height: 90px; }
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
+      .bundles { padding: 64px 24px; }
+      .bundle-card {
+        flex-direction: column;
+        padding: 36px 28px 48px;
+        gap: 32px;
+        transform: none; /* flatten tilt on mobile */
+      }
+      .bundle-tape { display: none; }
+      .bundle-save { top: -18px; right: 20px; width: 78px; height: 78px; }
+      .bundle-save-pct { font-size: 20px; }
+      .bundle-polaroid { transform: none; }
+      .bundle-preview { width: 100%; height: auto; aspect-ratio: 1; }
       .why { padding: 64px 24px; }
-      .features { grid-template-columns: 1fr; }
+      /* Stack features vertically on mobile */
+      .features { flex-direction: column; gap: 20px; }
+      .step-connector { display: none; }
+      .made-by-card { padding: 40px 28px; transform: none; }
+    }
+
+    /* ── Sticker wobble — class added by JS after card settles ── */
+    @keyframes sticker-wobble {
+      0%, 100% { transform: rotate(2deg); }
+      30%       { transform: rotate(4deg) scale(1.04); }
+      70%       { transform: rotate(0.2deg) scale(0.96); }
+    }
+
+    .card-sticker.wobbling {
+      animation: sticker-wobble 3.8s ease-in-out infinite;
+    }
+
+    /* ── Reduced motion: disable everything ── */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .card-sticker.wobbling { animation: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -638,7 +1047,7 @@
        ============================================ -->
   <nav>
     <a class="logo" href="#">
-      <img src="favicon.png" alt="The Universal Notion">
+      <img src="favicon.png" alt="The Universal Notion logo">
       The Universal Notion
     </a>
     <a href="#templates" class="nav-cta">Browse Blocks</a>
@@ -648,12 +1057,36 @@
        EDIT: Hero text
        ============================================ -->
   <div class="hero-wrap">
+
+    <!-- Tape strips "pinning" the hero section to the page -->
+    <div class="hero-tape hero-tape--left"  aria-hidden="true"></div>
+    <div class="hero-tape hero-tape--right" aria-hidden="true"></div>
+
     <section class="hero">
+
+      <!-- Floating star doodles -->
+      <svg class="hero-doodle hero-doodle--star1" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2v20M2 12h20M5.64 5.64l12.73 12.73M18.36 5.64L5.64 18.36"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <svg class="hero-doodle hero-doodle--star2" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2v20M2 12h20M5.64 5.64l12.73 12.73M18.36 5.64L5.64 18.36"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+
       <span class="badge">
         <i class="ph-fill ph-sparkle"></i>
         Notion Templates
       </span>
+
       <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
+
+      <!-- Hand-drawn wavy underline below headline -->
+      <svg class="hero-squiggle" aria-hidden="true" viewBox="0 0 260 14" preserveAspectRatio="none">
+        <path d="M0,7 C22,1 44,13 66,7 C88,1 110,13 132,7 C154,1 176,13 198,7 C220,1 242,13 260,7"
+              fill="none" stroke="var(--rose)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+
       <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p>
       <div class="hero-btns">
         <a href="#templates" class="btn-primary">Browse Blocks</a>
@@ -661,34 +1094,35 @@
       </div>
     </section>
 
-    <!-- Scrolling preview of all 9 blocks — duplicated for seamless loop -->
-    <div class="marquee-wrap">
+    <!-- Scrolling preview strip — duplicated for seamless loop -->
+    <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee-track">
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;"><i class="ph-light ph-users-three"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;"><i class="ph-light ph-users-three"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;" tabindex="-1"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;" tabindex="-1"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;" tabindex="-1"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;" tabindex="-1"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;" tabindex="-1"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;" tabindex="-1"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;" tabindex="-1"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;" tabindex="-1"><i class="ph-light ph-house"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;" tabindex="-1"><i class="ph-light ph-users-three"></i></a>
+        <!-- Duplicate for seamless loop -->
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;" tabindex="-1"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;" tabindex="-1"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;" tabindex="-1"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;" tabindex="-1"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;" tabindex="-1"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;" tabindex="-1"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;" tabindex="-1"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;" tabindex="-1"><i class="ph-light ph-house"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;" tabindex="-1"><i class="ph-light ph-users-three"></i></a>
       </div>
     </div>
   </div><!-- /hero-wrap -->
 
-  <div class="divider">
+  <div class="divider" aria-hidden="true">
     <i class="ph-fill ph-flower-lotus"></i>
   </div>
 
@@ -705,12 +1139,13 @@
     <div class="grid">
 
       <!-- TEMPLATE CARD — Social -->
-      <div class="card">
-        <div class="card-preview" style="background: #A07BC8;">
-          <i class="ph-light ph-users-three"></i>
+      <div class="card" style="--tilt: 1.5deg">
+        <span class="card-sticker card-sticker--new">✦ New</span>
+        <div class="card-photo">
+          <img src="covers/10-group-hug.png" alt="Group Hug — Notion template for tracking plans and memories with friends" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #E8D8F5; color: #8060B0;">Social <span class="bestseller-tag" style="background: #A07BC8; color: #fff;">New</span></div>
+          <div class="card-tag" style="background: #E8D8F5; color: #8060B0;">Social</div>
           <h3>Group Hug</h3>
           <p>Track plans, memories, and everything in between with your favourite people — all in one shared space.</p>
           <div class="card-footer">
@@ -722,14 +1157,13 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Finance -->
-      <div class="card">
-        <div class="card-preview" style="background: #8AAF8A;">
-          <i class="ph-light ph-wallet"></i>
+      <div class="card" style="--tilt: -2deg">
+        <span class="card-sticker card-sticker--gold">★ Best Seller</span>
+        <div class="card-photo">
+          <img src="covers/01-budget-finance-hub.png" alt="Budget + Finance Hub — Notion template for tracking income, expenses and savings" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="card-tag" style="background: #D8EDD8; color: #5A855A;">
-            Finance <span class="bestseller-tag">Best Seller</span>
-          </div>
+          <div class="card-tag" style="background: #D8EDD8; color: #5A855A;">Finance</div>
           <h3>Budget + Finance Hub</h3>
           <p>Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.</p>
           <div class="card-footer">
@@ -741,9 +1175,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Productivity -->
-      <div class="card">
-        <div class="card-preview" style="background: #9B7FD4;">
-          <i class="ph-light ph-brain"></i>
+      <div class="card" style="--tilt: 1deg">
+        <div class="card-photo">
+          <img src="covers/02-second-brain.png" alt="Second Brain — Notion template for capturing ideas, notes and projects" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--lav-soft); color: var(--lavender);">Productivity</div>
@@ -758,9 +1192,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Lifestyle -->
-      <div class="card">
-        <div class="card-preview" style="background: #E8A0A8;">
-          <i class="ph-light ph-notebook"></i>
+      <div class="card" style="--tilt: -1.5deg">
+        <div class="card-photo">
+          <img src="covers/03-romanticize-journal.png" alt="Romanticize Your Life Journal — Notion daily journal template" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--rose-soft); color: #C07080;">Lifestyle</div>
@@ -775,9 +1209,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Health -->
-      <div class="card">
-        <div class="card-preview" style="background: #6BA878;">
-          <i class="ph-light ph-heart"></i>
+      <div class="card" style="--tilt: 2deg">
+        <div class="card-photo">
+          <img src="covers/04-health-medical-tracker.png" alt="Health + Medical Tracker — Notion template for appointments and health goals" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--sage-soft); color: var(--sage);">Health & Wellness</div>
@@ -792,9 +1226,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Creator -->
-      <div class="card">
-        <div class="card-preview" style="background: #6090B8;">
-          <i class="ph-light ph-pencil-simple"></i>
+      <div class="card" style="--tilt: -1deg">
+        <div class="card-photo">
+          <img src="covers/05-content-creation-hub.png" alt="Content Creation Hub — Notion template for planning and scheduling content" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--blue-soft); color: var(--blue);">Creator</div>
@@ -809,9 +1243,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Business -->
-      <div class="card">
-        <div class="card-preview" style="background: #D4886A;">
-          <i class="ph-light ph-briefcase"></i>
+      <div class="card" style="--tilt: 2.5deg">
+        <div class="card-photo">
+          <img src="covers/06-client-admin-hub.png" alt="Client + Admin Hub — Notion template for managing clients and freelance projects" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--peach-soft); color: var(--peach);">Business & Freelance</div>
@@ -826,9 +1260,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Reading -->
-      <div class="card">
-        <div class="card-preview" style="background: #C09040;">
-          <i class="ph-light ph-books"></i>
+      <div class="card" style="--tilt: -2.5deg">
+        <div class="card-photo">
+          <img src="covers/07-universal-reading-log.png" alt="Universal Reading Log — Notion template for tracking books with ratings and notes" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--amber-soft); color: var(--amber);">Reading & Learning</div>
@@ -843,9 +1277,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Food -->
-      <div class="card">
-        <div class="card-preview" style="background: #C07858;">
-          <i class="ph-light ph-bread"></i>
+      <div class="card" style="--tilt: 1.5deg">
+        <div class="card-photo">
+          <img src="covers/08-bread-board.png" alt="The Bread Board — Notion recipe board template for meal planning" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--terra-soft); color: var(--terra);">Food & Home</div>
@@ -860,9 +1294,9 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Home -->
-      <div class="card">
-        <div class="card-preview" style="background: #70A868;">
-          <i class="ph-light ph-house"></i>
+      <div class="card" style="--tilt: -1deg">
+        <div class="card-photo">
+          <img src="covers/09-appliance-tracker.png" alt="Appliance Tracker — Notion template for home appliances and warranties" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-tag" style="background: var(--green-soft); color: var(--green);">Home</div>
@@ -876,24 +1310,40 @@
       </div>
       <!-- END CARD -->
 
-
     </div>
   </section>
 
   <!-- ============================================
        EDIT: Bundles & Deals section
-       Update href on bundle-btn with Gumroad link when ready
        ============================================ -->
-  <section class="bundles">
-    <i class="ph-fill ph-sparkle bundles-deco" style="top: -60px; right: 80px;"></i>
-    <i class="ph-fill ph-sparkle bundles-deco" style="bottom: -40px; left: 40px; font-size: 120px;"></i>
+  <section class="bundles" id="bundle">
+    <!-- Decorative flair — large background sparkles -->
+    <i class="ph-fill ph-sparkle bundles-deco" style="font-size:200px; top:-40px; right:60px;"  aria-hidden="true"></i>
+    <i class="ph-fill ph-sparkle bundles-deco" style="font-size:120px; bottom:40px; left:30px;" aria-hidden="true"></i>
+
     <div class="bundles-inner">
       <div class="section-label"><i class="ph-fill ph-gift"></i> Bundles & Deals</div>
       <h2 class="section-title">The whole vibe, at once.</h2>
       <p class="section-sub">Get every single block for one magical price.</p>
 
+      <!-- Doodled arrow pointing down to the bundle card -->
+      <svg class="bundles-arrow" aria-hidden="true" viewBox="0 0 28 48" fill="none">
+        <path d="M14,4 C14,4 8,18 8,34 C8,42 14,44 14,44" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8,38 L14,45 L20,38" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
       <div class="bundle-card">
-        <span class="bundle-save">Save 70%</span>
+        <!-- Tape strips pinning the card -->
+        <div class="bundle-tape bundle-tape--tl" aria-hidden="true"></div>
+        <div class="bundle-tape bundle-tape--tr" aria-hidden="true"></div>
+
+        <!-- Circular "Save 70%" sticker -->
+        <div class="bundle-save" aria-label="Save 70%">
+          <span class="bundle-save-label">Save</span>
+          <span class="bundle-save-pct">70%</span>
+        </div>
+
+        <!-- Text content -->
         <div>
           <div class="bundle-title-tag"><i class="ph-fill ph-sparkle"></i> Best Value</div>
           <h3>The Complete Universal<br>Notion System</h3>
@@ -907,25 +1357,32 @@
           <div class="bundle-price-row">
             <span class="bundle-was">$49.90</span>
             <span class="bundle-price">$14.99</span>
-            <!-- EDIT: Add Gumroad bundle link below -->
             <a href="https://universalnotion.gumroad.com/l/ntuncf" onclick="fbq('track','AddToCart')" class="bundle-btn">Get the Bundle</a>
           </div>
         </div>
-        <img class="bundle-preview" src="covers/00-complete-system-bundle.png" alt="The Complete System Bundle">
+
+        <!-- Cover image in a polaroid frame — tilted opposite to the card -->
+        <div class="bundle-polaroid">
+          <img class="bundle-preview" src="covers/00-complete-system-bundle.png"
+               alt="The Complete Universal Notion System — all 10 templates included">
+          <span class="bundle-polaroid-caption">all 10 templates ✦</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       EDIT: "Why us" section — 3 feature boxes
+       How it works — 3 steps using existing copy
        ============================================ -->
   <section class="why">
     <div class="why-inner">
-      <div class="section-label"><i class="ph-fill ph-star"></i> Why us</div>
-      <h2 class="section-title">Why The Universal Notion?</h2>
+      <div class="section-label"><i class="ph-fill ph-list-numbers"></i> How it works</div>
+      <h2 class="section-title">It's this simple.</h2>
       <div class="features">
 
+        <!-- Step 1 -->
         <div class="feature">
+          <span class="step-num" aria-hidden="true">1</span>
           <div class="feature-icon-wrap" style="background: var(--rose-soft);">
             <i class="ph-light ph-puzzle-piece" style="color: var(--rose);"></i>
           </div>
@@ -933,7 +1390,17 @@
           <p>Every block works on its own or alongside others. Stack them, mix them, make them completely yours.</p>
         </div>
 
+        <!-- Dashed arrow connector (desktop only) -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 48 20" fill="none">
+            <path d="M2,10 C16,10 28,10 40,10" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 5" opacity="0.4"/>
+            <path d="M36,5 L42,10 L36,15" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
         <div class="feature">
+          <span class="step-num" aria-hidden="true">2</span>
           <div class="feature-icon-wrap" style="background: var(--gold-soft);">
             <i class="ph-light ph-lightning" style="color: var(--gold);"></i>
           </div>
@@ -941,9 +1408,19 @@
           <p>Duplicate any block to your Notion workspace instantly. No setup required — just click and start.</p>
         </div>
 
+        <!-- Dashed arrow connector (desktop only) -->
+        <div class="step-connector" aria-hidden="true">
+          <svg viewBox="0 0 48 20" fill="none">
+            <path d="M2,10 C16,10 28,10 40,10" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 5" opacity="0.4"/>
+            <path d="M36,5 L42,10 L36,15" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
         <div class="feature">
-          <div class="feature-icon-wrap" style="background: var(--lav-soft);">
-            <i class="ph-light ph-sparkle" style="color: var(--lavender);"></i>
+          <span class="step-num" aria-hidden="true">3</span>
+          <div class="feature-icon-wrap" style="background: var(--rose-soft);">
+            <i class="ph-light ph-sparkle" style="color: var(--rose);"></i>
           </div>
           <h3>Beautifully aesthetic</h3>
           <p>Every template is designed to feel as good as it looks — because your workspace should inspire you.</p>
@@ -954,9 +1431,37 @@
   </section>
 
   <!-- ============================================
-       EDIT: Footer
+       EDIT: "Made by" section
+       → Replace [MY NAME] with your name
+       → Replace [ONE-LINE BIO] with a one-sentence description of yourself
+       → The role tags below reflect what you built — edit or remove any
+       → To remove this section entirely: delete from here to END MADE BY
+       ============================================ -->
+  <section class="made-by">
+    <div class="made-by-card">
+      <div class="made-by-tape" aria-hidden="true"></div>
+      <span class="made-by-eyebrow">✦ Made by</span>
+      <h2 class="made-by-name">Ella</h2>
+      <p class="made-by-bio">[ONE-LINE BIO]</p>
+      <div class="made-by-roles">
+        <span>Brand identity</span>
+        <span>Copywriting</span>
+        <span>Pricing strategy</span>
+        <span>Visual design</span>
+        <span>Store launch</span>
+      </div>
+      <a href="mailto:theuniversalnotion@gmail.com" class="made-by-cta">
+        <i class="ph-light ph-envelope"></i> Get in touch
+      </a>
+    </div>
+  </section>
+  <!-- END MADE BY -->
+
+  <!-- ============================================
+       EDIT: Footer — DO NOT change policy links or email
        ============================================ -->
   <footer>
+    <a class="footer-logo" href="#">The Universal Notion</a>
     <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
     <p style="margin-top: 10px;">
       <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
@@ -967,6 +1472,7 @@
   </footer>
 
   <script>
+    /* Fire FB pixel ViewContent when templates section scrolls into view */
     const templatesSection = document.getElementById('templates');
     const observer = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting) {
@@ -975,6 +1481,127 @@
       }
     }, { threshold: 0.1 });
     observer.observe(templatesSection);
+  </script>
+
+  <!-- GSAP + ScrollTrigger (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+  /* ═══════════════════════════════════════════════════════════════
+     GSAP Animations — 4 effects:
+     1. Card settle   — each card drifts into place on scroll
+     2. Card hover    — cards straighten & lift when moused over
+     3. Hero parallax — tape/doodles shift gently on mouse move
+     4. Bundle intro  — bundle card elements stagger in on scroll
+     ═══════════════════════════════════════════════════════════════ */
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768;
+
+  /* ── 1 & 2: Cards — settle on scroll + hover to straighten ──── */
+  document.querySelectorAll('.card').forEach((card) => {
+    const tiltStr = getComputedStyle(card).getPropertyValue('--tilt').trim();
+    const tilt = parseFloat(tiltStr) || 0;
+
+    if (prefersReduced || isMobile) {
+      /* Reduced motion or mobile: just show at resting state */
+      gsap.set(card, { opacity: 1, rotation: isMobile ? 0 : tilt, y: 0 });
+      return;
+    }
+
+    /* Start hidden + more tilted */
+    gsap.set(card, { opacity: 0, y: 52, rotation: tilt * 1.7 });
+
+    /* Settle into place when scrolled into view */
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 86%',
+      onEnter: () => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          rotation: tilt,
+          duration: 0.75,
+          ease: 'back.out(1.3)',
+          onComplete() {
+            /* Sticker starts wobbling after the card lands */
+            card.querySelector('.card-sticker')?.classList.add('wobbling');
+          }
+        });
+      }
+    });
+
+    /* Hover: straighten + lift (spring back on leave) */
+    card.addEventListener('mouseenter', () => {
+      gsap.to(card, { rotation: 0, y: -8, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { rotation: tilt, y: 0, duration: 0.5, ease: 'back.out(1.5)', overwrite: 'auto' });
+    });
+  });
+
+
+  /* ── 3: Hero parallax — tape/doodles shift on mouse move ─────── */
+  const heroWrap = document.querySelector('.hero-wrap');
+  if (heroWrap && !prefersReduced && !isMobile) {
+    const tapes    = heroWrap.querySelectorAll('.hero-tape');
+    const doodles  = heroWrap.querySelectorAll('.hero-doodle');
+    const squiggle = heroWrap.querySelector('.hero-squiggle');
+
+    heroWrap.addEventListener('mousemove', (e) => {
+      const { left, top, width, height } = heroWrap.getBoundingClientRect();
+      const cx = (e.clientX - left) / width  - 0.5; /* -0.5 → 0.5 */
+      const cy = (e.clientY - top)  / height - 0.5;
+
+      gsap.to(tapes,   { x: cx * 14, y: cy * 7,   duration: 0.9, ease: 'power1.out' });
+      gsap.to(doodles, { x: cx * -18, y: cy * -11, duration: 1.1, ease: 'power1.out' });
+      if (squiggle) gsap.to(squiggle, { x: cx * 9, duration: 0.7, ease: 'power1.out' });
+    });
+
+    heroWrap.addEventListener('mouseleave', () => {
+      gsap.to([tapes, doodles, squiggle].filter(Boolean), {
+        x: 0, y: 0, duration: 1, ease: 'power2.inOut'
+      });
+    });
+  }
+
+
+  /* ── 4: Bundle spotlight — elements stagger in on scroll ──────── */
+  if (!prefersReduced) {
+    const bundleCard     = document.querySelector('.bundle-card');
+    const bundlePolaroid = document.querySelector('.bundle-polaroid');
+    const bundleSave     = document.querySelector('.bundle-save');
+
+    if (bundleCard) {
+      /* Start hidden */
+      gsap.set(bundleCard,     { opacity: 0, y: 64, rotation: -0.4 });
+      gsap.set(bundlePolaroid, { opacity: 0, x: 44, rotation: 8 });
+      gsap.set(bundleSave,     { opacity: 0, scale: 0.45, y: -24, rotation: 24 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: '.bundles', start: 'top 65%' }
+      });
+
+      /* Card rises up */
+      tl.to(bundleCard, {
+        opacity: 1, y: 0, rotation: -0.4,
+        duration: 0.65, ease: 'power2.out'
+      })
+      /* Polaroid slides in from right with overshoot */
+      .to(bundlePolaroid, {
+        opacity: 1, x: 0, rotation: 2.8,
+        duration: 0.8, ease: 'back.out(1.5)'
+      }, '-=0.35')
+      /* Save sticker drops in with a big bounce */
+      .to(bundleSave, {
+        opacity: 1, scale: 1, y: 0, rotation: 13,
+        duration: 0.6, ease: 'back.out(2.2)'
+      }, '-=0.45');
+    }
+  }
   </script>
 </body>
 </html>
