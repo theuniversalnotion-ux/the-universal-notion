@@ -1021,6 +1021,77 @@
       .made-by-card { padding: 40px 28px; transform: none; }
     }
 
+    /* ── Motion additions ────────────────────────────────────────── */
+
+    /* Tape-strip scroll progress indicator */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 4px; z-index: 500;
+      transform-origin: left center; transform: scaleX(0);
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 13px, rgba(255,255,255,0.28) 13px, rgba(255,255,255,0.28) 14px),
+        linear-gradient(180deg, rgba(240,228,192,0.98) 0%, rgba(240,228,192,0.82) 100%);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      border-bottom: 1px solid rgba(180,150,90,0.22);
+      will-change: transform;
+    }
+
+    /* Custom cursor — star sticker */
+    #cursor {
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      width: 26px; height: 26px;
+      transform: translate(-50%, -50%);
+      opacity: 0; will-change: transform;
+    }
+    body.no-cursor, body.no-cursor * { cursor: none !important; }
+
+    /* Headline word spans — inline-block for per-word GSAP targeting */
+    .h1-word { display: inline-block; }
+
+    /* Floating arrow below hero buttons */
+    .hero-arrow-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+      pointer-events: none;
+    }
+
+    /* Animated SVG strikethrough on bundle old price */
+    .bundle-was { position: relative; }
+    .strikethrough-svg {
+      position: absolute;
+      left: -3px; top: 50%;
+      width: calc(100% + 6px); height: 10px;
+      transform: translateY(-50%);
+      overflow: visible; pointer-events: none;
+      display: none; /* shown by js-anim CSS rule below */
+    }
+    body.js-anim .bundle-was { text-decoration: none; }
+    body.js-anim .strikethrough-svg { display: block; }
+
+    /* Mini cover previews scattered in bundle section background */
+    .bundle-previews {
+      position: absolute; inset: 0;
+      pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .bundle-preview-mini {
+      position: absolute;
+      width: 66px; height: 66px;
+      border-radius: 6px; object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+      border: 3px solid rgba(255,255,255,0.88);
+      opacity: 0;
+    }
+    .bundle-preview-mini:nth-child(1) { top: 12%;    left: 3%;   transform: rotate(-12deg); }
+    .bundle-preview-mini:nth-child(2) { top: 8%;     right: 3%;  transform: rotate(9deg); }
+    .bundle-preview-mini:nth-child(3) { bottom: 14%; left: 5%;   transform: rotate(14deg); }
+    .bundle-preview-mini:nth-child(4) { bottom: 10%; right: 4%;  transform: rotate(-10deg); }
+
+    @media (max-width: 768px) {
+      #cursor, .hero-arrow-wrap, .bundle-previews { display: none !important; }
+    }
+
     /* ── Sticker wobble — class added by JS after card settles ── */
     @keyframes sticker-wobble {
       0%, 100% { transform: rotate(2deg); }
@@ -1041,6 +1112,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Scroll progress tape strip + custom cursor (driven by animations.js) -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="#C94B6A" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L14.09 8.26L20.5 8.27L15.22 12.14L17.27 18.41L12 14.54L6.73 18.41L8.78 12.14L3.5 8.27L9.91 8.26L12 2Z"/>
+    </svg>
+  </div>
 
   <!-- ============================================
        EDIT: Site name + logo
@@ -1079,7 +1158,7 @@
         Notion Templates
       </span>
 
-      <h1>Pick your blocks.<br><em>Build your notion.</em></h1>
+      <h1><span class="h1-word">Pick</span> <span class="h1-word">your</span> <span class="h1-word">blocks.</span><br><em><span class="h1-word h1-italic">Build</span> <span class="h1-word h1-italic">your</span> <span class="h1-word h1-italic">notion.</span></em></h1>
 
       <!-- Hand-drawn wavy underline below headline -->
       <svg class="hero-squiggle" aria-hidden="true" viewBox="0 0 260 14" preserveAspectRatio="none">
@@ -1091,6 +1170,13 @@
       <div class="hero-btns">
         <a href="#templates" class="btn-primary">Browse Blocks</a>
         <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
+      </div>
+      <!-- Hand-drawn arrow bobs below the CTA buttons (animations.js animates it) -->
+      <div class="hero-arrow-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 52" fill="none" style="width:20px;height:48px;">
+          <path class="hero-arrow-path" d="M12,2 C10,14 7,28 7,42" stroke="#C94B6A" stroke-width="1.8" stroke-linecap="round" opacity="0.42"/>
+          <path d="M3,37 L7,44 L12,38" stroke="#C94B6A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.42"/>
+        </svg>
       </div>
     </section>
 
@@ -1317,6 +1403,14 @@
        EDIT: Bundles & Deals section
        ============================================ -->
   <section class="bundles" id="bundle">
+    <!-- Mini cover thumbnails fly in from corners on scroll (animations.js) -->
+    <div class="bundle-previews" aria-hidden="true">
+      <img class="bundle-preview-mini" src="covers/01-budget-finance-hub.png" alt="" loading="lazy">
+      <img class="bundle-preview-mini" src="covers/03-romanticize-journal.png" alt="" loading="lazy">
+      <img class="bundle-preview-mini" src="covers/07-universal-reading-log.png" alt="" loading="lazy">
+      <img class="bundle-preview-mini" src="covers/08-bread-board.png" alt="" loading="lazy">
+    </div>
+
     <!-- Decorative flair — large background sparkles -->
     <i class="ph-fill ph-sparkle bundles-deco" style="font-size:200px; top:-40px; right:60px;"  aria-hidden="true"></i>
     <i class="ph-fill ph-sparkle bundles-deco" style="font-size:120px; bottom:40px; left:30px;" aria-hidden="true"></i>
@@ -1355,7 +1449,7 @@
             <span><i class="ph-fill ph-check-circle"></i> Mix & match across your workspace</span>
           </div>
           <div class="bundle-price-row">
-            <span class="bundle-was">$49.90</span>
+            <span class="bundle-was">$49.90<svg class="strikethrough-svg" viewBox="0 0 64 6" fill="none" aria-hidden="true" preserveAspectRatio="none"><line class="strikethrough-line" x1="1" y1="3" x2="63" y2="3" stroke="#C94B6A" stroke-width="2.5" stroke-linecap="round"/></svg></span>
             <span class="bundle-price">$14.99</span>
             <a href="https://universalnotion.gumroad.com/l/ntuncf" onclick="fbq('track','AddToCart')" class="bundle-btn">Get the Bundle</a>
           </div>
@@ -1486,122 +1580,7 @@
   <!-- GSAP + ScrollTrigger (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-  <script>
-  /* ═══════════════════════════════════════════════════════════════
-     GSAP Animations — 4 effects:
-     1. Card settle   — each card drifts into place on scroll
-     2. Card hover    — cards straighten & lift when moused over
-     3. Hero parallax — tape/doodles shift gently on mouse move
-     4. Bundle intro  — bundle card elements stagger in on scroll
-     ═══════════════════════════════════════════════════════════════ */
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = window.innerWidth < 768;
-
-  /* ── 1 & 2: Cards — settle on scroll + hover to straighten ──── */
-  document.querySelectorAll('.card').forEach((card) => {
-    const tiltStr = getComputedStyle(card).getPropertyValue('--tilt').trim();
-    const tilt = parseFloat(tiltStr) || 0;
-
-    if (prefersReduced || isMobile) {
-      /* Reduced motion or mobile: just show at resting state */
-      gsap.set(card, { opacity: 1, rotation: isMobile ? 0 : tilt, y: 0 });
-      return;
-    }
-
-    /* Start hidden + more tilted */
-    gsap.set(card, { opacity: 0, y: 52, rotation: tilt * 1.7 });
-
-    /* Settle into place when scrolled into view */
-    ScrollTrigger.create({
-      trigger: card,
-      start: 'top 86%',
-      onEnter: () => {
-        gsap.to(card, {
-          opacity: 1,
-          y: 0,
-          rotation: tilt,
-          duration: 0.75,
-          ease: 'back.out(1.3)',
-          onComplete() {
-            /* Sticker starts wobbling after the card lands */
-            card.querySelector('.card-sticker')?.classList.add('wobbling');
-          }
-        });
-      }
-    });
-
-    /* Hover: straighten + lift (spring back on leave) */
-    card.addEventListener('mouseenter', () => {
-      gsap.to(card, { rotation: 0, y: -8, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-    });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotation: tilt, y: 0, duration: 0.5, ease: 'back.out(1.5)', overwrite: 'auto' });
-    });
-  });
-
-
-  /* ── 3: Hero parallax — tape/doodles shift on mouse move ─────── */
-  const heroWrap = document.querySelector('.hero-wrap');
-  if (heroWrap && !prefersReduced && !isMobile) {
-    const tapes    = heroWrap.querySelectorAll('.hero-tape');
-    const doodles  = heroWrap.querySelectorAll('.hero-doodle');
-    const squiggle = heroWrap.querySelector('.hero-squiggle');
-
-    heroWrap.addEventListener('mousemove', (e) => {
-      const { left, top, width, height } = heroWrap.getBoundingClientRect();
-      const cx = (e.clientX - left) / width  - 0.5; /* -0.5 → 0.5 */
-      const cy = (e.clientY - top)  / height - 0.5;
-
-      gsap.to(tapes,   { x: cx * 14, y: cy * 7,   duration: 0.9, ease: 'power1.out' });
-      gsap.to(doodles, { x: cx * -18, y: cy * -11, duration: 1.1, ease: 'power1.out' });
-      if (squiggle) gsap.to(squiggle, { x: cx * 9, duration: 0.7, ease: 'power1.out' });
-    });
-
-    heroWrap.addEventListener('mouseleave', () => {
-      gsap.to([tapes, doodles, squiggle].filter(Boolean), {
-        x: 0, y: 0, duration: 1, ease: 'power2.inOut'
-      });
-    });
-  }
-
-
-  /* ── 4: Bundle spotlight — elements stagger in on scroll ──────── */
-  if (!prefersReduced) {
-    const bundleCard     = document.querySelector('.bundle-card');
-    const bundlePolaroid = document.querySelector('.bundle-polaroid');
-    const bundleSave     = document.querySelector('.bundle-save');
-
-    if (bundleCard) {
-      /* Start hidden */
-      gsap.set(bundleCard,     { opacity: 0, y: 64, rotation: -0.4 });
-      gsap.set(bundlePolaroid, { opacity: 0, x: 44, rotation: 8 });
-      gsap.set(bundleSave,     { opacity: 0, scale: 0.45, y: -24, rotation: 24 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: '.bundles', start: 'top 65%' }
-      });
-
-      /* Card rises up */
-      tl.to(bundleCard, {
-        opacity: 1, y: 0, rotation: -0.4,
-        duration: 0.65, ease: 'power2.out'
-      })
-      /* Polaroid slides in from right with overshoot */
-      .to(bundlePolaroid, {
-        opacity: 1, x: 0, rotation: 2.8,
-        duration: 0.8, ease: 'back.out(1.5)'
-      }, '-=0.35')
-      /* Save sticker drops in with a big bounce */
-      .to(bundleSave, {
-        opacity: 1, scale: 1, y: 0, rotation: 13,
-        duration: 0.6, ease: 'back.out(2.2)'
-      }, '-=0.45');
-    }
-  }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>
