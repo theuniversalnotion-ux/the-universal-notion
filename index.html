@@ -1104,6 +1104,92 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
+       DRAGGABLE — Scrapbook Pieces (draggable.js)
+       To remove: delete this block + <script src="draggable.js">
+       localStorage key: 'dp-pos'
+    ═══════════════════════════════════════════════════════════════ */
+    .dp-piece {
+      position: fixed;
+      z-index: 500;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      -webkit-touch-callout: none;
+      will-change: transform;
+      transition: filter 0.18s;
+    }
+    .dp-piece.dp-dragging {
+      cursor: grabbing;
+      z-index: 600;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.18));
+    }
+    /* Horizontal washi tape strip */
+    .dp-tape-h {
+      width: 78px;
+      height: 20px;
+      border-radius: 2px;
+    }
+    /* Vertical washi tape strip */
+    .dp-tape-v {
+      width: 20px;
+      height: 76px;
+      border-radius: 2px;
+    }
+    /* Gold star badge */
+    .dp-star {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #F5C842;
+      color: #5c4100;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.14);
+    }
+    /* Heart sticker */
+    .dp-heart {
+      font-size: 2rem;
+      color: var(--rose);
+      display: block;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(201,75,106,0.22));
+    }
+    /* Small pill badge */
+    .dp-badge {
+      background: var(--espresso);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 0.68rem;
+      padding: 4px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      letter-spacing: 0.02em;
+    }
+    /* Dashed circle stamp */
+    .dp-stamp {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px dashed rgba(90,133,90,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-accent);
+      font-size: 0.62rem;
+      color: rgba(90,133,90,0.95);
+      text-align: center;
+      line-height: 1.3;
+    }
+    /* Hide pieces on very small screens to avoid blocking content */
+    @media (max-width: 480px) {
+      .dp-piece { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
        QUIZ — "Which block are you?" (quiz.js)
        To remove: delete this block + <script src="quiz.js">
     ═══════════════════════════════════════════════════════════════ */
@@ -2362,5 +2448,6 @@
   <script src="quicklook.js"></script>
   <script src="builder.js"></script>
   <script src="quiz.js"></script>
+  <script src="draggable.js"></script>
 </body>
 </html>
