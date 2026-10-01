@@ -1104,6 +1104,97 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
+       DELIGHTS — Confetti / Paper Switcher / Konami (delights.js)
+       To remove: delete this block + <script src="delights.js">
+       localStorage key: 'paper-color'
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* Confetti particles */
+    .dl-confetti {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9000;
+      font-size: 0.85rem;
+      line-height: 1;
+      transform-origin: center;
+      will-change: transform, opacity;
+    }
+
+    /* Paper colour switcher — fixed bottom-right */
+    .dl-paper-switcher {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 550;
+      display: flex;
+      flex-direction: column-reverse; /* swatches above toggle */
+      align-items: center;
+      gap: 8px;
+    }
+    .dl-paper-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--espresso);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.20);
+      transition: transform 0.18s, box-shadow 0.18s;
+      flex-shrink: 0;
+    }
+    .dl-paper-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.24);
+    }
+    .dl-paper-toggle:focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 3px;
+    }
+    .dl-swatches {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+    .dl-swatches[hidden] { display: none; }
+    .dl-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #d4c8c0;
+      cursor: pointer;
+      transition: transform 0.16s, border-color 0.16s, box-shadow 0.16s;
+    }
+    .dl-swatch:hover { transform: scale(1.18); border-color: var(--espresso); }
+    .dl-swatch--active {
+      border-color: var(--espresso);
+      box-shadow: 0 0 0 2px var(--espresso);
+    }
+    .dl-swatch:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+    /* Toast notification */
+    .dl-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 8000;
+      background: var(--espresso);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 0.88rem;
+      padding: 10px 20px;
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
        DRAGGABLE — Scrapbook Pieces (draggable.js)
        To remove: delete this block + <script src="draggable.js">
        localStorage key: 'dp-pos'
@@ -2449,5 +2540,6 @@
   <script src="builder.js"></script>
   <script src="quiz.js"></script>
   <script src="draggable.js"></script>
+  <script src="delights.js"></script>
 </body>
 </html>
