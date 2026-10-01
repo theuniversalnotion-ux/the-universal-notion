@@ -72,42 +72,58 @@
   section.setAttribute('aria-labelledby', 'quiz-heading');
   section.innerHTML = `
     <div class="quiz-inner">
-      <div class="section-label">
-        <i class="ph-fill ph-pencil-simple" aria-hidden="true"></i> Find Your Block
-      </div>
-      <h2 class="section-title" id="quiz-heading">Which block are you?</h2>
-      <p class="section-sub">3 quick questions. One perfect recommendation.</p>
-
-      <div class="quiz-card">
-        <div class="quiz-progress" aria-hidden="true">
-          <div class="quiz-dots">
-            ${QUESTIONS.map((_, i) => `<span class="quiz-dot${i === 0 ? ' quiz-dot--active' : ''}"></span>`).join('')}
-          </div>
-          <span class="quiz-step">1 / ${QUESTIONS.length}</span>
+      <div class="quiz-left">
+        <div class="section-label">
+          <i class="ph-fill ph-pencil-simple" aria-hidden="true"></i> Find Your Block
         </div>
-        <p class="quiz-question" aria-live="polite"></p>
-        <div class="quiz-options" role="group" aria-label="Answer options"></div>
-      </div>
+        <h2 class="section-title" id="quiz-heading">Which block are you?</h2>
+        <p class="section-sub">3 quick questions. One perfect recommendation.</p>
 
-      <div class="quiz-result" hidden>
-        <p class="quiz-result-eyebrow" aria-live="polite">✦ Your block is...</p>
-        <div class="quiz-result-card">
-          <div class="quiz-result-tape" aria-hidden="true"></div>
-          <img class="quiz-result-cover" src="" alt="" loading="eager">
-          <div class="quiz-result-body">
-            <div class="quiz-result-tag"></div>
-            <h3 class="quiz-result-name"></h3>
-            <p class="quiz-result-desc"></p>
-            <div class="quiz-result-footer">
-              <span class="quiz-result-price"></span>
-              <a class="quiz-result-buy" href="#" target="_blank" rel="noopener noreferrer">
-                Get Block <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
-              </a>
+        <div class="quiz-card">
+          <div class="quiz-progress" aria-hidden="true">
+            <div class="quiz-dots">
+              ${QUESTIONS.map((_, i) => `<span class="quiz-dot${i === 0 ? ' quiz-dot--active' : ''}"></span>`).join('')}
+            </div>
+            <span class="quiz-step">1 / ${QUESTIONS.length}</span>
+          </div>
+          <p class="quiz-question" aria-live="polite"></p>
+          <div class="quiz-options" role="group" aria-label="Answer options"></div>
+        </div>
+
+        <div class="quiz-result" hidden>
+          <p class="quiz-result-eyebrow" aria-live="polite">✦ Your block is...</p>
+          <div class="quiz-result-card">
+            <div class="quiz-result-tape" aria-hidden="true"></div>
+            <img class="quiz-result-cover" src="" alt="" loading="eager">
+            <div class="quiz-result-body">
+              <div class="quiz-result-tag"></div>
+              <h3 class="quiz-result-name"></h3>
+              <p class="quiz-result-desc"></p>
+              <div class="quiz-result-footer">
+                <span class="quiz-result-price"></span>
+                <a class="quiz-result-buy" href="#" target="_blank" rel="noopener noreferrer">
+                  Get Block <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
             </div>
           </div>
+          <button class="quiz-retake" type="button">Take it again →</button>
         </div>
-        <button class="quiz-retake" type="button">Take it again →</button>
       </div>
+
+      <aside class="quiz-aside" aria-hidden="true">
+        <div class="quiz-note">
+          <div class="quiz-note-tape"></div>
+          <p class="quiz-note-title">how it works</p>
+          <ul class="quiz-note-list">
+            <li>✦ answer 3 quick questions</li>
+            <li>✦ we match you to your vibe</li>
+            <li>✦ get your perfect template</li>
+          </ul>
+          <p class="quiz-note-foot">no wrong answers ♥</p>
+        </div>
+        <span class="quiz-note-deco" aria-hidden="true">★</span>
+      </aside>
     </div>
   `;
 

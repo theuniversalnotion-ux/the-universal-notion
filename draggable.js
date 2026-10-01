@@ -21,17 +21,27 @@
   const PIECES = [
     {
       id:   'dp-tape1',
-      html: '<div class="dp-tape-h" style="background:rgba(201,75,106,0.28)"></div>',
+      html: '<div class="dp-tape-h"></div>',
       xi: '2vw',  yi: '44vh', rot: -6,
     },
     {
       id:   'dp-star',
-      html: '<div class="dp-star" aria-hidden="true">★</div>',
+      html: `<svg class="dp-star" width="54" height="54" viewBox="0 0 52 52" aria-hidden="true">
+        <polygon points="26,4 31,19 47,19 35,29 39,44 26,35 13,44 17,29 5,19 21,19"
+                 fill="#F5C842" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="20" cy="16" rx="7" ry="3.5" fill="rgba(255,255,255,0.22)"
+                 transform="rotate(-20 20 16)"/>
+      </svg>`,
       xi: '88vw', yi: '32vh', rot: 18,
     },
     {
       id:   'dp-heart',
-      html: '<span class="dp-heart" aria-hidden="true">♥</span>',
+      html: `<svg class="dp-heart" width="58" height="54" viewBox="0 0 56 52" aria-hidden="true">
+        <path d="M28 47 C28 47 4 32 4 17 C4 9 10 5 17 5 C21 5 25 7 28 10 C31 7 35 5 39 5 C46 5 52 9 52 17 C52 32 28 47 28 47 Z"
+              fill="#C94B6A" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="19" cy="17" rx="7" ry="4" fill="rgba(255,255,255,0.22)"
+                 transform="rotate(-25 19 17)"/>
+      </svg>`,
       xi: '90vw', yi: '68vh', rot: -8,
     },
     {
@@ -41,12 +51,12 @@
     },
     {
       id:   'dp-tape2',
-      html: '<div class="dp-tape-v" style="background:rgba(155,127,212,0.30)"></div>',
+      html: '<div class="dp-tape-v"></div>',
       xi: '93vw', yi: '20vh', rot: 5,
     },
     {
       id:   'dp-stamp',
-      html: '<div class="dp-stamp" aria-hidden="true">fave<br>✦</div>',
+      html: '<div class="dp-stamp" aria-hidden="true"><div class="dp-stamp-text">CUTE</div><div class="dp-stamp-star">✦</div></div>',
       xi: '3vw',  yi: '24vh', rot: -14,
     },
   ];
