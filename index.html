@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Universal Notion</title>
+  <title>The Universal Notion – Aesthetic Notion Templates</title>
+  <meta name="description" content="Beautiful, modular Notion templates — pick the blocks you need, build the workspace you want. Starting at $4.99.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Universal Notion">
+  <meta property="og:description" content="Beautiful, modular Notion templates. Pick your blocks, build your notion.">
+  <meta property="og:image" content="https://theuniversalnotion.com/covers/00-complete-system-bundle.png">
+  <meta property="og:url" content="https://theuniversalnotion.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Universal Notion">
+
+  <!-- DO NOT REMOVE: Pinterest domain verification + tracking -->
   <meta name="p:domain_verify" content="89be76dc90300fe7c7200bf9b4214d1c"/>
   <!-- Meta Pixel Code -->
   <script>
@@ -36,40 +47,70 @@
   <noscript><img height="1" width="1" style="display:none;" alt=""
   src="https://ct.pinterest.com/v3/?event=init&tid=2613808521200&noscript=1"/></noscript>
   <!-- End Pinterest Tag -->
+
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Fonts: Kalam (accent/stickers) + Playfair Display (headings) + Inter (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ════════════════════════════════════════
+       PALETTE C — Rose & Espresso
+       To change a color: edit the value here;
+       it updates everywhere automatically.
+       ════════════════════════════════════════ */
     :root {
-      --bg:         #FAF8F5;
-      --text:       #2C2C2C;
-      --muted:      #8C7B75;
-      --border:     #E4D9D0;
-      --rose:       #E8A0A8;
-      --rose-soft:  #F5D8DC;
-      --gold:       #D4A830;
-      --gold-soft:  #F5E4A8;
+      /* Backgrounds */
+      --bg:         #FAF5EF;  /* warm cream page */
+      --card-bg:    #FFFDF8;  /* pure cream card */
+
+      /* Text */
+      --text:       #261A18;  /* espresso */
+      --muted:      #7A6560;  /* warm muted */
+
+      /* Structure */
+      --border:     #E8D8C8;  /* warm border */
+      --tape:       #F0E4C0;  /* parchment tape strip */
+
+      /* Primary accent — deep rose */
+      --rose:       #C94B6A;
+      --rose-soft:  #F5D0DC;
+
+      /* Secondary accent — honey gold */
+      --gold:       #E8B86D;
+      --gold-soft:  #FBF0DC;
+
+      /* Fonts
+         --font-accent  → Kalam: sticker labels, badges, doodle text
+         --font-heading → Playfair Display: h1, h2, section titles
+         --font-body    → Inter: body copy, prices, nav                */
+      --font-accent:  'Kalam', cursive;
+      --font-heading: 'Playfair Display', serif;
+      --font-body:    'Inter', sans-serif;
+
+      /* Per-template card tag colors (unchanged) */
       --lavender:   #9B7FD4;
-      --lav-soft:   #DDD0F5;
+      --lav-soft:   #EDE5FF;
       --sage:       #6BA878;
-      --sage-soft:  #C0E0C8;
+      --sage-soft:  #D0EDD8;
       --blue:       #6090B8;
-      --blue-soft:  #C0D8F0;
+      --blue-soft:  #D0E5F5;
       --peach:      #D4886A;
-      --peach-soft: #F5D0B8;
+      --peach-soft: #FAE0D0;
       --amber:      #C09040;
-      --amber-soft: #F0DCA0;
+      --amber-soft: #F5E5C0;
       --terra:      #C07858;
-      --terra-soft: #F0C4A8;
+      --terra-soft: #F5D8C0;
       --green:      #70A868;
-      --green-soft: #C0D8B8;
+      --green-soft: #C8E8C0;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -81,20 +122,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 64px;
-      border-bottom: 1px solid #F5C5CC;
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      background: rgba(253, 235, 238, 0.97);
+      background: rgba(250, 245, 239, 0.97);
       backdrop-filter: blur(12px);
       z-index: 100;
-      box-shadow: 0 2px 16px rgba(232, 160, 168, 0.14);
+      box-shadow: 0 2px 16px rgba(201, 75, 106, 0.08);
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 17px;
       font-weight: 500;
       font-style: italic;
@@ -118,13 +159,14 @@
       font-size: 13px;
       font-weight: 500;
       transition: opacity 0.2s;
-      box-shadow: 0 2px 10px rgba(232, 160, 168, 0.4);
+      box-shadow: 0 2px 10px rgba(201, 75, 106, 0.30);
     }
 
     .nav-cta:hover { opacity: 0.85; }
+    .nav-cta:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     /* ── Hero ── */
-    .hero-wrap { background: #FDF0F2; }
+    .hero-wrap { background: var(--bg); }
 
     .hero {
       text-align: center;
@@ -168,6 +210,7 @@
       to { transform: translateX(-1360px); }
     }
 
+    /* ── Badge (hero eyebrow) ── */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -176,17 +219,17 @@
       color: var(--gold);
       padding: 8px 20px;
       border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      font-family: var(--font-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       margin-bottom: 36px;
     }
 
     .badge i { font-size: 15px; }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 66px;
       font-weight: 500;
       line-height: 1.1;
@@ -232,6 +275,7 @@
     }
 
     .btn-primary:hover { background: var(--rose); }
+    .btn-primary:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     .btn-secondary {
       background: transparent;
@@ -246,6 +290,7 @@
     }
 
     .btn-secondary:hover { border-color: var(--rose); color: var(--rose); }
+    .btn-secondary:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
     /* ── Divider ── */
     .divider {
@@ -264,30 +309,31 @@
 
     .divider i { color: var(--rose); font-size: 22px; }
 
-    /* ── Templates ── */
+    /* ── Templates grid ── */
     .templates {
       padding: 96px 64px;
       max-width: 1180px;
       margin: 0 auto;
     }
 
+    /* ── Section labels (sticker-style font) ── */
     .section-label {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.3px;
       color: #fff;
       background: var(--rose);
-      padding: 6px 16px;
+      padding: 5px 16px;
       border-radius: 100px;
       margin-bottom: 18px;
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 44px;
       font-weight: 500;
       letter-spacing: -0.5px;
@@ -309,7 +355,7 @@
 
     /* ── Cards ── */
     .card {
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -339,31 +385,35 @@
 
     .card-body { padding: 22px 24px 26px; }
 
+    /* Card category tag — accent font for sticker feel */
     .card-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 5px 12px;
+      letter-spacing: 0.3px;
+      padding: 4px 12px;
       border-radius: 100px;
       margin-bottom: 12px;
     }
 
+    /* "Best Seller" / "New" inline badges */
     .bestseller-tag {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 700;
       background: var(--gold-soft);
-      color: var(--gold);
+      color: #9A6B00;
       padding: 2px 9px;
       border-radius: 100px;
-      font-size: 9px;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.2px;
       margin-left: 4px;
     }
 
     .card-body h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 19px;
       font-weight: 500;
       margin-bottom: 8px;
@@ -385,7 +435,7 @@
     }
 
     .price {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 500;
     }
@@ -401,10 +451,11 @@
     }
 
     .buy-btn:hover { opacity: 0.85; }
+    .buy-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
     /* ── Bundles ── */
     .bundles {
-      background: #FEF6F0;
+      background: #F7EEE9;
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -417,9 +468,9 @@
     .bundles .section-label { background: var(--rose); }
 
     .bundle-card {
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 28px;
-      border: 1.5px solid #F5C5CC;
+      border: 1.5px solid var(--border);
       padding: 52px 56px;
       display: flex;
       gap: 56px;
@@ -427,7 +478,7 @@
       position: relative;
       overflow: hidden;
       margin-top: 52px;
-      box-shadow: 0 8px 48px rgba(232, 160, 168, 0.15);
+      box-shadow: 0 8px 48px rgba(201, 75, 106, 0.10);
     }
 
     .bundle-save {
@@ -436,32 +487,32 @@
       right: 28px;
       background: var(--rose);
       color: #fff;
-      font-size: 12px;
+      font-family: var(--font-accent);
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      letter-spacing: 0.5px;
       padding: 8px 20px;
       border-radius: 100px;
-      box-shadow: 0 4px 12px rgba(232, 160, 168, 0.4);
+      box-shadow: 0 4px 12px rgba(201, 75, 106, 0.35);
     }
 
     .bundle-title-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10px;
+      font-family: var(--font-accent);
+      font-size: 13px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.3px;
       background: var(--rose-soft);
       color: var(--rose);
-      padding: 6px 16px;
+      padding: 5px 16px;
       border-radius: 100px;
       margin-bottom: 18px;
     }
 
     .bundle-card h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 34px;
       font-weight: 500;
       line-height: 1.2;
@@ -510,7 +561,7 @@
     }
 
     .bundle-price {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 44px;
       font-weight: 500;
     }
@@ -524,10 +575,11 @@
       font-size: 13px;
       font-weight: 500;
       transition: opacity 0.2s;
-      box-shadow: 0 4px 16px rgba(232, 160, 168, 0.4);
+      box-shadow: 0 4px 16px rgba(201, 75, 106, 0.35);
     }
 
     .bundle-btn:hover { opacity: 0.85; }
+    .bundle-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
     .bundle-preview {
       width: 320px;
@@ -546,15 +598,9 @@
       pointer-events: none;
     }
 
-    @media (max-width: 768px) {
-      .bundles { padding: 64px 24px; }
-      .bundle-card { flex-direction: column; padding: 36px 28px; gap: 32px; }
-      .bundle-preview { width: 100%; height: 240px; }
-    }
-
     /* ── Why section ── */
     .why {
-      background: var(--lav-soft);
+      background: #F3EBE6;
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -562,9 +608,7 @@
 
     .why-inner { max-width: 1180px; margin: 0 auto; }
 
-    .why .section-label {
-      background: var(--lavender);
-    }
+    .why .section-label { background: var(--rose); }
 
     .features {
       display: grid;
@@ -574,10 +618,10 @@
     }
 
     .feature {
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 20px;
       padding: 36px 30px;
-      border: 1px solid rgba(155, 127, 212, 0.2);
+      border: 1px solid var(--border);
     }
 
     .feature-icon-wrap {
@@ -593,7 +637,7 @@
     .feature-icon-wrap i { font-size: 28px; }
 
     .feature h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 500;
       margin-bottom: 10px;
@@ -617,17 +661,27 @@
 
     footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--rose); }
+    footer a:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; border-radius: 2px; }
 
-    /* ── Mobile ── */
+    /* ── Responsive ── */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .hero { padding: 72px 24px 48px; }
-      .mini-block { width: 90px; height: 90px; }
       .hero h1 { font-size: 38px; }
+      .mini-block { width: 90px; height: 90px; }
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
+      .bundles { padding: 64px 24px; }
+      .bundle-card { flex-direction: column; padding: 36px 28px; gap: 32px; }
+      .bundle-preview { width: 100%; height: 240px; }
       .why { padding: 64px 24px; }
       .features { grid-template-columns: 1fr; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -638,7 +692,7 @@
        ============================================ -->
   <nav>
     <a class="logo" href="#">
-      <img src="favicon.png" alt="The Universal Notion">
+      <img src="favicon.png" alt="The Universal Notion logo">
       The Universal Notion
     </a>
     <a href="#templates" class="nav-cta">Browse Blocks</a>
@@ -661,34 +715,35 @@
       </div>
     </section>
 
-    <!-- Scrolling preview of all 9 blocks — duplicated for seamless loop -->
-    <div class="marquee-wrap">
+    <!-- Scrolling preview strip — duplicated for seamless loop -->
+    <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee-track">
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;"><i class="ph-light ph-users-three"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;"><i class="ph-light ph-wallet"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;"><i class="ph-light ph-brain"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;"><i class="ph-light ph-notebook"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;"><i class="ph-light ph-heart"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;"><i class="ph-light ph-pencil-simple"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;"><i class="ph-light ph-briefcase"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;"><i class="ph-light ph-books"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;"><i class="ph-light ph-bread"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;"><i class="ph-light ph-house"></i></a>
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;"><i class="ph-light ph-users-three"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;" tabindex="-1"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;" tabindex="-1"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;" tabindex="-1"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;" tabindex="-1"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;" tabindex="-1"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;" tabindex="-1"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;" tabindex="-1"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;" tabindex="-1"><i class="ph-light ph-house"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;" tabindex="-1"><i class="ph-light ph-users-three"></i></a>
+        <!-- Duplicate for seamless loop -->
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1"><i class="ph-light ph-wallet"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;" tabindex="-1"><i class="ph-light ph-brain"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;" tabindex="-1"><i class="ph-light ph-notebook"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;" tabindex="-1"><i class="ph-light ph-heart"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/ofnhi" style="background:#6090B8;" tabindex="-1"><i class="ph-light ph-pencil-simple"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/nmvuey" style="background:#D4886A;" tabindex="-1"><i class="ph-light ph-briefcase"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/erzgsu" style="background:#C09040;" tabindex="-1"><i class="ph-light ph-books"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;" tabindex="-1"><i class="ph-light ph-bread"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;" tabindex="-1"><i class="ph-light ph-house"></i></a>
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;" tabindex="-1"><i class="ph-light ph-users-three"></i></a>
       </div>
     </div>
   </div><!-- /hero-wrap -->
 
-  <div class="divider">
+  <div class="divider" aria-hidden="true">
     <i class="ph-fill ph-flower-lotus"></i>
   </div>
 
@@ -876,17 +931,15 @@
       </div>
       <!-- END CARD -->
 
-
     </div>
   </section>
 
   <!-- ============================================
        EDIT: Bundles & Deals section
-       Update href on bundle-btn with Gumroad link when ready
        ============================================ -->
   <section class="bundles">
-    <i class="ph-fill ph-sparkle bundles-deco" style="top: -60px; right: 80px;"></i>
-    <i class="ph-fill ph-sparkle bundles-deco" style="bottom: -40px; left: 40px; font-size: 120px;"></i>
+    <i class="ph-fill ph-sparkle bundles-deco" style="top: -60px; right: 80px;" aria-hidden="true"></i>
+    <i class="ph-fill ph-sparkle bundles-deco" style="bottom: -40px; left: 40px; font-size: 120px;" aria-hidden="true"></i>
     <div class="bundles-inner">
       <div class="section-label"><i class="ph-fill ph-gift"></i> Bundles & Deals</div>
       <h2 class="section-title">The whole vibe, at once.</h2>
@@ -907,11 +960,10 @@
           <div class="bundle-price-row">
             <span class="bundle-was">$49.90</span>
             <span class="bundle-price">$14.99</span>
-            <!-- EDIT: Add Gumroad bundle link below -->
             <a href="https://universalnotion.gumroad.com/l/ntuncf" onclick="fbq('track','AddToCart')" class="bundle-btn">Get the Bundle</a>
           </div>
         </div>
-        <img class="bundle-preview" src="covers/00-complete-system-bundle.png" alt="The Complete System Bundle">
+        <img class="bundle-preview" src="covers/00-complete-system-bundle.png" alt="The Complete Universal Notion System — all 10 templates">
       </div>
     </div>
   </section>
@@ -942,8 +994,8 @@
         </div>
 
         <div class="feature">
-          <div class="feature-icon-wrap" style="background: var(--lav-soft);">
-            <i class="ph-light ph-sparkle" style="color: var(--lavender);"></i>
+          <div class="feature-icon-wrap" style="background: var(--rose-soft);">
+            <i class="ph-light ph-sparkle" style="color: var(--rose);"></i>
           </div>
           <h3>Beautifully aesthetic</h3>
           <p>Every template is designed to feel as good as it looks — because your workspace should inspire you.</p>
@@ -954,7 +1006,7 @@
   </section>
 
   <!-- ============================================
-       EDIT: Footer
+       EDIT: Footer — DO NOT change policy links or email
        ============================================ -->
   <footer>
     <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
@@ -967,6 +1019,7 @@
   </footer>
 
   <script>
+    /* Fire FB pixel ViewContent when templates section scrolls into view */
     const templatesSection = document.getElementById('templates');
     const observer = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting) {
