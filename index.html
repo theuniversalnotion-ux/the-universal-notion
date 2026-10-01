@@ -1103,6 +1103,342 @@
       animation: sticker-wobble 3.8s ease-in-out infinite;
     }
 
+    /* ═══════════════════════════════════════════════════════════════
+       BUILDER — Bundle Builder (builder.js)
+       To remove: delete this block + <script src="builder.js">
+    ═══════════════════════════════════════════════════════════════ */
+    .builder-section {
+      padding: 80px 24px 60px;
+      background: #fdf7f2;
+      position: relative;
+    }
+    .builder-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .builder-section .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-accent);
+      font-size: 0.85rem;
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .builder-section .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--espresso);
+      margin: 0 0 8px;
+    }
+    .builder-section .section-sub {
+      font-family: var(--font-body);
+      color: #6b5c54;
+      font-size: 1rem;
+      margin: 0 0 36px;
+    }
+
+    /* Chip picker */
+    .builder-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .builder-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 2px solid #e8ddd7;
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--espresso);
+      width: 90px;
+      transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+      position: relative;
+    }
+    .builder-chip:hover,
+    .builder-chip:focus-visible {
+      border-color: var(--rose);
+      box-shadow: 0 4px 14px rgba(201,75,106,0.15);
+      outline: none;
+    }
+    .builder-chip[aria-pressed="true"] {
+      border-color: var(--rose);
+      background: #fff5f7;
+      box-shadow: 0 4px 16px rgba(201,75,106,0.2);
+    }
+    .builder-chip-img-wrap {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .builder-chip-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.22s;
+    }
+    .builder-chip:hover .builder-chip-img { transform: scale(1.07); }
+    .builder-chip-check {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201,75,106,0.82);
+      color: #fff;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.18s;
+      border-radius: 8px;
+    }
+    .builder-chip[aria-pressed="true"] .builder-chip-check { opacity: 1; }
+    .builder-chip-name {
+      text-align: center;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    /* Board */
+    .builder-board {
+      background: #fff;
+      border: 2px solid #e8ddd7;
+      border-radius: 20px;
+      padding: 20px 24px 16px;
+      margin-bottom: 24px;
+      min-height: 200px;
+      position: relative;
+      background-image: repeating-linear-gradient(
+        transparent, transparent 27px, #f0e9e3 27px, #f0e9e3 28px
+      ),
+      repeating-linear-gradient(
+        90deg, transparent, transparent 27px, #f0e9e3 27px, #f0e9e3 28px
+      );
+    }
+    .builder-board-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .builder-board-label {
+      font-family: var(--font-accent);
+      font-size: 1rem;
+      color: var(--espresso);
+      opacity: 0.7;
+    }
+    .builder-reset {
+      background: none;
+      border: 1.5px solid #e8ddd7;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: #8c7b74;
+      padding: 4px 14px;
+      cursor: pointer;
+      transition: border-color 0.16s, color 0.16s;
+    }
+    .builder-reset:hover { border-color: var(--rose); color: var(--rose); }
+    .builder-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      min-height: 120px;
+    }
+    .builder-empty-state {
+      font-family: var(--font-accent);
+      font-size: 1rem;
+      color: #bba89f;
+      align-self: center;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      padding: 28px 0;
+    }
+    .builder-board-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1.5px solid #f0e9e3;
+    }
+    .builder-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .builder-count {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: #8c7b74;
+    }
+    .builder-total {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--espresso);
+      letter-spacing: -0.01em;
+    }
+
+    /* Polaroid slot */
+    .builder-slot {
+      position: relative;
+      width: 90px;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 6px 22px;
+      box-shadow: 0 4px 18px rgba(60,30,20,0.10);
+      transform: rotate(var(--slot-rot, 0deg));
+      transform-origin: center bottom;
+      flex-shrink: 0;
+    }
+    .builder-slot-tape {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 14px;
+      background: rgba(251,218,176,0.75);
+      border-radius: 2px;
+    }
+    .builder-slot-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+    }
+    .builder-slot-name {
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-accent);
+      font-size: 0.6rem;
+      color: var(--espresso);
+      padding: 0 4px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .builder-slot-remove {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      background: var(--rose);
+      color: #fff;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 0.16s, transform 0.16s;
+    }
+    .builder-slot:hover .builder-slot-remove,
+    .builder-slot:focus-within .builder-slot-remove { opacity: 1; }
+    .builder-slot-remove:hover { transform: scale(1.15); }
+
+    /* Nudge */
+    .builder-nudge {
+      background: linear-gradient(135deg, #fff5f7 0%, #fff9f0 100%);
+      border: 1.5px solid var(--rose);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .builder-nudge[hidden] { display: none; }
+    .builder-nudge-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .builder-nudge-text {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--espresso);
+      margin: 0 0 10px;
+      line-height: 1.55;
+      flex: 1;
+    }
+    .builder-nudge-cta {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: filter 0.18s;
+    }
+    .builder-nudge-cta:hover { filter: brightness(1.1); }
+
+    /* Individual buy links */
+    .builder-links { margin-top: 4px; }
+    .builder-links[hidden] { display: none; }
+    .builder-links-heading {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: #8c7b74;
+      margin: 0 0 12px;
+    }
+    .builder-links-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .builder-link-btn {
+      display: inline-block;
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: filter 0.18s, transform 0.16s;
+    }
+    .builder-link-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    /* Touch: always show remove button */
+    @media (hover: none) {
+      .builder-slot-remove { opacity: 1; }
+    }
+    /* Mobile: tighter chip grid */
+    @media (max-width: 540px) {
+      .builder-section { padding: 60px 16px 48px; }
+      .builder-chip { width: 76px; font-size: 0.66rem; }
+      .builder-chip-img-wrap { width: 48px; height: 48px; }
+      .builder-board { padding: 16px 14px 14px; }
+      .builder-nudge { flex-direction: column; }
+      .builder-nudge-cta { align-self: flex-start; }
+    }
+
     /* ── Reduced motion: disable everything ── */
     @media (prefers-reduced-motion: reduce) {
       .marquee-track { animation: none; }
@@ -1582,5 +1918,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
   <script src="animations.js"></script>
+  <script src="builder.js"></script>
 </body>
 </html>
