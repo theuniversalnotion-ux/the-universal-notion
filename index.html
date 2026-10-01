@@ -1104,6 +1104,49 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════
+       FILTERS — Category Filter Chips (filters.js)
+       To remove: delete this block + <script src="filters.js">
+    ═══════════════════════════════════════════════════════════════ */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 32px;
+    }
+    .filter-chip {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1.5px solid #e8ddd7;
+      background: #fff;
+      color: var(--espresso);
+      cursor: pointer;
+      transition: border-color 0.18s, background 0.18s, color 0.18s, box-shadow 0.18s;
+      white-space: nowrap;
+    }
+    .filter-chip:hover:not(.filter-chip--active) {
+      border-color: #c8b8b0;
+      box-shadow: 0 2px 8px rgba(60,30,20,0.08);
+    }
+    .filter-chip:focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 2px;
+    }
+    .filter-chip--active {
+      background: var(--chip-bg, var(--espresso));
+      color: var(--chip-color, #fff);
+      border-color: transparent;
+      box-shadow: 0 3px 12px rgba(60,30,20,0.15);
+    }
+    /* "All" chip active uses espresso */
+    .filter-chip--active:first-child {
+      background: var(--espresso);
+      color: #fff;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
        BUILDER — Bundle Builder (builder.js)
        To remove: delete this block + <script src="builder.js">
     ═══════════════════════════════════════════════════════════════ */
@@ -1918,6 +1961,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
   <script src="animations.js"></script>
+  <script src="filters.js"></script>
   <script src="builder.js"></script>
 </body>
 </html>
