@@ -535,48 +535,94 @@
     .buy-btn:hover { opacity: 0.85; }
     .buy-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-    /* ── Bundles ── */
+    /* ── Bundles — visual centerpiece ── */
     .bundles {
-      background: #F7EEE9;
+      /* Dot-grid: classic scrapbook backing paper */
+      background-color: #F5EDE7;
+      background-image: radial-gradient(circle, rgba(201,75,106,0.12) 1.3px, transparent 1.3px);
+      background-size: 22px 22px;
       padding: 96px 64px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* lets tape + sticker poke outside */
     }
 
     .bundles-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 1; }
 
     .bundles .section-label { background: var(--rose); }
 
+    /* Doodled down-arrow between heading and card */
+    .bundles-arrow {
+      display: block;
+      width: 28px;
+      height: 44px;
+      margin: 6px auto 0;
+      opacity: 0.45;
+    }
+
+    /* The bundle card — a large "pinned note" on the board */
     .bundle-card {
       background: var(--card-bg);
-      border-radius: 28px;
-      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      border: 1.5px solid rgba(0,0,0,0.07);
       padding: 52px 56px;
       display: flex;
       gap: 56px;
       align-items: center;
       position: relative;
-      overflow: hidden;
+      overflow: visible;    /* tape + sticker can poke out */
       margin-top: 52px;
-      box-shadow: 0 8px 48px rgba(201, 75, 106, 0.10);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.08),
+        0 20px 60px rgba(201,75,106,0.13),
+        0 0 0 1px rgba(0,0,0,0.04);
+      transform: rotate(-0.4deg); /* subtle lean — big note pinned to board */
     }
 
+    /* Tape strips pinning the bundle card */
+    .bundle-tape {
+      position: absolute;
+      width: 88px;
+      height: 22px;
+      background: linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 13px),
+        linear-gradient(180deg, rgba(240,228,192,0.92), rgba(240,228,192,0.72));
+      border-top: 1px solid rgba(180,150,90,0.18);
+      border-bottom: 1px solid rgba(180,150,90,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      z-index: 5;
+    }
+
+    .bundle-tape--tl { top: -10px; left: 52px;  transform: rotate(-3.5deg); }
+    .bundle-tape--tr { top: -10px; right: 140px; transform: rotate(2.5deg);  }
+
+    /* "Save 70%" — circular sale sticker, pops out of the card corner */
     .bundle-save {
       position: absolute;
-      top: 28px;
-      right: 28px;
+      top: -22px;
+      right: 36px;
+      width: 92px;
+      height: 92px;
       background: var(--rose);
       color: #fff;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-accent);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 8px 20px;
-      border-radius: 100px;
-      box-shadow: 0 4px 12px rgba(201, 75, 106, 0.35);
+      line-height: 1.1;
+      text-align: center;
+      transform: rotate(13deg);
+      box-shadow: 2px 3px 0 rgba(0,0,0,0.15), 0 6px 22px rgba(201,75,106,0.42);
+      z-index: 10;
+      user-select: none;
     }
+
+    .bundle-save-label { font-size: 11px; font-weight: 400; opacity: 0.9; }
+    .bundle-save-pct   { font-size: 24px; font-weight: 700; }
 
     .bundle-title-tag {
       display: inline-flex;
@@ -588,9 +634,10 @@
       letter-spacing: 0.3px;
       background: var(--rose-soft);
       color: var(--rose);
-      padding: 5px 16px;
-      border-radius: 100px;
+      padding: 4px 14px;
+      border-radius: 4px;
       margin-bottom: 18px;
+      transform: rotate(-1deg);
     }
 
     .bundle-card h3 {
@@ -663,20 +710,43 @@
     .bundle-btn:hover { opacity: 0.85; }
     .bundle-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-    .bundle-preview {
-      width: 320px;
-      height: 320px;
-      border-radius: 20px;
-      object-fit: cover;
+    /* Bundle image in a polaroid frame — opposite tilt to the card */
+    .bundle-polaroid {
       flex-shrink: 0;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      background: #fff;
+      padding: 10px 10px 40px;
+      border-radius: 3px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 10px 32px rgba(0,0,0,0.14);
+      transform: rotate(2.8deg);
+      position: relative;
     }
 
+    .bundle-preview {
+      width: 276px;
+      height: 276px;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* Handwritten caption on the polaroid bottom */
+    .bundle-polaroid-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Decorative sparkle icons (background flair) */
     .bundles-deco {
       position: absolute;
-      color: var(--rose-soft);
-      font-size: 180px;
-      opacity: 0.5;
+      color: rgba(201,75,106,0.12);
       pointer-events: none;
     }
 
@@ -760,8 +830,17 @@
       .divider { padding: 0 24px; }
       .templates { padding: 64px 24px; }
       .bundles { padding: 64px 24px; }
-      .bundle-card { flex-direction: column; padding: 36px 28px; gap: 32px; }
-      .bundle-preview { width: 100%; height: 240px; }
+      .bundle-card {
+        flex-direction: column;
+        padding: 36px 28px 48px;
+        gap: 32px;
+        transform: none; /* flatten tilt on mobile */
+      }
+      .bundle-tape { display: none; }
+      .bundle-save { top: -18px; right: 20px; width: 78px; height: 78px; }
+      .bundle-save-pct { font-size: 20px; }
+      .bundle-polaroid { transform: none; }
+      .bundle-preview { width: 100%; height: auto; aspect-ratio: 1; }
       .why { padding: 64px 24px; }
       .features { grid-template-columns: 1fr; }
     }
@@ -1050,15 +1129,33 @@
        EDIT: Bundles & Deals section
        ============================================ -->
   <section class="bundles">
-    <i class="ph-fill ph-sparkle bundles-deco" style="top: -60px; right: 80px;" aria-hidden="true"></i>
-    <i class="ph-fill ph-sparkle bundles-deco" style="bottom: -40px; left: 40px; font-size: 120px;" aria-hidden="true"></i>
+    <!-- Decorative flair — large background sparkles -->
+    <i class="ph-fill ph-sparkle bundles-deco" style="font-size:200px; top:-40px; right:60px;"  aria-hidden="true"></i>
+    <i class="ph-fill ph-sparkle bundles-deco" style="font-size:120px; bottom:40px; left:30px;" aria-hidden="true"></i>
+
     <div class="bundles-inner">
       <div class="section-label"><i class="ph-fill ph-gift"></i> Bundles & Deals</div>
       <h2 class="section-title">The whole vibe, at once.</h2>
       <p class="section-sub">Get every single block for one magical price.</p>
 
+      <!-- Doodled arrow pointing down to the bundle card -->
+      <svg class="bundles-arrow" aria-hidden="true" viewBox="0 0 28 48" fill="none">
+        <path d="M14,4 C14,4 8,18 8,34 C8,42 14,44 14,44" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8,38 L14,45 L20,38" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
       <div class="bundle-card">
-        <span class="bundle-save">Save 70%</span>
+        <!-- Tape strips pinning the card -->
+        <div class="bundle-tape bundle-tape--tl" aria-hidden="true"></div>
+        <div class="bundle-tape bundle-tape--tr" aria-hidden="true"></div>
+
+        <!-- Circular "Save 70%" sticker -->
+        <div class="bundle-save" aria-label="Save 70%">
+          <span class="bundle-save-label">Save</span>
+          <span class="bundle-save-pct">70%</span>
+        </div>
+
+        <!-- Text content -->
         <div>
           <div class="bundle-title-tag"><i class="ph-fill ph-sparkle"></i> Best Value</div>
           <h3>The Complete Universal<br>Notion System</h3>
@@ -1075,7 +1172,13 @@
             <a href="https://universalnotion.gumroad.com/l/ntuncf" onclick="fbq('track','AddToCart')" class="bundle-btn">Get the Bundle</a>
           </div>
         </div>
-        <img class="bundle-preview" src="covers/00-complete-system-bundle.png" alt="The Complete Universal Notion System — all 10 templates">
+
+        <!-- Cover image in a polaroid frame — tilted opposite to the card -->
+        <div class="bundle-polaroid">
+          <img class="bundle-preview" src="covers/00-complete-system-bundle.png"
+               alt="The Complete Universal Notion System — all 10 templates included">
+          <span class="bundle-polaroid-caption">all 10 templates ✦</span>
+        </div>
       </div>
     </div>
   </section>
