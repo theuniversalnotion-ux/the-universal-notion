@@ -27,19 +27,30 @@
     document.querySelector('.bundle-price')?.textContent.replace(/[^0-9.]/g, '')
   ) || 14.99;
 
-  /* ── Scrape template data from existing .card elements ───────────────
-     Reading from the DOM means no duplicated data — if a product name,
-     link, or price changes in the HTML, the builder picks it up.
+  /* ── Load template data from window.PRODUCTS (products.js) or DOM ────
+     window.PRODUCTS is the canonical source; DOM scraping is the
+     progressive-enhancement fallback if products.js fails to load.
   ─────────────────────────────────────────────────────────────────────── */
-  const templates = [...document.querySelectorAll('.card')].map((card, i) => ({
-    id:       i,
-    name:     card.querySelector('h3')?.textContent.trim()                || `Block ${i + 1}`,
-    link:     card.querySelector('.buy-btn')?.getAttribute('href')        || '#',
-    cover:    card.querySelector('.card-photo img')?.getAttribute('src')  || '',
-    btnColor: card.querySelector('.buy-btn')?.style.background            || 'var(--rose)',
-    category: card.querySelector('.card-tag')?.textContent.trim()         || '',
-    fbqCall:  card.querySelector('.buy-btn')?.getAttribute('onclick')     || '',
-  }));
+  const domCards = [...document.querySelectorAll('.card')];
+  const templates = (window.PRODUCTS && window.PRODUCTS.length)
+    ? window.PRODUCTS.map(p => ({
+        id:       p.id,
+        name:     p.name,
+        link:     p.url,
+        cover:    p.images[0] || '',
+        btnColor: p.btnColor,
+        category: p.category,
+        fbqCall:  p.fbq || '',
+      }))
+    : domCards.map((card, i) => ({
+        id:       i,
+        name:     card.querySelector('h3')?.textContent.trim()               || `Block ${i + 1}`,
+        link:     card.querySelector('.buy-btn')?.getAttribute('href')       || '#',
+        cover:    card.querySelector('.card-photo img')?.getAttribute('src') || '',
+        btnColor: card.querySelector('.buy-btn')?.style.background           || 'var(--rose)',
+        category: card.querySelector('.card-tag')?.textContent.trim()        || '',
+        fbqCall:  card.querySelector('.buy-btn')?.getAttribute('onclick')    || '',
+      }));
 
   if (!templates.length) return; /* bail silently if no cards exist */
 

@@ -6,13 +6,23 @@
   <title>The Universal Notion – Aesthetic Notion Templates</title>
   <meta name="description" content="Beautiful, modular Notion templates — pick the blocks you need, build the workspace you want. Starting at $4.99.">
 
+  <link rel="canonical" href="https://theuniversalnotion.com/">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="The Universal Notion">
-  <meta property="og:description" content="Beautiful, modular Notion templates. Pick your blocks, build your notion.">
+  <meta property="og:title" content="The Universal Notion — Aesthetic Notion Templates, $4.99 Each">
+  <meta property="og:description" content="Beautiful, modular Notion templates. Pick your blocks, build your notion. Starting at $4.99.">
   <meta property="og:image" content="https://theuniversalnotion.com/covers/00-complete-system-bundle.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://theuniversalnotion.com">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Universal Notion">
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Universal Notion — Aesthetic Notion Templates">
+  <meta name="twitter:description" content="Beautiful, modular Notion templates starting at $4.99. Pick the blocks you need, build your dream workspace.">
+  <meta name="twitter:image" content="https://theuniversalnotion.com/covers/00-complete-system-bundle.png">
 
   <!-- DO NOT REMOVE: Pinterest domain verification + tracking -->
   <meta name="p:domain_verify" content="89be76dc90300fe7c7200bf9b4214d1c"/>
@@ -313,10 +323,17 @@
       font-size: 17px;
       color: var(--muted);
       max-width: 460px;
-      margin: 0 auto 48px;
+      margin: 0 auto 24px;
       line-height: 1.75;
       font-weight: 300;
     }
+    .hero-block-explainer {
+      font-size: 14px !important;
+      margin: 0 auto 36px !important;
+      color: #9a8880 !important;
+      font-weight: 400 !important;
+    }
+    .hero-block-explainer strong { color: var(--espresso); font-weight: 600; }
 
     .hero-btns {
       display: flex;
@@ -739,6 +756,13 @@
 
     .bundle-btn:hover { opacity: 0.85; }
     .bundle-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+    .bundle-separately-note {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 10px;
+    }
+    .bundle-separately-note strong { color: rgba(255,255,255,0.9); }
 
     /* Bundle image in a polaroid frame — opposite tilt to the card */
     .bundle-polaroid {
@@ -2210,9 +2234,233 @@
       .card-sticker.wobbling { animation: none; }
       * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
+
+
+    /* ═══════════════════════════════════════════════════════════════
+       BUNDLE BANNER — slim dismissible top bar (faq.js + inline script)
+    ═══════════════════════════════════════════════════════════════ */
+    .bundle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 9px 48px 9px 20px;
+      background: var(--espresso);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      position: relative;
+      z-index: 1001;
+    }
+    .bundle-bar[hidden] { display: none; }
+    .bundle-bar strong { font-weight: 700; }
+    .bundle-bar-cta {
+      display: inline-block;
+      color: var(--espresso);
+      background: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.16s;
+      flex-shrink: 0;
+    }
+    .bundle-bar-cta:hover { opacity: 0.85; }
+    .bundle-bar-close {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 4px;
+    }
+    .bundle-bar-close:hover { color: #fff; }
+    .bundle-bar-close:focus-visible { outline: 2px solid rgba(255,255,255,0.6); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FAQ ACCORDION — faq.js
+    ═══════════════════════════════════════════════════════════════ */
+    .faq-section {
+      padding: 80px 24px 64px;
+      background: var(--bg);
+    }
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .faq-section .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-accent);
+      font-size: 0.85rem;
+      color: var(--rose);
+      border: 1.5px solid var(--rose);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 12px;
+    }
+    .faq-section .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--espresso);
+      margin: 0 0 40px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1.5px solid var(--border);
+    }
+    .faq-item:first-child { border-top: 1.5px solid var(--border); }
+    .faq-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 4px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--espresso);
+      transition: color 0.16s;
+    }
+    .faq-trigger:hover { color: var(--rose); }
+    .faq-trigger:focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .faq-q { flex: 1; }
+    .faq-icon { flex-shrink: 0; color: var(--rose); transition: transform 0.22s ease; }
+    .faq-trigger[aria-expanded="true"] .faq-icon { transform: rotate(180deg); }
+    .faq-panel {
+      overflow: hidden;
+    }
+    .faq-answer {
+      padding: 0 4px 22px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #5c4838;
+      line-height: 1.7;
+    }
+    .faq-answer a { color: var(--rose); text-decoration: underline; }
+    .faq-answer strong { font-weight: 600; color: var(--espresso); }
+    .faq-confirm {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #C94B6A;
+      background: #fff5f7;
+      border: 1px solid #f0c4cc;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: var(--font-body);
+    }
+    @media (max-width: 540px) {
+      .faq-section { padding: 60px 16px 48px; }
+      .faq-trigger { font-size: 0.9rem; padding: 16px 2px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       QUICKLOOK GALLERY additions
+    ═══════════════════════════════════════════════════════════════ */
+    .ql-gallery-controls {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .ql-gallery-controls[hidden] { display: none; }
+    .ql-gallery-prev, .ql-gallery-next {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--espresso);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .ql-gallery-prev:hover, .ql-gallery-next:hover { background: #fff; }
+    .ql-gallery-dots { display: flex; gap: 6px; }
+    .ql-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      transition: background 0.2s;
+    }
+    .ql-dot--active { background: #fff; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MADE-BY SOCIAL LINKS
+    ═══════════════════════════════════════════════════════════════ */
+    .made-by-social {
+      display: flex;
+      gap: 12px;
+      margin: 16px 0 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .made-by-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-accent);
+      font-size: 0.78rem;
+      color: var(--espresso);
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      transition: border-color 0.16s, color 0.16s;
+    }
+    .made-by-social a:hover { border-color: var(--rose); color: var(--rose); }
+    .made-by-build-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: var(--font-accent);
+      font-size: 0.82rem;
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,75,106,0.3);
+      transition: border-color 0.16s;
+    }
+    .made-by-build-link:hover { border-color: var(--rose); }
+
   </style>
 </head>
 <body>
+
+  <!-- EDIT: Bundle announcement bar — change text or link as needed -->
+  <div class="bundle-bar" id="bundle-bar" role="region" aria-label="Bundle offer">
+    <p>
+      <strong>All 10 blocks for $14.99</strong>
+      <span aria-hidden="true"> · </span>
+      <span>Save 70% vs buying separately</span>
+    </p>
+    <a href="#bundle" class="bundle-bar-cta">Get the Bundle</a>
+    <button class="bundle-bar-close" type="button" aria-label="Dismiss offer banner">×</button>
+  </div>
 
   <!-- Scroll progress tape strip + custom cursor (driven by animations.js) -->
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -2268,6 +2516,7 @@
       </svg>
 
       <p>Mix and match beautiful building blocks to create the Notion workspace you've always imagined.</p>
+      <p class="hero-block-explainer">A <strong>block</strong> is a ready-made Notion template — grab just what you need, or get the whole set for $14.99.</p>
       <div class="hero-btns">
         <a href="#templates" class="btn-primary">Browse Blocks</a>
         <a href="https://universalnotion.gumroad.com" class="btn-secondary">Visit Our Store</a>
@@ -2294,8 +2543,8 @@
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/cphel" style="background:#C07858;" tabindex="-1"><i class="ph-light ph-bread"></i></a>
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/uszrz" style="background:#70A868;" tabindex="-1"><i class="ph-light ph-house"></i></a>
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/jisidl" style="background:#A07BC8;" tabindex="-1"><i class="ph-light ph-users-three"></i></a>
-        <!-- Duplicate for seamless loop -->
-        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1"><i class="ph-light ph-wallet"></i></a>
+        <!-- Duplicate set for seamless loop — aria-hidden so screen readers skip it -->
+        <a class="mini-block" href="https://universalnotion.gumroad.com/l/coxpw" style="background:#8AAF8A;" tabindex="-1" aria-hidden="true"><i class="ph-light ph-wallet" aria-hidden="true"></i></a>
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/ijqbc" style="background:#9B7FD4;" tabindex="-1"><i class="ph-light ph-brain"></i></a>
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/phlsor" style="background:#E8A0A8;" tabindex="-1"><i class="ph-light ph-notebook"></i></a>
         <a class="mini-block" href="https://universalnotion.gumroad.com/l/sagwrd" style="background:#6BA878;" tabindex="-1"><i class="ph-light ph-heart"></i></a>
@@ -2334,7 +2583,7 @@
         <div class="card-body">
           <div class="card-tag" style="background: #E8D8F5; color: #8060B0;">Social</div>
           <h3>Group Hug</h3>
-          <p>Track plans, memories, and everything in between with your favourite people — all in one shared space.</p>
+          <p>Track plans, memories, and everything in between with your favorite people — all in one shared space.</p>
           <div class="card-footer">
             <span class="price">$4.99</span>
             <a href="https://universalnotion.gumroad.com/l/jisidl" onclick="fbq('track','AddToCart')" class="buy-btn" style="background: #A07BC8;">Get Block</a>
@@ -2550,10 +2799,13 @@
             <span><i class="ph-fill ph-check-circle"></i> Mix & match across your workspace</span>
           </div>
           <div class="bundle-price-row">
-            <span class="bundle-was">$49.90<svg class="strikethrough-svg" viewBox="0 0 64 6" fill="none" aria-hidden="true" preserveAspectRatio="none"><line class="strikethrough-line" x1="1" y1="3" x2="63" y2="3" stroke="#C94B6A" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+            <span class="bundle-was"><span class="bundle-was-amount">$49.90</span><svg class="strikethrough-svg" viewBox="0 0 64 6" fill="none" aria-hidden="true" preserveAspectRatio="none"><line class="strikethrough-line" x1="1" y1="3" x2="63" y2="3" stroke="#C94B6A" stroke-width="2.5" stroke-linecap="round"/></svg></span>
             <span class="bundle-price">$14.99</span>
             <a href="https://universalnotion.gumroad.com/l/ntuncf" onclick="fbq('track','AddToCart')" class="bundle-btn">Get the Bundle</a>
           </div>
+          <p class="bundle-separately-note">
+            <span id="bundle-separately-price">$49.90</span> if bought individually — bundle saves you <strong>70%</strong>
+          </p>
         </div>
 
         <!-- Cover image in a polaroid frame — tilted opposite to the card -->
@@ -2632,11 +2884,18 @@
        → The role tags below reflect what you built — edit or remove any
        → To remove this section entirely: delete from here to END MADE BY
        ============================================ -->
+  <!-- ============================================
+       EDIT: Made by section
+       Replace [MY NAME] with your name if different from Ella
+       Replace [ONE-LINE BIO] with your own blurb
+       Replace [SOCIAL LINKS] hrefs and labels with real links
+       ============================================ -->
   <section class="made-by">
     <div class="made-by-card">
       <div class="made-by-tape" aria-hidden="true"></div>
       <span class="made-by-eyebrow">✦ Made by</span>
       <h2 class="made-by-name">Ella</h2>
+      <!-- EDIT: replace with your one-line bio -->
       <p class="made-by-bio">Fintech student building at the intersection of design and data.</p>
       <div class="made-by-roles">
         <span>Brand identity</span>
@@ -2648,6 +2907,21 @@
       <a href="mailto:theuniversalnotion@gmail.com" class="made-by-cta">
         <i class="ph-light ph-envelope"></i> Get in touch
       </a>
+      <!-- EDIT: replace [SOCIAL LINKS] hrefs and labels with your real profiles -->
+      <div class="made-by-social">
+        <a href="#[SOCIAL LINKS]" target="_blank" rel="noopener noreferrer">
+          <i class="ph-light ph-instagram-logo" aria-hidden="true"></i> Instagram
+        </a>
+        <a href="#[SOCIAL LINKS]" target="_blank" rel="noopener noreferrer">
+          <i class="ph-light ph-tiktok-logo" aria-hidden="true"></i> TikTok
+        </a>
+        <a href="#[SOCIAL LINKS]" target="_blank" rel="noopener noreferrer">
+          <i class="ph-light ph-linkedin-logo" aria-hidden="true"></i> LinkedIn
+        </a>
+      </div>
+      <a href="behind-the-build.html" class="made-by-build-link">
+        Read the case study →
+      </a>
     </div>
   </section>
   <!-- END MADE BY -->
@@ -2655,14 +2929,22 @@
   <!-- ============================================
        EDIT: Footer — DO NOT change policy links or email
        ============================================ -->
+  <!-- EDIT: Footer — DO NOT change existing policy links or email.
+       Replace [SOCIAL LINKS] with real profile URLs. -->
   <footer>
     <a class="footer-logo" href="#">The Universal Notion</a>
-    <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a></p>
+    <p>© 2026 The Universal Notion &nbsp;·&nbsp; <a href="https://universalnotion.gumroad.com">Gumroad Store</a> &nbsp;·&nbsp; <a href="behind-the-build.html">Behind the Build</a></p>
     <p style="margin-top: 10px;">
       <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
       <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp;
       <a href="refund.html">Refund Policy</a> &nbsp;·&nbsp;
       <a href="mailto:theuniversalnotion@gmail.com">Contact</a>
+    </p>
+    <!-- EDIT: replace href="#[SOCIAL LINKS]" with real profile URLs, or remove this line -->
+    <p style="margin-top: 10px; font-size: 12px;">
+      <a href="#[SOCIAL LINKS]">Instagram</a> &nbsp;·&nbsp;
+      <a href="#[SOCIAL LINKS]">TikTok</a> &nbsp;·&nbsp;
+      <a href="#[SOCIAL LINKS]">LinkedIn</a>
     </p>
   </footer>
 
@@ -2678,6 +2960,22 @@
     observer.observe(templatesSection);
   </script>
 
+  <!-- Bundle bar dismiss (no GSAP dependency) -->
+  <script>
+    (function () {
+      var bar = document.getElementById('bundle-bar');
+      if (!bar) return;
+      if (sessionStorage.getItem('bundle-bar-dismissed')) { bar.hidden = true; return; }
+      bar.querySelector('.bundle-bar-close').addEventListener('click', function () {
+        bar.hidden = true;
+        try { sessionStorage.setItem('bundle-bar-dismissed', '1'); } catch (_) {}
+      });
+    })();
+  </script>
+
+  <!-- products.js must load before all feature scripts so window.PRODUCTS is ready -->
+  <script src="products.js"></script>
+
   <!-- GSAP + ScrollTrigger (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -2689,5 +2987,6 @@
   <script src="quiz.js"></script>
   <script src="draggable.js"></script>
   <script src="delights.js"></script>
+  <script src="faq.js"></script>
 </body>
 </html>

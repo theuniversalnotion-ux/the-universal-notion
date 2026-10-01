@@ -48,23 +48,37 @@
     },
   ];
 
-  /* ── Read template data from existing cards ───────────────────────── */
+  /* ── Read template data: window.PRODUCTS first, DOM fallback ─────── */
   const cards = [...document.querySelectorAll('#templates .card')];
   if (!cards.length) return;
 
-  const templates = cards.map(card => ({
-    name:     card.querySelector('h3')?.textContent.trim()           || '',
-    desc:     card.querySelector('.card-body p')?.textContent.trim() || '',
-    cover:    card.querySelector('.card-photo img')?.src             || '',
-    coverAlt: card.querySelector('.card-photo img')?.alt             || '',
-    tagText:  card.querySelector('.card-tag')?.textContent.trim()    || '',
-    tagBg:    card.querySelector('.card-tag')?.style.background      || '',
-    tagColor: card.querySelector('.card-tag')?.style.color           || '',
-    link:     card.querySelector('.buy-btn')?.href                   || '#',
-    btnColor: card.querySelector('.buy-btn')?.style.background       || 'var(--rose)',
-    fbq:      card.querySelector('.buy-btn')?.getAttribute('onclick')|| '',
-    price:    card.querySelector('.price')?.textContent.trim()       || '$4.99',
-  }));
+  const templates = (window.PRODUCTS && window.PRODUCTS.length)
+    ? window.PRODUCTS.map(p => ({
+        name:     p.name,
+        desc:     p.desc,
+        cover:    p.images[0] || '',
+        coverAlt: p.alt,
+        tagText:  p.category,
+        tagBg:    p.tagBg,
+        tagColor: p.tagColor,
+        link:     p.url,
+        btnColor: p.btnColor,
+        fbq:      p.fbq || '',
+        price:    p.price,
+      }))
+    : cards.map(card => ({
+        name:     card.querySelector('h3')?.textContent.trim()           || '',
+        desc:     card.querySelector('.card-body p')?.textContent.trim() || '',
+        cover:    card.querySelector('.card-photo img')?.src             || '',
+        coverAlt: card.querySelector('.card-photo img')?.alt             || '',
+        tagText:  card.querySelector('.card-tag')?.textContent.trim()    || '',
+        tagBg:    card.querySelector('.card-tag')?.style.background      || '',
+        tagColor: card.querySelector('.card-tag')?.style.color           || '',
+        link:     card.querySelector('.buy-btn')?.href                   || '#',
+        btnColor: card.querySelector('.buy-btn')?.style.background       || 'var(--rose)',
+        fbq:      card.querySelector('.buy-btn')?.getAttribute('onclick')|| '',
+        price:    card.querySelector('.price')?.textContent.trim()       || '$4.99',
+      }));
 
   /* ── Build the section ────────────────────────────────────────────── */
   const section = document.createElement('section');
