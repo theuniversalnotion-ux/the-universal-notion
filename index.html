@@ -392,29 +392,37 @@
       padding: 5px 16px;
       border-radius: 100px;
       margin-bottom: 18px;
+      transform: rotate(-1.5deg);
+      transform-origin: left center;
     }
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: 44px;
+      font-size: clamp(42px, 6.5vw, 78px);
       font-weight: 500;
-      letter-spacing: -0.5px;
+      letter-spacing: -2px;
+      line-height: 1.02;
       margin-bottom: 10px;
     }
 
     .section-sub {
       color: var(--muted);
       font-size: 15px;
-      margin-bottom: 56px;
+      margin-bottom: 36px;
       font-weight: 300;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 36px;
-      padding: 20px 8px; /* breathing room for tilted cards */
+      gap: 30px;
+      padding: 20px 8px 80px; /* extra bottom lets staggered cards breathe */
+      align-items: start;     /* cards don't stretch to row height */
     }
+
+    /* Vertical stagger — middle col drops down, right col drops slightly */
+    .card:nth-child(3n+2) { margin-top: 48px; }
+    .card:nth-child(3n+3) { margin-top: 24px; }
 
     /* ── Cards — Polaroid style ── */
     .card {
@@ -772,10 +780,14 @@
     /* Flex row: feature — arrow — feature — arrow — feature */
     .features {
       display: flex;
-      align-items: stretch;
+      align-items: flex-start;
       gap: 0;
       margin-top: 52px;
     }
+
+    /* Stagger the step cards so they cascade diagonally */
+    .features > .feature:nth-child(3) { margin-top: 44px; }
+    .features > .feature:nth-child(5) { margin-top: 88px; }
 
     /* Dashed arrow between steps */
     .step-connector {
@@ -1015,8 +1027,13 @@
       .bundle-polaroid { transform: none; }
       .bundle-preview { width: 100%; height: auto; aspect-ratio: 1; }
       .why { padding: 64px 24px; }
+      /* Reset card stagger on mobile */
+      .card:nth-child(3n+2),
+      .card:nth-child(3n+3) { margin-top: 0; }
       /* Stack features vertically on mobile */
-      .features { flex-direction: column; gap: 20px; }
+      .features { flex-direction: column; gap: 20px; align-items: stretch; }
+      .features > .feature:nth-child(3),
+      .features > .feature:nth-child(5) { margin-top: 0; }
       .step-connector { display: none; }
       .made-by-card { padding: 40px 28px; transform: none; }
     }
@@ -2178,7 +2195,7 @@
     <div class="grid">
 
       <!-- TEMPLATE CARD — Social -->
-      <div class="card" style="--tilt: 1.5deg">
+      <div class="card" style="--tilt: 3.5deg">
         <span class="card-sticker card-sticker--new">✦ New</span>
         <div class="card-photo">
           <img src="covers/10-group-hug.png" alt="Group Hug — Notion template for tracking plans and memories with friends" loading="lazy">
@@ -2196,7 +2213,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Finance -->
-      <div class="card" style="--tilt: -2deg">
+      <div class="card" style="--tilt: -4.5deg">
         <span class="card-sticker card-sticker--gold">★ Best Seller</span>
         <div class="card-photo">
           <img src="covers/01-budget-finance-hub.png" alt="Budget + Finance Hub — Notion template for tracking income, expenses and savings" loading="lazy">
@@ -2214,7 +2231,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Productivity -->
-      <div class="card" style="--tilt: 1deg">
+      <div class="card" style="--tilt: 2.5deg">
         <div class="card-photo">
           <img src="covers/02-second-brain.png" alt="Second Brain — Notion template for capturing ideas, notes and projects" loading="lazy">
         </div>
@@ -2231,7 +2248,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Lifestyle -->
-      <div class="card" style="--tilt: -1.5deg">
+      <div class="card" style="--tilt: -3.5deg">
         <div class="card-photo">
           <img src="covers/03-romanticize-journal.png" alt="Romanticize Your Life Journal — Notion daily journal template" loading="lazy">
         </div>
@@ -2248,7 +2265,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Health -->
-      <div class="card" style="--tilt: 2deg">
+      <div class="card" style="--tilt: 4deg">
         <div class="card-photo">
           <img src="covers/04-health-medical-tracker.png" alt="Health + Medical Tracker — Notion template for appointments and health goals" loading="lazy">
         </div>
@@ -2265,7 +2282,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Creator -->
-      <div class="card" style="--tilt: -1deg">
+      <div class="card" style="--tilt: -2.5deg">
         <div class="card-photo">
           <img src="covers/05-content-creation-hub.png" alt="Content Creation Hub — Notion template for planning and scheduling content" loading="lazy">
         </div>
@@ -2282,7 +2299,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Business -->
-      <div class="card" style="--tilt: 2.5deg">
+      <div class="card" style="--tilt: 3deg">
         <div class="card-photo">
           <img src="covers/06-client-admin-hub.png" alt="Client + Admin Hub — Notion template for managing clients and freelance projects" loading="lazy">
         </div>
@@ -2299,7 +2316,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Reading -->
-      <div class="card" style="--tilt: -2.5deg">
+      <div class="card" style="--tilt: -4deg">
         <div class="card-photo">
           <img src="covers/07-universal-reading-log.png" alt="Universal Reading Log — Notion template for tracking books with ratings and notes" loading="lazy">
         </div>
@@ -2316,7 +2333,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Food -->
-      <div class="card" style="--tilt: 1.5deg">
+      <div class="card" style="--tilt: 2deg">
         <div class="card-photo">
           <img src="covers/08-bread-board.png" alt="The Bread Board — Notion recipe board template for meal planning" loading="lazy">
         </div>
@@ -2333,7 +2350,7 @@
       <!-- END CARD -->
 
       <!-- TEMPLATE CARD — Home -->
-      <div class="card" style="--tilt: -1deg">
+      <div class="card" style="--tilt: -3.5deg">
         <div class="card-photo">
           <img src="covers/09-appliance-tracker.png" alt="Appliance Tracker — Notion template for home appliances and warranties" loading="lazy">
         </div>
