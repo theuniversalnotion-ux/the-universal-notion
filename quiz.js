@@ -115,7 +115,7 @@
               <p class="quiz-result-desc"></p>
               <div class="quiz-result-footer">
                 <span class="quiz-result-price"></span>
-                <a class="quiz-result-buy" href="#" target="_blank" rel="noopener noreferrer">
+                <a class="quiz-result-buy" href="#" target="_blank" rel="noopener noreferrer" data-gumroad-overlay-checkout="true">
                   Get Block <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
                 </a>
               </div>

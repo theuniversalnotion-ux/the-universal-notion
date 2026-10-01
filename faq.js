@@ -18,15 +18,15 @@
   const FAQ_ITEMS = [
     {
       q: 'How do I add a template to my Notion workspace?',
-      a: `After purchasing, Gumroad will send you a link to the template. Open the link in your browser, then click the "Duplicate" button in the top-right corner of the Notion page to add it to your workspace — no setup required. <span class="faq-confirm">[CONFIRM: verify Gumroad delivery method before publishing]</span>`,
+      a: `After purchasing, Gumroad will email you a link to the template. Open the link in your browser, then click the <strong>"Duplicate"</strong> button in the top-right corner of the Notion page to add it to your workspace — no setup required.`,
     },
     {
       q: 'Does it work with the free Notion plan?',
-      a: `Notion templates work by duplicating a page to your workspace, which is available on all Notion plans including the free tier. However, certain advanced Notion features (such as synced databases or advanced automations) may require a paid plan. <span class="faq-confirm">[CONFIRM before publishing]</span>`,
+      a: `Yes — duplicating a template to your workspace works on all Notion plans, including the free tier. All blocks use standard Notion features available to everyone.`,
     },
     {
       q: 'Does it work on mobile?',
-      a: `Notion has a mobile app for iOS and Android, and your workspace — including any templates — is accessible there. The templates are optimized for desktop use, but will display in Notion's mobile app. <span class="faq-confirm">[CONFIRM mobile experience before publishing]</span>`,
+      a: `Notion has a mobile app for iOS and Android, and your duplicated templates are fully accessible there. The templates are designed for desktop but work in Notion's mobile app.`,
     },
     {
       q: 'Is this a one-time purchase or a subscription?',
@@ -34,7 +34,7 @@
     },
     {
       q: 'Can I customize the templates?',
-      a: `Yes — every template is a fully editable Notion page. You can rename sections, add new databases, change colors, remove anything you don't need, and make it completely yours. <span class="faq-confirm">[CONFIRM any customization limits before publishing]</span>`,
+      a: `Yes — every template is a fully editable Notion page. You can rename sections, add new databases, change colors, remove anything you don't need, and make it completely yours.`,
     },
     {
       q: 'What is your refund policy?',
@@ -42,11 +42,11 @@
     },
     {
       q: 'Can I use the templates for client work or commercial projects?',
-      a: `<span class="faq-confirm">[CONFIRM: add your license terms here — e.g. personal use only, or personal + commercial use]</span>`,
+      a: `Each purchase covers personal use for your own Notion workspace. If you'd like to use a template for client delivery, team licensing, or any commercial purpose, email us at <a href="mailto:theuniversalnotion@gmail.com">theuniversalnotion@gmail.com</a> to discuss terms.`,
     },
     {
       q: 'What if I buy the bundle and already own some individual blocks?',
-      a: `<span class="faq-confirm">[CONFIRM: clarify your policy — e.g. no partial credit, or contact to discuss]</span>`,
+      a: `The bundle and individual blocks are separate purchases — there's no partial credit or upgrade pricing at this time. If you have a specific situation you'd like to discuss, reach out at <a href="mailto:theuniversalnotion@gmail.com">theuniversalnotion@gmail.com</a>.`,
     },
   ];
 

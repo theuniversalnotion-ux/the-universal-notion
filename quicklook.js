@@ -96,7 +96,7 @@
         <p class="ql-desc"></p>
         <div class="ql-footer">
           <span class="ql-price"></span>
-          <a class="ql-buy" href="#" target="_blank" rel="noopener noreferrer">
+          <a class="ql-buy" href="#" target="_blank" rel="noopener noreferrer" data-gumroad-overlay-checkout="true">
             Get Block <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
           </a>
         </div>

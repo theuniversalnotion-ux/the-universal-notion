@@ -309,6 +309,7 @@
         const onclickAttr = t.fbqCall ? ` onclick="${esc(t.fbqCall)}"` : '';
         return `<a href="${esc(t.link)}"${onclickAttr}
                    target="_blank" rel="noopener noreferrer"
+                   data-gumroad-overlay-checkout="true"
                    class="builder-link-btn" role="listitem"
                    style="background: ${esc(t.btnColor)}"
                    aria-label="Buy ${esc(t.name)} on Gumroad — $${BLOCK_PRICE.toFixed(2)}">

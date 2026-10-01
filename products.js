@@ -52,7 +52,7 @@ window.PRODUCTS = [
     images:   ['covers/01-budget-finance-hub.png'],
     alt:      'Budget + Finance Hub Notion template cover — income, expenses and savings tracker',
     desc:     'Track income, expenses, savings goals, and subscriptions all in one aesthetic workspace.',
-    badge:    'bestseller',
+    badge:    null,
     tilt:     '-4.5deg',
   },
   {
