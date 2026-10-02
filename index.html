@@ -1126,20 +1126,28 @@
     }
 
 
-    /* Pink accent dot — trails behind system cursor, purely decorative */
-    #cursor-dot {
+    /* Tiny heart cursor accent + sparkle trail */
+    #cursor-dot,
+    #cursor-trail-1, #cursor-trail-2, #cursor-trail-3 {
       position: fixed; top: 0; left: 0;
-      width: 8px; height: 8px;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      opacity: 0; will-change: transform;
+      user-select: none;
+    }
+    #cursor-dot {
+      font-size: 13px;
+      color: var(--rose);
+      filter: drop-shadow(0 1px 3px rgba(201,75,106,0.35));
+    }
+    #cursor-trail-1, #cursor-trail-2, #cursor-trail-3 {
+      width: 5px; height: 5px;
       background: var(--rose);
       border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      will-change: transform;
-      mix-blend-mode: multiply;
     }
-    @media (max-width: 768px) { #cursor-dot { display: none; } }
+    @media (max-width: 768px) {
+      #cursor-dot, #cursor-trail-1, #cursor-trail-2, #cursor-trail-3 { display: none; }
+    }
 
     /* Headline word spans — inline-block for per-word GSAP targeting */
     .h1-word { display: inline-block; }
@@ -2487,7 +2495,10 @@
 
   <!-- Scroll progress tape strip (driven by animations.js) -->
   <div id="scroll-progress" aria-hidden="true"></div>
-  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true">♥</div>
+  <div id="cursor-trail-1" aria-hidden="true"></div>
+  <div id="cursor-trail-2" aria-hidden="true"></div>
+  <div id="cursor-trail-3" aria-hidden="true"></div>
 
   <!-- ============================================
        EDIT: Site name + logo

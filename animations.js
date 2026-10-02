@@ -71,19 +71,61 @@ function initAnimations() {
   });
 
   /* ──────────────────────────────────────────────────────────────────
-     2. ACCENT DOT — small pink dot trails system cursor; desktop only
+     2. CURSOR — tiny heart with sparkle trail; desktop/non-touch only
   ────────────────────────────────────────────────────────────────── */
   const cursorDot = document.getElementById('cursor-dot');
+  const trails    = [
+    document.getElementById('cursor-trail-1'),
+    document.getElementById('cursor-trail-2'),
+    document.getElementById('cursor-trail-3'),
+  ].filter(Boolean);
+
   if (cursorDot && !isTouch) {
-    const xTo = gsap.quickTo(cursorDot, 'x', { duration: 0.12, ease: EASE.smooth });
-    const yTo = gsap.quickTo(cursorDot, 'y', { duration: 0.12, ease: EASE.smooth });
-    document.addEventListener('mousemove', e => {
-      xTo(e.clientX); yTo(e.clientY);
-      gsap.to(cursorDot, { opacity: 0.55, duration: 0.2, overwrite: 'auto' });
+    /* Main heart — fastest */
+    const hxTo = gsap.quickTo(cursorDot, 'x', { duration: 0.10, ease: EASE.smooth });
+    const hyTo = gsap.quickTo(cursorDot, 'y', { duration: 0.10, ease: EASE.smooth });
+
+    /* Trail dots — progressively slower (comet tail) */
+    const trailFns = trails.map((t, i) => ({
+      x: gsap.quickTo(t, 'x', { duration: 0.18 + i * 0.10, ease: EASE.smooth }),
+      y: gsap.quickTo(t, 'y', { duration: 0.18 + i * 0.10, ease: EASE.smooth }),
+    }));
+
+    /* Trail dot sizes: shrink further back */
+    trails.forEach((t, i) => {
+      const s = 1 - (i + 1) * 0.28;
+      gsap.set(t, { scale: s });
     });
-    document.addEventListener('mouseleave', () =>
-      gsap.to(cursorDot, { opacity: 0, duration: 0.3 })
-    );
+
+    document.addEventListener('mousemove', e => {
+      hxTo(e.clientX); hyTo(e.clientY);
+      trailFns.forEach(fn => { fn.x(e.clientX); fn.y(e.clientY); });
+      gsap.to(cursorDot, { opacity: 0.75, duration: 0.15, overwrite: 'auto' });
+      trails.forEach((t, i) =>
+        gsap.to(t, { opacity: 0.38 - i * 0.10, duration: 0.15, overwrite: 'auto' })
+      );
+    });
+
+    document.addEventListener('mouseleave', () => {
+      gsap.to([cursorDot, ...trails], { opacity: 0, duration: 0.3 });
+    });
+
+    /* Gentle heartbeat */
+    gsap.to(cursorDot, {
+      scale: 1.28, duration: 0.42, ease: 'sine.inOut',
+      repeat: -1, yoyo: true, repeatDelay: 0.5,
+    });
+
+    /* Bounce + grow on interactive hover */
+    const interactables = 'a, button, .buy-btn, .bundle-btn, .filter-chip, .quiz-option';
+    document.querySelectorAll(interactables).forEach(el => {
+      el.addEventListener('mouseenter', () =>
+        gsap.to(cursorDot, { scale: 1.9, duration: 0.22, ease: EASE.bounce, overwrite: true })
+      );
+      el.addEventListener('mouseleave', () =>
+        gsap.to(cursorDot, { scale: 1,   duration: 0.35, ease: EASE.spring, overwrite: true })
+      );
+    });
   }
 
   /* ──────────────────────────────────────────────────────────────────
@@ -291,7 +333,7 @@ function initAnimations() {
         gsap.to(card, {
           opacity: 1, y: 0, x: 0, rotation: tilt,
           duration: DUR.card,
-          ease: EASE.settle,
+          ease: 'back.out(2.2)',
           delay: col * 0.09 * I,
           onComplete() {
             card.querySelector('.card-sticker')?.classList.add('wobbling');
@@ -301,22 +343,106 @@ function initAnimations() {
     });
   });
 
-  /* ── Card hover: straighten, lift, zoom cover image ── */
+  /* ── Card hover: jiggle then lift ── */
   if (!isTouch) {
     allCards.forEach(card => {
       const tilt = parseFloat(getComputedStyle(card).getPropertyValue('--tilt')) || 0;
       const img  = card.querySelector('.card-photo img');
 
       card.addEventListener('mouseenter', () => {
-        gsap.to(card, { rotation: 0, y: -10 * I, duration: DUR.hover, ease: 'power2.out', overwrite: 'auto' });
-        if (img) gsap.to(img, { scale: 1.05, duration: 0.4, ease: 'power2.out' });
+        gsap.killTweensOf(card);
+        gsap.timeline()
+          .to(card, { rotation: tilt + 2.5, y: -3, duration: 0.07, ease: 'power1.out' })
+          .to(card, { rotation: tilt - 2,   y: -6, duration: 0.08, ease: 'power1.inOut' })
+          .to(card, { rotation: 0, y: -12 * I, duration: 0.38, ease: EASE.settle });
+        if (img) gsap.to(img, { scale: 1.07, duration: 0.4, ease: 'power2.out' });
       });
       card.addEventListener('mouseleave', () => {
-        gsap.to(card, { rotation: tilt, y: 0, duration: 0.55, ease: EASE.settle, overwrite: 'auto' });
+        gsap.killTweensOf(card);
+        gsap.to(card, { rotation: tilt, y: 0, duration: 0.6, ease: EASE.spring, overwrite: 'auto' });
         if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: 'power2.out' });
       });
     });
   }
+
+  /* ──────────────────────────────────────────────────────────────────
+     6b. LOGO HEARTBEAT — gentle pulse on the heart icon
+  ────────────────────────────────────────────────────────────────── */
+  const logoImg = document.querySelector('.logo img');
+  if (logoImg) {
+    gsap.to(logoImg, {
+      scale: 1.13, duration: 0.38, ease: 'power1.inOut',
+      repeat: -1, yoyo: true, repeatDelay: 1.1,
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────────
+     6c. SECTION LABELS — elastic pop on scroll
+  ────────────────────────────────────────────────────────────────── */
+  document.querySelectorAll('.section-label').forEach(label => {
+    gsap.set(label, { opacity: 0, scale: 0.6, rotation: -4 });
+    ScrollTrigger.create({
+      trigger: label,
+      start: 'top 91%',
+      onEnter: () => gsap.to(label, {
+        opacity: 1, scale: 1, rotation: -1.5,
+        duration: 0.55, ease: 'back.out(3)',
+      }),
+    });
+  });
+
+  /* ──────────────────────────────────────────────────────────────────
+     6d. BUY BUTTON CLICK SPARKLE — hearts + stars burst on click
+  ────────────────────────────────────────────────────────────────── */
+  const SPARKLE_SHAPES = ['♥', '✦', '✿', '★', '♥', '✦'];
+  const SPARKLE_COLORS = ['#C94B6A', '#E8B86D', '#C94B6A', '#A07BC8', '#E8B86D', '#C94B6A'];
+
+  function burstSparkles(x, y) {
+    const count = 9;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('span');
+      el.textContent = SPARKLE_SHAPES[i % SPARKLE_SHAPES.length];
+      el.style.cssText = [
+        'position:fixed',
+        `left:${x}px`, `top:${y}px`,
+        `font-size:${11 + Math.random() * 9}px`,
+        `color:${SPARKLE_COLORS[i % SPARKLE_COLORS.length]}`,
+        'pointer-events:none',
+        'z-index:9999',
+        'transform:translate(-50%,-50%)',
+        'user-select:none',
+      ].join(';');
+      document.body.appendChild(el);
+
+      const angle = (i / count) * 360 + Math.random() * 20;
+      const dist  = 44 + Math.random() * 36;
+      gsap.fromTo(el,
+        { x: 0, y: 0, opacity: 1, scale: 0, rotation: 0 },
+        {
+          x: Math.cos(angle * Math.PI / 180) * dist,
+          y: Math.sin(angle * Math.PI / 180) * dist - 16,
+          opacity: 0, scale: 1.1, rotation: Math.random() * 60 - 30,
+          duration: 0.65 + Math.random() * 0.25,
+          ease: 'power2.out',
+          onComplete: () => el.remove(),
+        }
+      );
+    }
+  }
+
+  document.querySelectorAll('.buy-btn, .bundle-btn').forEach(btn => {
+    btn.addEventListener('click', e => burstSparkles(e.clientX, e.clientY));
+  });
+
+  /* Filter chip click pop — event delegation since chips are JS-injected */
+  document.addEventListener('click', e => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    gsap.timeline()
+      .to(chip, { scale: 0.84, duration: 0.08, ease: 'power2.in' })
+      .to(chip, { scale: 1.08, duration: 0.14, ease: 'back.out(3)' })
+      .to(chip, { scale: 1,    duration: 0.22, ease: EASE.spring });
+  });
 
   /* ──────────────────────────────────────────────────────────────────
      7. MAGNETIC BUTTONS — "Get Block" + "Get the Bundle"
