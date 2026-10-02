@@ -71,6 +71,20 @@ function initAnimations() {
   });
 
   /* ──────────────────────────────────────────────────────────────────
+     2. ACCENT DOT — small pink dot trails system cursor; desktop only
+  ────────────────────────────────────────────────────────────────── */
+  const cursorDot = document.getElementById('cursor-dot');
+  if (cursorDot && !isTouch) {
+    const xTo = gsap.quickTo(cursorDot, 'x', { duration: 0.12, ease: EASE.smooth });
+    const yTo = gsap.quickTo(cursorDot, 'y', { duration: 0.12, ease: EASE.smooth });
+    document.addEventListener('mousemove', e => {
+      xTo(e.clientX); yTo(e.clientY);
+      gsap.to(cursorDot, { opacity: 0.55, duration: 0.2, overwrite: 'auto' });
+    });
+    document.addEventListener('mouseleave', () =>
+      gsap.to(cursorDot, { opacity: 0, duration: 0.3 })
+    );
+  }
 
   /* ──────────────────────────────────────────────────────────────────
      3. PAGE LOAD INTRO SEQUENCE — scrapbook pieces land in < 2 s
