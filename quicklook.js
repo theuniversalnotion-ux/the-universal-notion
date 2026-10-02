@@ -125,6 +125,7 @@
   function showImage(idx) {
     currentIdx = ((idx % currentCovers.length) + currentCovers.length) % currentCovers.length;
     coverImg.src = currentCovers[currentIdx];
+    coverImg.style.objectPosition = currentIdx === 0 ? '' : 'left top';
     galleryDots.querySelectorAll('.ql-dot').forEach((d, i) => {
       d.classList.toggle('ql-dot--active', i === currentIdx);
     });
@@ -173,6 +174,7 @@
     /* Populate fields */
     coverImg.src               = currentCovers[0];
     coverImg.alt               = d.coverAlt;
+    coverImg.style.objectPosition = '';
     tagEl.textContent          = d.tagText;
     tagEl.style.background     = d.tagBg;
     tagEl.style.color          = d.tagColor;

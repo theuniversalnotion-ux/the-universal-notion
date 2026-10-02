@@ -1067,13 +1067,11 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         gap: 16px;
-        /* Bleed to viewport edges, keep left padding for first card */
         margin-left: -24px;
         margin-right: -24px;
         padding: 20px 24px 32px;
-        /* Extra right gap so next card peeks in */
         padding-right: 48px;
-        align-items: start;
+        align-items: stretch;
       }
       .grid::-webkit-scrollbar { display: none; }
       .card {
@@ -1081,7 +1079,10 @@
         width: 260px;
         scroll-snap-align: start;
         transform: none !important;
+        display: flex;
+        flex-direction: column;
       }
+      .card .card-body { flex: 1; }
       /* Hide pushpins — they're offset for tilted cards, look wrong flat */
       .card::before { display: none; }
       /* Reset stagger margins */
@@ -1931,6 +1932,7 @@
     .builder-inner {
       max-width: 960px;
       margin: 0 auto;
+      text-align: center;
     }
     .builder-section .section-label {
       display: inline-flex;
@@ -1962,6 +1964,7 @@
     .builder-picker {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
       margin-bottom: 36px;
     }
