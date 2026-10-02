@@ -71,35 +71,6 @@ function initAnimations() {
   });
 
   /* ──────────────────────────────────────────────────────────────────
-     2. CUSTOM CURSOR — star sticker; desktop/non-touch only
-  ────────────────────────────────────────────────────────────────── */
-  const cursor = document.getElementById('cursor');
-  if (cursor && !isTouch) {
-    document.body.classList.add('no-cursor');
-
-    /* quickTo gives buttery-smooth cursor lag */
-    const xTo = gsap.quickTo(cursor, 'x', { duration: DUR.cursor, ease: EASE.smooth });
-    const yTo = gsap.quickTo(cursor, 'y', { duration: DUR.cursor, ease: EASE.smooth });
-
-    document.addEventListener('mousemove', e => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-      gsap.to(cursor, { opacity: 1, duration: 0.3, overwrite: 'auto' });
-    });
-    document.addEventListener('mouseleave', () =>
-      gsap.to(cursor, { opacity: 0, duration: 0.4 })
-    );
-
-    /* Grow + rotate on interactive elements */
-    document.querySelectorAll('a, button, .buy-btn, .bundle-btn').forEach(el => {
-      el.addEventListener('mouseenter', () =>
-        gsap.to(cursor, { scale: 1.85, rotation: 22, duration: 0.25, ease: EASE.settle })
-      );
-      el.addEventListener('mouseleave', () =>
-        gsap.to(cursor, { scale: 1, rotation: 0, duration: 0.4, ease: EASE.spring })
-      );
-    });
-  }
 
   /* ──────────────────────────────────────────────────────────────────
      3. PAGE LOAD INTRO SEQUENCE — scrapbook pieces land in < 2 s

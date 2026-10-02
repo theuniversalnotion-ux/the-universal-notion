@@ -1125,15 +1125,6 @@
       will-change: transform;
     }
 
-    /* Custom cursor — star sticker */
-    #cursor {
-      position: fixed; top: 0; left: 0;
-      pointer-events: none; z-index: 9999;
-      width: 26px; height: 26px;
-      transform: translate(-50%, -50%);
-      opacity: 0; will-change: transform;
-    }
-    body.no-cursor, body.no-cursor * { cursor: none !important; }
 
     /* Headline word spans — inline-block for per-word GSAP targeting */
     .h1-word { display: inline-block; }
@@ -1178,7 +1169,7 @@
     .bundle-preview-mini:nth-child(4) { bottom: 10%; right: 4%;  transform: rotate(-10deg); }
 
     @media (max-width: 768px) {
-      #cursor, .hero-arrow-wrap, .bundle-previews { display: none !important; }
+      .hero-arrow-wrap, .bundle-previews { display: none !important; }
     }
 
     /* ── Sticker wobble — class added by JS after card settles ── */
@@ -2479,14 +2470,8 @@
     <button class="bundle-bar-close" type="button" aria-label="Dismiss offer banner">×</button>
   </div>
 
-  <!-- Scroll progress tape strip + custom cursor (driven by animations.js) -->
+  <!-- Scroll progress tape strip (driven by animations.js) -->
   <div id="scroll-progress" aria-hidden="true"></div>
-  <div id="cursor" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="9" stroke="#C94B6A" stroke-width="1.5"/>
-      <circle cx="12" cy="12" r="2.5" fill="#C94B6A"/>
-    </svg>
-  </div>
 
   <!-- ============================================
        EDIT: Site name + logo
