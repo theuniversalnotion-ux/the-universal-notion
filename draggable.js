@@ -20,11 +20,6 @@
      On drag-start these are converted to px via getBoundingClientRect. */
   const PIECES = [
     {
-      id:   'dp-tape1',
-      html: '<div class="dp-tape-h"></div>',
-      xi: '2vw',  yi: '38vh', rot: -6,
-    },
-    {
       id:   'dp-star',
       html: `<svg class="dp-star" width="54" height="54" viewBox="0 0 52 52" aria-hidden="true">
         <polygon points="26,4 31,19 47,19 35,29 39,44 26,35 13,44 17,29 5,19 21,19"
