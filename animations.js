@@ -19,7 +19,6 @@ const DUR = {
   card:   0.72,  /* card settle on scroll               */
   hover:  0.32,  /* hover response time                 */
   bundle: 0.70,  /* bundle element entrances            */
-  cursor: 0.13,  /* cursor lag / smoothing              */
   price:  1.10,  /* price count-up duration             */
 };
 
@@ -70,63 +69,6 @@ function initAnimations() {
     onUpdate: self => gsap.set('#scroll-progress', { scaleX: self.progress }),
   });
 
-  /* ──────────────────────────────────────────────────────────────────
-     2. CURSOR — tiny heart with sparkle trail; desktop/non-touch only
-  ────────────────────────────────────────────────────────────────── */
-  const cursorDot = document.getElementById('cursor-dot');
-  const trails    = [
-    document.getElementById('cursor-trail-1'),
-    document.getElementById('cursor-trail-2'),
-    document.getElementById('cursor-trail-3'),
-  ].filter(Boolean);
-
-  if (cursorDot && !isTouch) {
-    /* Main heart — fastest */
-    const hxTo = gsap.quickTo(cursorDot, 'x', { duration: 0.10, ease: EASE.smooth });
-    const hyTo = gsap.quickTo(cursorDot, 'y', { duration: 0.10, ease: EASE.smooth });
-
-    /* Trail dots — progressively slower (comet tail) */
-    const trailFns = trails.map((t, i) => ({
-      x: gsap.quickTo(t, 'x', { duration: 0.18 + i * 0.10, ease: EASE.smooth }),
-      y: gsap.quickTo(t, 'y', { duration: 0.18 + i * 0.10, ease: EASE.smooth }),
-    }));
-
-    /* Trail dot sizes: shrink further back */
-    trails.forEach((t, i) => {
-      const s = 1 - (i + 1) * 0.28;
-      gsap.set(t, { scale: s });
-    });
-
-    document.addEventListener('mousemove', e => {
-      hxTo(e.clientX); hyTo(e.clientY);
-      trailFns.forEach(fn => { fn.x(e.clientX); fn.y(e.clientY); });
-      gsap.to(cursorDot, { opacity: 0.75, duration: 0.15, overwrite: 'auto' });
-      trails.forEach((t, i) =>
-        gsap.to(t, { opacity: 0.38 - i * 0.10, duration: 0.15, overwrite: 'auto' })
-      );
-    });
-
-    document.addEventListener('mouseleave', () => {
-      gsap.to([cursorDot, ...trails], { opacity: 0, duration: 0.3 });
-    });
-
-    /* Gentle heartbeat */
-    gsap.to(cursorDot, {
-      scale: 1.28, duration: 0.42, ease: 'sine.inOut',
-      repeat: -1, yoyo: true, repeatDelay: 0.5,
-    });
-
-    /* Bounce + grow on interactive hover */
-    const interactables = 'a, button, .buy-btn, .bundle-btn, .filter-chip, .quiz-option';
-    document.querySelectorAll(interactables).forEach(el => {
-      el.addEventListener('mouseenter', () =>
-        gsap.to(cursorDot, { scale: 1.9, duration: 0.22, ease: EASE.bounce, overwrite: true })
-      );
-      el.addEventListener('mouseleave', () =>
-        gsap.to(cursorDot, { scale: 1,   duration: 0.35, ease: EASE.spring, overwrite: true })
-      );
-    });
-  }
 
   /* ──────────────────────────────────────────────────────────────────
      3. PAGE LOAD INTRO SEQUENCE — scrapbook pieces land in < 2 s
