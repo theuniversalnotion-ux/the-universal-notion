@@ -2,7 +2,6 @@
    gumroad-overlay.js — Checkout experience polish
    ───────────────────────────────────────────────────────────────────────
    Mobile  : removes overlay checkout so Gumroad opens as a full page
-             (cleaner on small screens, avoids cramped iframe)
    Desktop : rose-blur backdrop + fade-scale entry on the Gumroad panel
 ═══════════════════════════════════════════════════════════════════════ */
 
@@ -30,7 +29,7 @@
     return;
   }
 
-  /* ── Desktop: inject backdrop + animation keyframe ─────────────── */
+  /* ── Desktop: backdrop styles + keyframe ───────────────────────── */
   const style = document.createElement('style');
   style.textContent = `
     @keyframes gumroad-scalein {
@@ -55,37 +54,48 @@
   backdrop.id = 'gr-backdrop';
   document.body.appendChild(backdrop);
 
-  const show = () => backdrop.classList.add('gr-open');
-  const hide = () => backdrop.classList.remove('gr-open');
+  let pollTimer = null;
 
-  /* Show backdrop on any buy-button click */
+  function show() {
+    backdrop.classList.add('gr-open');
+
+    /* Poll every 400 ms for Gumroad's iframe — reliable regardless of
+       whether Gumroad removes nodes or just toggles visibility */
+    clearInterval(pollTimer);
+    pollTimer = setInterval(() => {
+      const hasOverlay = !!document.querySelector('iframe[src*="gumroad"]');
+      if (!hasOverlay) hide();
+    }, 400);
+  }
+
+  function hide() {
+    backdrop.classList.remove('gr-open');
+    clearInterval(pollTimer);
+    pollTimer = null;
+  }
+
+  /* Clicking the backdrop itself (= clicking outside Gumroad panel) closes it */
+  backdrop.addEventListener('click', hide);
+
+  /* Show on any buy-button click */
   document.addEventListener('click', e => {
     if (e.target.closest('[data-gumroad-overlay-checkout]')) show();
   });
 
-  /* Watch body for Gumroad's overlay element appearing / disappearing */
+  /* Animate Gumroad's container when it's added to the DOM */
   new MutationObserver(mutations => {
     for (const m of mutations) {
-
       for (const node of m.addedNodes) {
         if (node.nodeType !== 1) continue;
         const key = ((node.id || '') + ' ' + (typeof node.className === 'string' ? node.className : '')).toLowerCase();
         if (key.includes('gumroad')) {
-          /* Fade + scale the panel in */
           node.style.animation = 'gumroad-scalein 0.34s cubic-bezier(0.34,1.4,0.64,1) both';
         }
       }
-
-      for (const node of m.removedNodes) {
-        if (node.nodeType !== 1) continue;
-        const key = ((node.id || '') + ' ' + (typeof node.className === 'string' ? node.className : '')).toLowerCase();
-        if (key.includes('gumroad')) hide();
-      }
-
     }
   }).observe(document.body, { childList: true });
 
-  /* ESC key hides our backdrop after Gumroad closes its own overlay */
+  /* ESC also clears our backdrop */
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') setTimeout(hide, 160);
   });

@@ -27,7 +27,7 @@
         <ellipse cx="20" cy="16" rx="7" ry="3.5" fill="rgba(255,255,255,0.32)"
                  transform="rotate(-20 20 16)"/>
       </svg>`,
-      xi: '88vw', yi: '18vh', rot: 18,
+      xi: '86vw', yi: '14vh', rot: 18,
     },
     {
       id:   'dp-flower',
@@ -43,7 +43,7 @@
           <ellipse cx="-3" cy="-3.5" rx="3.5" ry="2" fill="rgba(255,255,255,0.4)" transform="rotate(-20)"/>
         </g>
       </svg>`,
-      xi: '4vw', yi: '24vh', rot: -12,
+      xi: '4vw', yi: '52vh', rot: -12,
     },
     {
       id:   'dp-cloud',
@@ -52,7 +52,7 @@
               fill="#D4C5F0" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
         <ellipse cx="24" cy="19" rx="9" ry="4.5" fill="rgba(255,255,255,0.32)" transform="rotate(-12 24 19)"/>
       </svg>`,
-      xi: '3vw', yi: '52vh', rot: 6,
+      xi: '79vw', yi: '74vh', rot: 6,
     },
   ];
 
