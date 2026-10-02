@@ -29,11 +29,6 @@
       </svg>`,
       xi: '88vw', yi: '18vh', rot: 18,
     },
-    {
-      id:   'dp-stamp',
-      html: '<div class="dp-stamp" aria-hidden="true"><div class="dp-stamp-text">CUTE</div><div class="dp-stamp-star">✦</div></div>',
-      xi: '5vw',  yi: '55vh', rot: -14,
-    },
   ];
 
   /* ── Restore saved positions from localStorage ────────────────────── */
