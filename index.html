@@ -286,16 +286,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--gold-soft);
-      color: #7A5800;
-      border: 2px solid rgba(232,184,109,0.55);
+      background: rgba(201,75,106,0.07);
+      color: var(--rose);
+      border: 1.5px solid rgba(201,75,106,0.20);
       padding: 7px 20px;
-      border-radius: 6px;           /* rectangular sticker, not pill */
+      border-radius: 6px;
       font-family: var(--font-accent);
       font-size: 14px;
       font-weight: 700;
-      transform: rotate(-1.5deg);   /* slight tilt */
-      box-shadow: 2px 3px 0 rgba(0,0,0,0.10), 0 4px 14px rgba(0,0,0,0.05);
+      transform: rotate(-1.5deg);
+      box-shadow: 1px 2px 0 rgba(201,75,106,0.06), 0 4px 14px rgba(0,0,0,0.03);
       margin-bottom: 40px;
       cursor: default;
     }
@@ -1053,21 +1053,49 @@
       nav { padding: 16px 24px; }
       .hero { padding: 72px 24px 48px; }
       .hero h1 { font-size: 38px; }
-      /* Hide hero decorations on small screens */
       .hero-tape, .hero-doodle { display: none; }
       .hero-squiggle { width: 180px; }
-      /* Flatten card tilts on mobile — no room to tilt in a 1-col grid */
-      .card { transform: none !important; }
-      .grid { gap: 24px; padding: 8px 0; }
+
+      /* ── Product grid → horizontal swipe carousel ── */
+      .templates { padding: 64px 24px; }
+
+
+      .grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 16px;
+        /* Bleed to viewport edges, keep left padding for first card */
+        margin-left: -24px;
+        margin-right: -24px;
+        padding: 20px 24px 32px;
+        /* Extra right gap so next card peeks in */
+        padding-right: 48px;
+        align-items: start;
+      }
+      .grid::-webkit-scrollbar { display: none; }
+      .card {
+        flex-shrink: 0;
+        width: 260px;
+        scroll-snap-align: start;
+        transform: none !important;
+      }
+      /* Hide pushpins — they're offset for tilted cards, look wrong flat */
+      .card::before { display: none; }
+      /* Reset stagger margins */
+      .card:nth-child(3n+2),
+      .card:nth-child(3n+3) { margin-top: 0; }
+
       .mini-block { width: 90px; height: 90px; }
       .divider { padding: 0 24px; }
-      .templates { padding: 64px 24px; }
       .bundles { padding: 64px 24px; }
       .bundle-card {
         flex-direction: column;
         padding: 36px 28px 48px;
         gap: 32px;
-        transform: none; /* flatten tilt on mobile */
+        transform: none;
       }
       .bundle-tape { display: none; }
       .bundle-save { top: -18px; right: 20px; width: 78px; height: 78px; }
@@ -1075,10 +1103,6 @@
       .bundle-polaroid { transform: none; }
       .bundle-preview { width: 100%; height: auto; aspect-ratio: 1; }
       .why { padding: 64px 24px; }
-      /* Reset card stagger on mobile */
-      .card:nth-child(3n+2),
-      .card:nth-child(3n+3) { margin-top: 0; }
-      /* Stack features vertically on mobile */
       .features { flex-direction: column; gap: 20px; align-items: stretch; }
       .features > .feature:nth-child(3),
       .features > .feature:nth-child(5) { margin-top: 0; }
@@ -2219,6 +2243,20 @@
     @media (hover: none) {
       .builder-slot-remove { opacity: 1; }
     }
+
+    /* Filter bar → single scrollable row on mobile */
+    @media (max-width: 768px) {
+      .filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-left: -24px;
+        margin-right: -24px;
+        padding: 0 24px 0;
+      }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .filter-chip { flex-shrink: 0; }
+    }
     /* Mobile: tighter chip grid */
     @media (max-width: 540px) {
       .builder-section { padding: 60px 16px 48px; }
@@ -2444,8 +2482,9 @@
   <!-- Scroll progress tape strip + custom cursor (driven by animations.js) -->
   <div id="scroll-progress" aria-hidden="true"></div>
   <div id="cursor" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="#C94B6A" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L14.09 8.26L20.5 8.27L15.22 12.14L17.27 18.41L12 14.54L6.73 18.41L8.78 12.14L3.5 8.27L9.91 8.26L12 2Z"/>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="9" stroke="#C94B6A" stroke-width="1.5"/>
+      <circle cx="12" cy="12" r="2.5" fill="#C94B6A"/>
     </svg>
   </div>
 
