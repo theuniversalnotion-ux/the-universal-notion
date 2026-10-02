@@ -29,6 +29,31 @@
       </svg>`,
       xi: '88vw', yi: '18vh', rot: 18,
     },
+    {
+      id:   'dp-flower',
+      html: `<svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+        <g transform="translate(28,28)">
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F2A8BE" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F9BFD0" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F2A8BE" transform="rotate(120)"/>
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F9BFD0" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F2A8BE" transform="rotate(240)"/>
+          <ellipse cx="0" cy="-14" rx="6.5" ry="10.5" fill="#F9BFD0" transform="rotate(300)"/>
+          <circle r="9.5" fill="#F9E4A0" stroke="#fff" stroke-width="2.5"/>
+          <ellipse cx="-3" cy="-3.5" rx="3.5" ry="2" fill="rgba(255,255,255,0.4)" transform="rotate(-20)"/>
+        </g>
+      </svg>`,
+      xi: '4vw', yi: '24vh', rot: -12,
+    },
+    {
+      id:   'dp-cloud',
+      html: `<svg width="72" height="48" viewBox="0 0 72 48" aria-hidden="true">
+        <path d="M16 40 Q5 40 5 30 Q5 21 14 19 Q15 8 26 8 Q31 2 40 3 Q53 3 54 15 Q62 15 63 24 Q69 24 68 32 Q67 40 58 40 Z"
+              fill="#D4C5F0" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="24" cy="19" rx="9" ry="4.5" fill="rgba(255,255,255,0.32)" transform="rotate(-12 24 19)"/>
+      </svg>`,
+      xi: '3vw', yi: '52vh', rot: 6,
+    },
   ];
 
   /* ── Restore saved positions from localStorage ────────────────────── */
