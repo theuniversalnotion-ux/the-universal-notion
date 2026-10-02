@@ -336,7 +336,7 @@ function initAnimations() {
   /* ──────────────────────────────────────────────────────────────────
      6d. BUY BUTTON CLICK SPARKLE — hearts + stars burst on click
   ────────────────────────────────────────────────────────────────── */
-  const SPARKLE_SHAPES = ['♥', '✦', '✿', '★', '♥', '✦'];
+  const SPARKLE_SHAPES = ['✦', '✿', '★', '✦', '✿', '★'];
   const SPARKLE_COLORS = ['#C94B6A', '#E8B86D', '#C94B6A', '#A07BC8', '#E8B86D', '#C94B6A'];
 
   function burstSparkles(x, y) {
