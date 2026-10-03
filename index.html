@@ -458,28 +458,45 @@
       position: relative;
     }
 
-    /* Pushpin head — counter-rotates so pin appears vertical while card tilts */
+    /* Pushpin head — enamel-pin style: gem ball with white ring + needle shaft */
     .card::before {
       content: '';
       position: absolute;
-      top: -14px;
+      top: -18px;
       left: var(--pin-x, 50%);
       transform: translateX(-50%) rotate(calc(-1 * var(--tilt, 0deg)));
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       z-index: 10;
       pointer-events: none;
-      background: radial-gradient(circle at 36% 30%, rgba(255,255,255,0.52) 0%, transparent 40%),
-                  var(--pin-bg, #C94B6A);
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0) 50%),
+        radial-gradient(circle at 64% 68%, rgba(0,0,0,0.12) 0%, transparent 46%),
+        var(--pin-bg, #C94B6A);
       box-shadow:
-        0 3px 9px rgba(0,0,0,0.28),
-        inset 0 -2px 4px rgba(0,0,0,0.22),
-        inset 3px 3px 5px rgba(255,255,255,0.38);
+        0 0 0 2.5px #fff,
+        0 0 0 4px var(--pin-bg, #C94B6A),
+        0 5px 16px rgba(0,0,0,0.22),
+        0 2px 4px rgba(0,0,0,0.14);
     }
-    .card:nth-child(3n+1) { --pin-bg: #C94B6A; --pin-x: 46%; }
-    .card:nth-child(3n+2) { --pin-bg: #C4940E; --pin-x: 54%; }
-    .card:nth-child(3n)   { --pin-bg: #8B6BC4; --pin-x: 49%; }
+    /* Needle shaft */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: var(--pin-x, 50%);
+      transform: translateX(-50%) rotate(calc(-1 * var(--tilt, 0deg)));
+      width: 3px;
+      height: 16px;
+      background: linear-gradient(to bottom, #ccc 0%, #a0a0a0 60%, #787878 100%);
+      border-radius: 0 0 3px 3px;
+      z-index: 9;
+      pointer-events: none;
+    }
+    .card:nth-child(3n+1) { --pin-bg: #E0607A; --pin-x: 46%; }
+    .card:nth-child(3n+2) { --pin-bg: #F4AABA; --pin-x: 54%; }
+    .card:nth-child(3n)   { --pin-bg: #C94B6A; --pin-x: 49%; }
 
     /* Hover box-shadow + z-index — transform is handled by GSAP */
     .card:hover {
@@ -1084,7 +1101,7 @@
       }
       .card .card-body { flex: 1; }
       /* Hide pushpins — they're offset for tilted cards, look wrong flat */
-      .card::before { display: none; }
+      .card::before, .card::after { display: none; }
       /* Reset stagger margins */
       .card:nth-child(3n+2),
       .card:nth-child(3n+3) { margin-top: 0; }
