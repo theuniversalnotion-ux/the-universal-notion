@@ -1442,8 +1442,23 @@
     ═══════════════════════════════════════════════════════════════ */
     .quiz-section {
       padding: 80px 24px 64px;
-      background: #fff;
+      background: #FEF9F5;
+      position: relative;
+      overflow: hidden;
     }
+    .quiz-bg-doodle {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.13;
+      font-size: 3.2rem;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .quiz-bg-doodle--1 { top: 8%;  left: 3%;   font-size: 2.8rem; transform: rotate(-18deg); }
+    .quiz-bg-doodle--2 { top: 18%; right: 5%;  font-size: 2.2rem; transform: rotate(12deg);  }
+    .quiz-bg-doodle--3 { bottom: 12%; left: 8%; font-size: 2.5rem; transform: rotate(8deg);  }
+    .quiz-bg-doodle--4 { bottom: 8%; right: 3%; font-size: 2rem;   transform: rotate(-22deg); }
     .quiz-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -1511,14 +1526,10 @@
       filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.14));
     }
     .quiz-section .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-accent);
-      font-size: 0.85rem;
+      background: transparent;
       color: var(--rose);
       border: 1.5px solid var(--rose);
-      border-radius: 999px;
+      font-size: 0.85rem;
       padding: 4px 14px;
       margin-bottom: 12px;
     }
@@ -1537,11 +1548,12 @@
 
     /* Quiz card (the question area) */
     .quiz-card {
-      background: #fdf7f2;
+      background: #fff;
       border: 1.5px solid #e8ddd7;
       border-radius: 20px;
       padding: 32px 36px 36px;
       max-width: 600px;
+      box-shadow: 0 8px 28px rgba(60,30,20,0.08);
     }
     .quiz-progress {
       display: flex;
@@ -1549,19 +1561,19 @@
       justify-content: space-between;
       margin-bottom: 24px;
     }
-    .quiz-dots { display: flex; gap: 8px; }
-    .quiz-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #e8ddd7;
-      transition: background 0.24s, transform 0.24s;
+    .quiz-stars { display: flex; gap: 6px; }
+    .quiz-star {
+      font-size: 1.1rem;
+      color: #e8ddd7;
+      transition: color 0.24s, transform 0.24s, text-shadow 0.24s;
+      line-height: 1;
     }
-    .quiz-dot--active {
-      background: var(--rose);
-      transform: scale(1.25);
+    .quiz-star--active {
+      color: var(--rose);
+      transform: scale(1.35);
+      text-shadow: 0 0 8px rgba(201,75,106,0.4);
     }
-    .quiz-dot--done { background: var(--espresso); }
+    .quiz-star--done { color: var(--espresso); transform: scale(1.1); }
     .quiz-step {
       font-family: var(--font-body);
       font-size: 0.78rem;
@@ -1583,20 +1595,34 @@
     }
     .quiz-option {
       font-family: var(--font-body);
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: var(--espresso);
       background: #fff;
       border: 1.5px solid #e8ddd7;
-      border-radius: 14px;
-      padding: 14px 16px;
+      border-radius: 16px;
+      padding: 18px 12px 14px;
       cursor: pointer;
-      text-align: left;
+      text-align: center;
       line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       transition: border-color 0.18s, background 0.18s, box-shadow 0.18s, opacity 0.18s;
+      box-shadow: 0 2px 8px rgba(60,30,20,0.06);
+    }
+    .quiz-option-emoji {
+      font-size: 1.9rem;
+      line-height: 1;
+      display: block;
+    }
+    .quiz-option-text {
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
     .quiz-option:hover:not(:disabled) {
       border-color: var(--rose);
-      box-shadow: 0 4px 14px rgba(201,75,106,0.12);
+      box-shadow: 0 4px 14px rgba(201,75,106,0.14);
     }
     .quiz-option:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
     .quiz-option--selected {
@@ -1955,14 +1981,10 @@
       text-align: center;
     }
     .builder-section .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-accent);
-      font-size: 0.85rem;
+      background: transparent;
       color: var(--rose);
       border: 1.5px solid var(--rose);
-      border-radius: 999px;
+      font-size: 0.85rem;
       padding: 4px 14px;
       margin-bottom: 12px;
       letter-spacing: 0.02em;
@@ -2363,14 +2385,10 @@
       margin: 0 auto;
     }
     .faq-section .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-accent);
-      font-size: 0.85rem;
+      background: transparent;
       color: var(--rose);
       border: 1.5px solid var(--rose);
-      border-radius: 999px;
+      font-size: 0.85rem;
       padding: 4px 14px;
       margin-bottom: 12px;
     }
@@ -2997,7 +3015,7 @@
   <script src="filters.js"></script>
   <script src="quicklook.js"></script>
   <script src="builder.js"></script>
-  <script src="quiz.js"></script>
+  <script src="quiz.js?v=2"></script>
   <script src="draggable.js?v=4"></script>
   <script src="delights.js"></script>
   <script src="faq.js"></script>
