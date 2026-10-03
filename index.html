@@ -1442,11 +1442,13 @@
     ═══════════════════════════════════════════════════════════════ */
     .quiz-section {
       padding: 80px 24px 64px;
-      background:
-        radial-gradient(ellipse 60% 40% at 15% 20%, rgba(244,170,186,0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 35% at 85% 75%, rgba(212,197,240,0.20) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(249,228,160,0.10) 0%, transparent 60%),
-        #FEF9F5;
+      background-color: #FDF0EE;
+      background-image:
+        radial-gradient(circle, rgba(201,75,106,0.10) 1.5px, transparent 1.5px),
+        radial-gradient(ellipse 65% 55% at 8% 18%,  rgba(244,170,186,0.45) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 50% at 92% 80%, rgba(212,197,240,0.42) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 55% 45%, rgba(249,228,160,0.22) 0%, transparent 60%);
+      background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
       position: relative;
       overflow: hidden;
     }
@@ -1454,15 +1456,12 @@
       position: absolute;
       pointer-events: none;
       user-select: none;
-      opacity: 0.22;
-      font-size: 3.2rem;
-      color: var(--rose);
       line-height: 1;
     }
-    .quiz-bg-doodle--1 { top: 6%;    left: 2%;   font-size: 3.4rem; transform: rotate(-18deg); }
-    .quiz-bg-doodle--2 { top: 14%;   right: 3%;  font-size: 2.8rem; transform: rotate(14deg);  color: #B4AEDD; }
-    .quiz-bg-doodle--3 { bottom: 10%; left: 5%;  font-size: 3rem;   transform: rotate(8deg);   color: #F9E4A0; }
-    .quiz-bg-doodle--4 { bottom: 6%;  right: 2%; font-size: 2.4rem; transform: rotate(-24deg); }
+    .quiz-bg-doodle--1 { top: 5%;    left: 2%;   font-size: 4rem;  color: rgba(201,75,106,0.28); transform: rotate(-18deg); }
+    .quiz-bg-doodle--2 { top: 10%;   right: 2%;  font-size: 3.2rem; color: rgba(180,174,221,0.4); transform: rotate(14deg); }
+    .quiz-bg-doodle--3 { bottom: 8%; left: 4%;   font-size: 3.5rem; color: rgba(249,228,160,0.55); transform: rotate(8deg); }
+    .quiz-bg-doodle--4 { bottom: 5%; right: 2%;  font-size: 2.8rem; color: rgba(201,75,106,0.22); transform: rotate(-24deg); }
     .quiz-inner {
       max-width: 640px;
       margin: 0 auto;
@@ -1610,20 +1609,22 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: rgba(201,75,106,0.08);
+      background: rgba(201,75,106,0.09);
       color: var(--rose);
       flex-shrink: 0;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background 0.18s;
     }
-    .quiz-option-icon i {
-      font-size: 1.5rem;
-      line-height: 1;
-      display: block;
+    .quiz-option-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--rose);
+      flex-shrink: 0;
     }
     .quiz-option--selected .quiz-option-icon {
-      background: rgba(201,75,106,0.18);
+      background: rgba(201,75,106,0.2);
     }
     .quiz-how {
       display: flex;
@@ -3040,7 +3041,7 @@
   <script src="filters.js?v=2"></script>
   <script src="quicklook.js?v=2"></script>
   <script src="builder.js?v=2"></script>
-  <script src="quiz.js?v=5"></script>
+  <script src="quiz.js?v=6"></script>
   <script src="draggable.js?v=5"></script>
   <script src="delights.js"></script>
   <script src="faq.js"></script>
