@@ -9,28 +9,28 @@
     {
       q: 'Your ideal Sunday looks like...',
       options: [
-        { label: '☕  Brunch plans with everyone I love', scores: { 0: 3, 3: 1 } },
-        { label: '🍳  Testing a new recipe at home',      scores: { 8: 3, 9: 1 } },
-        { label: '📚  Lost in a book or three',           scores: { 7: 3, 2: 1 } },
-        { label: '🎨  Working on a creative project',     scores: { 5: 3, 2: 1 } },
+        { icon: 'ph-coffee',      label: 'Brunch with everyone I love', scores: { 0: 3, 3: 1 } },
+        { icon: 'ph-fork-knife',  label: 'Testing a new recipe',        scores: { 8: 3, 9: 1 } },
+        { icon: 'ph-books',       label: 'Lost in a book or three',     scores: { 7: 3, 2: 1 } },
+        { icon: 'ph-paint-brush', label: 'Working on a creative project', scores: { 5: 3, 2: 1 } },
       ],
     },
     {
       q: 'What would make your life feel better right now?',
       options: [
-        { label: '💸  Actually knowing where my money goes', scores: { 1: 3 } },
-        { label: '🌿  Getting on top of my health habits',   scores: { 4: 3, 3: 1 } },
-        { label: '🧠  Getting my ideas out of my head',      scores: { 2: 3, 5: 1 } },
-        { label: '📋  A clearer system for client work',     scores: { 6: 3, 1: 1 } },
+        { icon: 'ph-currency-dollar', label: 'Knowing where my money goes',     scores: { 1: 3 } },
+        { icon: 'ph-heartbeat',       label: 'Getting on top of my health',     scores: { 4: 3, 3: 1 } },
+        { icon: 'ph-brain',           label: 'Getting ideas out of my head',    scores: { 2: 3, 5: 1 } },
+        { icon: 'ph-clipboard-text',  label: 'A clearer system for clients',    scores: { 6: 3, 1: 1 } },
       ],
     },
     {
       q: 'Pick the word that speaks to you:',
       options: [
-        { label: '✨  Aesthetic',   scores: { 3: 3, 0: 1 } },
-        { label: '📊  Organised',   scores: { 1: 2, 6: 1, 4: 2 } },
-        { label: '🌟  Creative',    scores: { 5: 3, 7: 1 } },
-        { label: '🏡  Cosy',       scores: { 8: 2, 9: 3 } },
+        { icon: 'ph-sparkle',       label: 'Aesthetic',  scores: { 3: 3, 0: 1 } },
+        { icon: 'ph-list-checks',   label: 'Organised',  scores: { 1: 2, 6: 1, 4: 2 } },
+        { icon: 'ph-pencil-simple', label: 'Creative',   scores: { 5: 3, 7: 1 } },
+        { icon: 'ph-house',         label: 'Cosy',       scores: { 8: 2, 9: 3 } },
       ],
     },
   ];
@@ -169,17 +169,13 @@
     optionsEl.innerHTML = '';
 
     q.options.forEach((opt) => {
-      const parts = opt.label.split(/\s{2,}/);
-      const icon  = parts[0] || '';
-      const text  = parts.slice(1).join(' ') || opt.label;
-
       const btn = document.createElement('button');
       btn.type      = 'button';
       btn.className = 'quiz-option';
-      btn.setAttribute('aria-label', text);
+      btn.setAttribute('aria-label', opt.label);
       btn.innerHTML = `
-        <span class="quiz-option-emoji" aria-hidden="true">${icon}</span>
-        <span class="quiz-option-text">${text}</span>
+        <span class="quiz-option-icon" aria-hidden="true"><i class="ph-fill ph-${opt.icon}"></i></span>
+        <span class="quiz-option-text">${opt.label}</span>
       `;
 
       if (typeof gsap !== 'undefined') {
