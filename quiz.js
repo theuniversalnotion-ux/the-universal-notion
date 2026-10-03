@@ -89,8 +89,12 @@
   section.innerHTML = `
     <span class="quiz-bg-doodle quiz-bg-doodle--1" aria-hidden="true">✦</span>
     <span class="quiz-bg-doodle quiz-bg-doodle--2" aria-hidden="true">✿</span>
-    <span class="quiz-bg-doodle quiz-bg-doodle--3" aria-hidden="true">★</span>
-    <span class="quiz-bg-doodle quiz-bg-doodle--4" aria-hidden="true">✦</span>
+
+    <div class="quiz-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40 C240 80 480 0 720 40 C960 80 1200 0 1440 40 L1440 80 L0 80 Z" fill="#ffffff"/>
+      </svg>
+    </div>
 
     <div class="quiz-inner">
       <div class="quiz-left">

@@ -1444,27 +1444,36 @@
       padding: 80px 24px 64px;
       background-color: #FDF0EE;
       background-image:
-        radial-gradient(circle, rgba(201,75,106,0.10) 1.5px, transparent 1.5px),
-        radial-gradient(ellipse 65% 55% at 8% 18%,  rgba(244,170,186,0.45) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 50% at 92% 80%, rgba(212,197,240,0.42) 0%, transparent 65%),
-        radial-gradient(ellipse 45% 40% at 55% 45%, rgba(249,228,160,0.22) 0%, transparent 60%);
-      background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+        linear-gradient(rgba(201,75,106,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,75,106,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
       position: relative;
       overflow: hidden;
     }
+    .quiz-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .quiz-wave svg { display: block; width: 100%; height: 100%; }
     .quiz-bg-doodle {
       position: absolute;
       pointer-events: none;
       user-select: none;
       line-height: 1;
+      z-index: 1;
     }
-    .quiz-bg-doodle--1 { top: 5%;    left: 2%;   font-size: 4rem;  color: rgba(201,75,106,0.28); transform: rotate(-18deg); }
-    .quiz-bg-doodle--2 { top: 10%;   right: 2%;  font-size: 3.2rem; color: rgba(180,174,221,0.4); transform: rotate(14deg); }
-    .quiz-bg-doodle--3 { bottom: 8%; left: 4%;   font-size: 3.5rem; color: rgba(249,228,160,0.55); transform: rotate(8deg); }
-    .quiz-bg-doodle--4 { bottom: 5%; right: 2%;  font-size: 2.8rem; color: rgba(201,75,106,0.22); transform: rotate(-24deg); }
+    .quiz-bg-doodle--1 { top: 5%;  left: 2%;  font-size: 3.6rem; color: rgba(201,75,106,0.25); transform: rotate(-18deg); }
+    .quiz-bg-doodle--2 { top: 8%;  right: 2%; font-size: 2.8rem; color: rgba(201,75,106,0.18); transform: rotate(14deg); }
     .quiz-inner {
       max-width: 640px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
     .quiz-left { text-align: center; }
     .quiz-note {
@@ -3041,7 +3050,7 @@
   <script src="filters.js?v=2"></script>
   <script src="quicklook.js?v=2"></script>
   <script src="builder.js?v=2"></script>
-  <script src="quiz.js?v=6"></script>
+  <script src="quiz.js?v=7"></script>
   <script src="draggable.js?v=5"></script>
   <script src="delights.js"></script>
   <script src="faq.js"></script>
