@@ -218,16 +218,17 @@
     slot.dataset.id = id;
     slot.setAttribute('role', 'listitem');
     slot.style.setProperty('--slot-rot', `${rot}deg`);
+    slot.setAttribute('role', 'button');
+    slot.setAttribute('tabindex', '0');
+    slot.setAttribute('aria-label', `Remove ${esc(t.name)} from board`);
     slot.innerHTML = `
       <div class="builder-slot-tape" aria-hidden="true"></div>
       <img class="builder-slot-img" src="${esc(t.cover)}" alt="${esc(t.name)}" loading="lazy">
       <span class="builder-slot-name">${esc(t.name)}</span>
-      <button class="builder-slot-remove" type="button"
-              aria-label="Remove ${esc(t.name)} from board">×</button>
+      <span class="builder-slot-x" aria-hidden="true">×</span>
     `;
 
-    slot.querySelector('.builder-slot-remove').addEventListener('click', e => {
-      e.stopPropagation();
+    function removeThisSlot() {
       selected.delete(id);
       const chip = picker.querySelector(`[data-id="${id}"]`);
       if (chip) {
@@ -236,6 +237,10 @@
       }
       removeSlot(id);
       updateUI();
+    }
+    slot.addEventListener('click', removeThisSlot);
+    slot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); removeThisSlot(); }
     });
 
     slotsEl.appendChild(slot);

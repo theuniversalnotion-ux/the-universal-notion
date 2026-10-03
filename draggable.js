@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════════════
    draggable.js — Draggable Scrapbook Pieces
    ───────────────────────────────────────────────────────────────────────
-   6 small decorative stickers (fixed position) that visitors can pick up
-   and move anywhere on the page. Positions persist in localStorage so
-   the board remembers where you left things.
+   3 small decorative stickers (position: absolute) that visitors can pick
+   up and move. Positions persist in localStorage so the board remembers
+   where you left things. Stickers scroll with the page.
 
    Uses the Pointer Events API (setPointerCapture) — works for mouse and
    touch with no extra libraries.
@@ -16,8 +16,6 @@
   'use strict';
 
   /* ── Piece definitions ────────────────────────────────────────────── */
-  /* xi/yi are initial positions (CSS length strings, e.g. vw/vh).
-     On drag-start these are converted to px via getBoundingClientRect. */
   const PIECES = [
     {
       id:   'dp-star',
@@ -61,8 +59,6 @@
   try { saved = JSON.parse(localStorage.getItem('dp-pos') || '{}'); } catch (_) {}
 
   /* ── Build and attach each piece ─────────────────────────────────── */
-  const els = [];
-
   PIECES.forEach(def => {
     const el = document.createElement('div');
     el.className  = 'dp-piece';
@@ -70,50 +66,40 @@
     el.dataset.rot = def.rot;
     el.setAttribute('aria-hidden', 'true');
     el.innerHTML  = def.html;
-    el.style.transition = 'opacity 0.45s ease, transform 0.52s cubic-bezier(0.34,1.56,0.64,1)';
+    el.style.transition = 'transform 0.52s cubic-bezier(0.34,1.56,0.64,1)';
 
     const pos = saved[def.id];
-    el.style.left      = pos ? pos.left : def.xi;
-    el.style.top       = pos ? pos.top  : def.yi;
+    if (pos) {
+      el.style.left = pos.left;
+      el.style.top  = pos.top;
+    } else {
+      /* Initial positions in viewport units — convert to document px on first interact */
+      el.style.left = def.xi;
+      el.style.top  = def.yi;
+    }
     el.style.transform = `rotate(${def.rot}deg)`;
 
     document.body.appendChild(el);
-    els.push(el);
     makeDraggable(el, def.rot);
   });
 
-  /* ── Fade out as user scrolls past the hero ──────────────────────── */
-  function updateVisibility() {
-    const threshold = window.innerHeight * 0.75;
-    const ratio     = Math.max(0, Math.min(1, 1 - (window.scrollY - threshold * 0.4) / (threshold * 0.6)));
-    els.forEach(el => {
-      el.style.opacity       = ratio;
-      el.style.pointerEvents = ratio < 0.05 ? 'none' : '';
-    });
-  }
-  window.addEventListener('scroll', updateVisibility, { passive: true });
-  updateVisibility();
-
   /* ── Drag behaviour ───────────────────────────────────────────────── */
-  const MAX_TOP = window.innerHeight * 0.85; /* can't drag below this */
-
   function makeDraggable(el, baseRot) {
     let ox = 0, oy = 0;
 
     el.addEventListener('pointerdown', e => {
-      /* Ignore secondary mouse buttons */
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       e.preventDefault();
 
-      /* Convert current position to px so updates are stable */
+      /* Convert current position to document px so dragging is stable */
       const rect = el.getBoundingClientRect();
-      el.style.left = rect.left + 'px';
-      el.style.top  = rect.top  + 'px';
+      el.style.left = (rect.left + window.scrollX) + 'px';
+      el.style.top  = (rect.top  + window.scrollY) + 'px';
 
+      /* Offset within the element in viewport coords */
       ox = e.clientX - rect.left;
       oy = e.clientY - rect.top;
 
-      /* Capture so pointermove keeps firing even outside the element */
       el.setPointerCapture(e.pointerId);
       el.classList.add('dp-dragging');
 
@@ -125,9 +111,9 @@
 
     el.addEventListener('pointermove', e => {
       if (!el.classList.contains('dp-dragging')) return;
-      const newTop = Math.min(e.clientY - oy, MAX_TOP);
-      el.style.left = (e.clientX - ox) + 'px';
-      el.style.top  = newTop + 'px';
+      /* Use document coords so the sticker tracks correctly while scrolled */
+      el.style.left = (e.clientX + window.scrollX - ox) + 'px';
+      el.style.top  = (e.clientY + window.scrollY - oy) + 'px';
     });
 
     el.addEventListener('pointerup',     release);
@@ -137,7 +123,6 @@
       if (!el.classList.contains('dp-dragging')) return;
       el.classList.remove('dp-dragging');
 
-      /* Spring-bounce back to base rotation, scale to 1 */
       if (typeof gsap !== 'undefined') {
         gsap.to(el, {
           scale: 1, rotation: baseRot,

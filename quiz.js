@@ -9,26 +9,26 @@
     {
       q: 'Your ideal Sunday looks like...',
       options: [
-        { icon: 'ph-coffee',      label: 'Brunch with everyone I love', scores: { 0: 3, 3: 1 } },
-        { icon: 'ph-fork-knife',  label: 'Testing a new recipe',        scores: { 8: 3, 9: 1 } },
-        { icon: 'ph-books',       label: 'Lost in a book or three',     scores: { 7: 3, 2: 1 } },
-        { icon: 'ph-paint-brush', label: 'Working on a creative project', scores: { 5: 3, 2: 1 } },
+        { icon: 'ph-coffee',      label: 'Brunch with everyone I love',    scores: { 0: 3, 3: 1 } },
+        { icon: 'ph-cooking-pot', label: 'Testing a new recipe at home',   scores: { 8: 3, 9: 1 } },
+        { icon: 'ph-book-open',   label: 'Lost in a book or three',        scores: { 7: 3, 2: 1 } },
+        { icon: 'ph-paint-brush', label: 'Working on a creative project',  scores: { 5: 3, 2: 1 } },
       ],
     },
     {
       q: 'What would make your life feel better right now?',
       options: [
-        { icon: 'ph-currency-dollar', label: 'Knowing where my money goes',     scores: { 1: 3 } },
-        { icon: 'ph-heartbeat',       label: 'Getting on top of my health',     scores: { 4: 3, 3: 1 } },
-        { icon: 'ph-brain',           label: 'Getting ideas out of my head',    scores: { 2: 3, 5: 1 } },
-        { icon: 'ph-clipboard-text',  label: 'A clearer system for clients',    scores: { 6: 3, 1: 1 } },
+        { icon: 'ph-currency-dollar', label: 'Knowing where my money goes', scores: { 1: 3 } },
+        { icon: 'ph-heart',           label: 'Getting on top of my health', scores: { 4: 3, 3: 1 } },
+        { icon: 'ph-lightbulb',       label: 'Getting ideas out of my head', scores: { 2: 3, 5: 1 } },
+        { icon: 'ph-briefcase',       label: 'A clearer system for clients', scores: { 6: 3, 1: 1 } },
       ],
     },
     {
       q: 'Pick the word that speaks to you:',
       options: [
         { icon: 'ph-sparkle',       label: 'Aesthetic',  scores: { 3: 3, 0: 1 } },
-        { icon: 'ph-list-checks',   label: 'Organised',  scores: { 1: 2, 6: 1, 4: 2 } },
+        { icon: 'ph-list',          label: 'Organised',  scores: { 1: 2, 6: 1, 4: 2 } },
         { icon: 'ph-pencil-simple', label: 'Creative',   scores: { 5: 3, 7: 1 } },
         { icon: 'ph-house',         label: 'Cosy',       scores: { 8: 2, 9: 3 } },
       ],
@@ -169,7 +169,9 @@
       btn.className = 'quiz-option';
       btn.setAttribute('aria-label', opt.label);
       btn.innerHTML = `
-        <i class="quiz-option-icon ph-fill ph-${opt.icon}" aria-hidden="true"></i>
+        <span class="quiz-option-icon" aria-hidden="true">
+          <i class="ph-fill ph-${opt.icon}"></i>
+        </span>
         <span class="quiz-option-text">${opt.label}</span>
       `;
 

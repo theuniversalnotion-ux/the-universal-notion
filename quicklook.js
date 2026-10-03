@@ -150,6 +150,13 @@
       lastTrigger = btn;
       open(i);
     });
+
+    /* Whole card is clickable — skip only the buy button */
+    card.addEventListener('click', e => {
+      if (e.target.closest('.buy-btn') || e.target.closest('.ql-trigger')) return;
+      lastTrigger = card;
+      open(i);
+    });
   });
 
   /* ── Open ─────────────────────────────────────────────────────────── */

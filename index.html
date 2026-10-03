@@ -1314,7 +1314,7 @@
        localStorage key: 'dp-pos'
     ═══════════════════════════════════════════════════════════════ */
     .dp-piece {
-      position: fixed;
+      position: absolute;
       z-index: 500;
       cursor: grab;
       user-select: none;
@@ -1442,7 +1442,11 @@
     ═══════════════════════════════════════════════════════════════ */
     .quiz-section {
       padding: 80px 24px 64px;
-      background: #FEF9F5;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 20%, rgba(244,170,186,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 85% 75%, rgba(212,197,240,0.20) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(249,228,160,0.10) 0%, transparent 60%),
+        #FEF9F5;
       position: relative;
       overflow: hidden;
     }
@@ -1450,15 +1454,15 @@
       position: absolute;
       pointer-events: none;
       user-select: none;
-      opacity: 0.13;
+      opacity: 0.22;
       font-size: 3.2rem;
       color: var(--rose);
       line-height: 1;
     }
-    .quiz-bg-doodle--1 { top: 8%;  left: 3%;   font-size: 2.8rem; transform: rotate(-18deg); }
-    .quiz-bg-doodle--2 { top: 18%; right: 5%;  font-size: 2.2rem; transform: rotate(12deg);  }
-    .quiz-bg-doodle--3 { bottom: 12%; left: 8%; font-size: 2.5rem; transform: rotate(8deg);  }
-    .quiz-bg-doodle--4 { bottom: 8%; right: 3%; font-size: 2rem;   transform: rotate(-22deg); }
+    .quiz-bg-doodle--1 { top: 6%;    left: 2%;   font-size: 3.4rem; transform: rotate(-18deg); }
+    .quiz-bg-doodle--2 { top: 14%;   right: 3%;  font-size: 2.8rem; transform: rotate(14deg);  color: #B4AEDD; }
+    .quiz-bg-doodle--3 { bottom: 10%; left: 5%;  font-size: 3rem;   transform: rotate(8deg);   color: #F9E4A0; }
+    .quiz-bg-doodle--4 { bottom: 6%;  right: 2%; font-size: 2.4rem; transform: rotate(-24deg); }
     .quiz-inner {
       max-width: 640px;
       margin: 0 auto;
@@ -1605,15 +1609,18 @@
     .quiz-option-icon {
       width: 48px;
       height: 48px;
-      line-height: 48px;
-      text-align: center;
       border-radius: 50%;
       background: rgba(201,75,106,0.08);
-      font-size: 1.4rem;
       color: var(--rose);
       flex-shrink: 0;
-      display: block;
+      display: grid;
+      place-items: center;
       transition: background 0.18s;
+    }
+    .quiz-option-icon i {
+      font-size: 1.5rem;
+      line-height: 1;
+      display: block;
     }
     .quiz-option--selected .quiz-option-icon {
       background: rgba(201,75,106,0.18);
@@ -2216,29 +2223,28 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .builder-slot-remove {
+    .builder-slot {
+      cursor: pointer;
+    }
+    .builder-slot-x {
       position: absolute;
       top: -7px;
       right: -7px;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: none;
       background: var(--rose);
       color: #fff;
       font-size: 0.9rem;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
+      line-height: 20px;
+      text-align: center;
       opacity: 0;
       transition: opacity 0.16s, transform 0.16s;
+      pointer-events: none;
     }
-    .builder-slot:hover .builder-slot-remove,
-    .builder-slot:focus-within .builder-slot-remove { opacity: 1; }
-    .builder-slot-remove:hover { transform: scale(1.15); }
+    .builder-slot:hover .builder-slot-x,
+    .builder-slot:focus .builder-slot-x { opacity: 1; }
+    .builder-slot:hover { filter: brightness(0.96); }
 
     /* Nudge */
     .builder-nudge {
@@ -2307,9 +2313,9 @@
       transform: translateY(-2px);
     }
 
-    /* Touch: always show remove button */
+    /* Touch: always show × hint */
     @media (hover: none) {
-      .builder-slot-remove { opacity: 1; }
+      .builder-slot-x { opacity: 1; }
     }
 
     /* Filter bar → single scrollable row on mobile */
@@ -3032,10 +3038,10 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
   <script src="animations.js?v=2"></script>
   <script src="filters.js?v=2"></script>
-  <script src="quicklook.js"></script>
-  <script src="builder.js"></script>
-  <script src="quiz.js?v=4"></script>
-  <script src="draggable.js?v=4"></script>
+  <script src="quicklook.js?v=2"></script>
+  <script src="builder.js?v=2"></script>
+  <script src="quiz.js?v=5"></script>
+  <script src="draggable.js?v=5"></script>
   <script src="delights.js"></script>
   <script src="faq.js"></script>
   <!-- Gumroad overlay: intercepts buy links to open checkout on-page instead of new tab -->
