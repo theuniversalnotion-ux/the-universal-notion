@@ -84,6 +84,14 @@
         <h2 class="section-title" id="quiz-heading">Which block are you?</h2>
         <p class="section-sub">3 quick questions. One perfect recommendation.</p>
 
+        <div class="quiz-how" aria-hidden="true">
+          <span class="quiz-how-pill">✦ 3 questions</span>
+          <span class="quiz-how-sep">·</span>
+          <span class="quiz-how-pill">✦ match your vibe</span>
+          <span class="quiz-how-sep">·</span>
+          <span class="quiz-how-pill">✦ get your template</span>
+        </div>
+
         <div class="quiz-card">
           <div class="quiz-progress" aria-hidden="true">
             <div class="quiz-stars">
@@ -116,19 +124,6 @@
         </div>
       </div>
 
-      <aside class="quiz-aside" aria-hidden="true">
-        <div class="quiz-note">
-          <div class="quiz-note-tape"></div>
-          <p class="quiz-note-title">how it works</p>
-          <ul class="quiz-note-list">
-            <li>✦ answer 3 quick questions</li>
-            <li>✦ we match you to your vibe</li>
-            <li>✦ get your perfect template</li>
-          </ul>
-          <p class="quiz-note-foot">no wrong answers ♥</p>
-        </div>
-        <span class="quiz-note-deco" aria-hidden="true">★</span>
-      </aside>
     </div>
   `;
 
@@ -174,7 +169,7 @@
       btn.className = 'quiz-option';
       btn.setAttribute('aria-label', opt.label);
       btn.innerHTML = `
-        <span class="quiz-option-icon" aria-hidden="true"><i class="ph-fill ph-${opt.icon}"></i></span>
+        <i class="quiz-option-icon ph-fill ph-${opt.icon}" aria-hidden="true"></i>
         <span class="quiz-option-text">${opt.label}</span>
       `;
 

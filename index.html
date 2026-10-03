@@ -1462,16 +1462,8 @@
     .quiz-inner {
       max-width: 640px;
       margin: 0 auto;
-      position: relative;
     }
     .quiz-left { text-align: center; }
-    /* Sticky-note aside — floats decoratively on wide screens */
-    .quiz-aside {
-      position: absolute;
-      right: -300px;
-      top: 140px;
-      width: 220px;
-    }
     .quiz-note {
       background: #FFFBE8;
       border-radius: 3px;
@@ -1611,20 +1603,41 @@
       box-shadow: 0 2px 8px rgba(60,30,20,0.06);
     }
     .quiz-option-icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
       border-radius: 50%;
-      background: rgba(201,75,106,0.07);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.35rem;
+      background: rgba(201,75,106,0.08);
+      font-size: 1.4rem;
       color: var(--rose);
       flex-shrink: 0;
+      display: block;
       transition: background 0.18s;
     }
     .quiz-option--selected .quiz-option-icon {
       background: rgba(201,75,106,0.18);
+    }
+    .quiz-how {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+    .quiz-how-pill {
+      font-family: var(--font-accent);
+      font-size: 0.78rem;
+      color: #a89890;
+      background: rgba(201,75,106,0.06);
+      border: 1px solid rgba(201,75,106,0.14);
+      border-radius: 999px;
+      padding: 5px 14px;
+    }
+    .quiz-how-sep {
+      color: #d4c8c2;
+      font-size: 0.9rem;
     }
     .quiz-option-text {
       font-size: 0.82rem;
@@ -1744,10 +1757,6 @@
     }
     .quiz-retake:hover { color: var(--rose); }
 
-    /* Quiz aside — only visible on very wide screens */
-    @media (max-width: 1080px) {
-      .quiz-aside { display: none; }
-    }
     @media (max-width: 540px) {
       .quiz-section { padding: 60px 16px 48px; }
       .quiz-card    { padding: 24px 20px 28px; }
@@ -3025,7 +3034,7 @@
   <script src="filters.js?v=2"></script>
   <script src="quicklook.js"></script>
   <script src="builder.js"></script>
-  <script src="quiz.js?v=3"></script>
+  <script src="quiz.js?v=4"></script>
   <script src="draggable.js?v=4"></script>
   <script src="delights.js"></script>
   <script src="faq.js"></script>
