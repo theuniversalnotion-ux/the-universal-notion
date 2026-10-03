@@ -1102,6 +1102,11 @@
       .card .card-body { flex: 1; }
       /* Hide pushpins — they're offset for tilted cards, look wrong flat */
       .card::before, .card::after { display: none; }
+      .card .card-body {
+        display: flex;
+        flex-direction: column;
+      }
+      .card .card-footer { margin-top: auto; }
       /* Reset stagger margins */
       .card:nth-child(3n+2),
       .card:nth-child(3n+3) { margin-top: 0; }
