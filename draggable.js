@@ -61,6 +61,8 @@
   try { saved = JSON.parse(localStorage.getItem('dp-pos') || '{}'); } catch (_) {}
 
   /* ── Build and attach each piece ─────────────────────────────────── */
+  const els = [];
+
   PIECES.forEach(def => {
     const el = document.createElement('div');
     el.className  = 'dp-piece';
@@ -68,6 +70,7 @@
     el.dataset.rot = def.rot;
     el.setAttribute('aria-hidden', 'true');
     el.innerHTML  = def.html;
+    el.style.transition = 'opacity 0.45s ease, transform 0.52s cubic-bezier(0.34,1.56,0.64,1)';
 
     const pos = saved[def.id];
     el.style.left      = pos ? pos.left : def.xi;
@@ -75,10 +78,25 @@
     el.style.transform = `rotate(${def.rot}deg)`;
 
     document.body.appendChild(el);
+    els.push(el);
     makeDraggable(el, def.rot);
   });
 
+  /* ── Fade out as user scrolls past the hero ──────────────────────── */
+  function updateVisibility() {
+    const threshold = window.innerHeight * 0.75;
+    const ratio     = Math.max(0, Math.min(1, 1 - (window.scrollY - threshold * 0.4) / (threshold * 0.6)));
+    els.forEach(el => {
+      el.style.opacity       = ratio;
+      el.style.pointerEvents = ratio < 0.05 ? 'none' : '';
+    });
+  }
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  updateVisibility();
+
   /* ── Drag behaviour ───────────────────────────────────────────────── */
+  const MAX_TOP = window.innerHeight * 0.85; /* can't drag below this */
+
   function makeDraggable(el, baseRot) {
     let ox = 0, oy = 0;
 
@@ -107,8 +125,9 @@
 
     el.addEventListener('pointermove', e => {
       if (!el.classList.contains('dp-dragging')) return;
+      const newTop = Math.min(e.clientY - oy, MAX_TOP);
       el.style.left = (e.clientX - ox) + 'px';
-      el.style.top  = (e.clientY - oy) + 'px';
+      el.style.top  = newTop + 'px';
     });
 
     el.addEventListener('pointerup',     release);
