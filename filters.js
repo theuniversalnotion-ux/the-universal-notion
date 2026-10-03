@@ -79,6 +79,8 @@
     const hiding = cards.filter(c => !showing.includes(c));
 
     if (typeof gsap !== 'undefined') {
+      gsap.killTweensOf(cards);
+
       /* Fade out non-matching cards first, then show matching */
       if (hiding.length) {
         gsap.to(hiding, {
