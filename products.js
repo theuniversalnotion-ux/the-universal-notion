@@ -32,7 +32,7 @@ window.PRODUCTS = [
     priceNum: 4.99,
     url:      'https://universalnotion.gumroad.com/l/jisidl',
     fbq:      "fbq('track','AddToCart')",
-    images:   ['covers/10-group-hug.png'],
+    images:   ['covers/10-group-hug.png', 'images/previews/10-group-hug.png'],
     alt:      'Group Hug Notion template cover — shared social planning and memory tracking',
     desc:     'Track plans, memories, and everything in between with your favorite people — all in one shared space.',
     badge:    'new',
